@@ -77,7 +77,7 @@
       </button>
       {% endfor %}
 
-      <!-- Foreground Table Book Stack (Featured Projects) -->
+      <!-- Magical Glowing Project Tomes (Middle desk, Left shelf, Right shelf) -->
       {% for project in projects %}
       <button
         class="hotspot-btn project-hotspot"
@@ -89,9 +89,12 @@
         data-height="{{ project.hotspot.height }}"
         data-color="{{ project.color }}"
       >
-        <span class="hotspot-shimmer" aria-hidden="true"></span>
-        <span class="hotspot-badge" aria-hidden="true">
-          <span class="badge-icon">📦</span>
+        <span class="tome-magic-aura" aria-hidden="true"></span>
+        <span class="tome-magic-sparkles" aria-hidden="true">
+          <i>✧</i><i>✦</i><i>✨</i><i>✧</i>
+        </span>
+        <span class="hotspot-badge tome-badge" aria-hidden="true">
+          <span class="badge-icon">📖</span>
           <span class="badge-title">{{ project.title }}</span>
         </span>
       </button>
