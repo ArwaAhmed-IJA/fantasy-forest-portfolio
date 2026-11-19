@@ -376,7 +376,10 @@
               <span>View Projects</span>
               <span class="cta-arrow">&#8594;</span>
             </button>
-            <button class="book-cta-btn secondary" data-switch-to="contact" aria-label="Contact Me">
+            <a href="{{ owner.resume_url }}" download="Arwa_Ahmed_Resume.pdf" class="book-cta-btn secondary" aria-label="Download CV" target="_blank" rel="noopener noreferrer">
+              <span>Download CV &#8681;</span>
+            </a>
+            <button class="book-cta-btn outline" data-switch-to="contact" aria-label="Contact Me">
               <span>Contact Me ✉</span>
             </button>
           </div>
@@ -514,14 +517,31 @@
         <p class="panel-subtitle">Rigorous academic completions & verified technical competencies</p>
       </div>
 
+      <!-- Download CV Banner -->
+      <div class="cert-resume-banner">
+        <div class="cert-resume-info">
+          <span class="cert-resume-icon" aria-hidden="true">📜</span>
+          <div>
+            <div class="cert-resume-title">Official Curriculum Vitae</div>
+            <div class="cert-resume-sub">Software Engineering • FAST-NUCES • AWS & CS50P Credentials</div>
+          </div>
+        </div>
+        <a href="{{ owner.resume_url }}" download="Arwa_Ahmed_Resume.pdf" class="book-cta-btn primary" target="_blank" rel="noopener noreferrer" aria-label="Download Full Resume PDF">
+          <span>Download CV 📄</span>
+        </a>
+      </div>
+
       <div class="cert-cards-container">
         {% for cert in certificates %}
         <div class="cert-card">
           <div class="cert-seal" aria-hidden="true">
-            <span class="seal-icon">🏛️</span>
+            <span class="seal-icon">{{ cert.seal_icon | default('🎓') }}</span>
           </div>
           <div class="cert-body">
-            <span class="cert-issuer">{{ cert.issuer }} • {{ cert.year }}</span>
+            <div class="cert-top-meta">
+              <span class="cert-issuer">{{ cert.issuer }}</span>
+              <span class="cert-year-pill">{{ cert.year }}</span>
+            </div>
             <h3 class="cert-title">{{ cert.title }}</h3>
             <p class="cert-desc">{{ cert.description }}</p>
 
@@ -532,7 +552,14 @@
             </div>
 
             <div class="cert-footer">
-              <span class="cert-id-badge">ID: {{ cert.credential_id }}</span>
+              <div class="cert-badge-group">
+                {% if cert.badge %}
+                <span class="cert-id-badge">{{ cert.badge }}</span>
+                {% endif %}
+                {% if cert.credential_id %}
+                <span class="cert-id-badge code-font">ID: {{ cert.credential_id }}</span>
+                {% endif %}
+              </div>
               {% if cert.url and cert.url != '#' %}
               <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer" class="panel-link panel-link-demo">
                 Verify Credential ↗

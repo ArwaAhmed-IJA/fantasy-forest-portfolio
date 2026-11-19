@@ -1102,12 +1102,26 @@ html, body {
   background: rgba(140, 100, 45, 0.12);
   color: #2b1f11;
   border: 1px solid rgba(140, 100, 45, 0.4);
+  text-decoration: none;
 }
 
 .book-cta-btn.secondary:hover {
   background: #a06b25;
   color: #fff;
   border-color: #82541a;
+  transform: translateY(-2px);
+}
+
+.book-cta-btn.outline {
+  background: transparent;
+  color: #3b2c1c;
+  border: 1px solid rgba(140, 100, 45, 0.35);
+}
+
+.book-cta-btn.outline:hover {
+  background: rgba(140, 100, 45, 0.12);
+  color: #1a1209;
+  border-color: #8c642d;
   transform: translateY(-2px);
 }
 
@@ -1322,6 +1336,43 @@ html, body {
 }
 
 /* ── Certificates Panel ── */
+.cert-resume-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(212, 168, 83, 0.16) 0%, rgba(140, 100, 45, 0.08) 100%);
+  border: 1px solid rgba(212, 168, 83, 0.45);
+  border-radius: 9px;
+  padding: 0.9rem 1.2rem;
+  margin-bottom: 1.2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cert-resume-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cert-resume-icon {
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.cert-resume-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #2b1f11;
+  letter-spacing: 0.04em;
+}
+
+.cert-resume-sub {
+  font-size: 0.8rem;
+  color: #634621;
+}
+
 .cert-cards-container {
   display: flex;
   flex-direction: column;
@@ -1358,6 +1409,15 @@ html, body {
   flex: 1;
 }
 
+.cert-top-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  flex-wrap: wrap;
+}
+
 .cert-issuer {
   font-family: 'Cinzel', serif;
   font-size: 0.76rem;
@@ -1365,8 +1425,26 @@ html, body {
   color: #7a5015;
   font-weight: 700;
   text-transform: uppercase;
-  display: block;
-  margin-bottom: 0.25rem;
+  display: inline-block;
+}
+
+.cert-year-pill {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #8c5d1e;
+  background: rgba(212, 168, 83, 0.18);
+  padding: 0.15rem 0.55rem;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 168, 83, 0.35);
+  white-space: nowrap;
+}
+
+.cert-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
 }
 
 .cert-title {

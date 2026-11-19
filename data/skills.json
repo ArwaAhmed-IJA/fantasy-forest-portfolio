@@ -8,8 +8,10 @@
     "city": "Islamabad",
     "country": "Pakistan",
     "email": "arwa95025@gmail.com",
-    "bio": "I'm a passionate software engineer who loves building elegant solutions. CS50P taught me to think like a programmer — this fantasy forest portfolio is proof of that journey.",
-    "resume_url": "#"
+    "phone": "+92 310 2105238",
+    "education": "Software Engineering, FAST-NUCES, Islamabad (FAST)",
+    "bio": "Software Engineering undergraduate at FAST-NUCES with extensive hands-on experience building scalable web applications, mobile solutions, and database-driven systems. Adept at agile environments and delivering client-facing software.",
+    "resume_url": "static/docs/Arwa_Ahmed_Resume.pdf"
   },
   "shelves": [
     {
@@ -247,26 +249,97 @@
   },
   "certificates": [
     {
+      "id": "aws-cloud-web-app",
+      "title": "AWS Academy Graduate - AWS Academy Cloud Web Application Builder",
+      "issuer": "Amazon Web Services (AWS)",
+      "year": "May 2026",
+      "credential_id": "AWS-ACADEMY-WEBAPP",
+      "badge": "Training Badge",
+      "seal_icon": "☁️",
+      "url": "https://www.credly.com",
+      "skills": ["Cloud Architecture", "Full-Stack Web", "AWS Services", "Serverless"],
+      "description": "Comprehensive AWS Academy curriculum on designing, architecting, and deploying scalable and secure cloud-based web applications on AWS infrastructure."
+    },
+    {
+      "id": "aws-cloud-foundations",
+      "title": "AWS Academy Graduate - AWS Academy Cloud Foundations",
+      "issuer": "Amazon Web Services (AWS)",
+      "year": "May 2026",
+      "credential_id": "AWS-ACADEMY-FOUNDATIONS",
+      "badge": "Training Badge",
+      "seal_icon": "☁️",
+      "url": "https://www.credly.com",
+      "skills": ["Cloud Concepts", "Security & Compliance", "AWS Core Services", "Cloud Economics"],
+      "description": "Demonstrated foundational mastery of cloud concepts, security practices, core architecture models, pricing strategies, and AWS core services."
+    },
+    {
+      "id": "aws-quest-genai",
+      "title": "AWS Cloud Quest: Generative AI Practitioner",
+      "issuer": "Amazon Web Services (AWS)",
+      "year": "May 2026",
+      "credential_id": "AWS-QUEST-GENAI",
+      "badge": "Quest Badge",
+      "seal_icon": "🤖",
+      "url": "https://www.credly.com",
+      "skills": ["Generative AI", "LLMs", "Amazon Bedrock", "Prompt Engineering", "Cloud AI"],
+      "description": "Hands-on technical badge verifying practical proficiency building real-world generative AI applications, foundation model integration, and prompt tuning."
+    },
+    {
+      "id": "aws-quest-practitioner",
+      "title": "AWS Cloud Quest: Cloud Practitioner",
+      "issuer": "Amazon Web Services (AWS)",
+      "year": "March 2026",
+      "credential_id": "AWS-QUEST-CP",
+      "badge": "Quest Badge",
+      "seal_icon": "⚡",
+      "url": "https://www.credly.com",
+      "skills": ["AWS Cloud Computing", "VPC Networking", "S3 Storage", "IAM Security", "Cloud Databases"],
+      "description": "Practical interactive credential validating hands-on cloud troubleshooting, networking, identity management, and serverless compute provisioning."
+    },
+    {
       "id": "cs50p-cert",
       "title": "CS50's Introduction to Programming with Python",
       "issuer": "Harvard University / CS50",
       "year": "2026",
       "credential_id": "CS50P-VERIFIED",
+      "badge": "Verified Certificate",
+      "seal_icon": "🏛️",
       "url": "https://cs50.harvard.edu/certificates/",
       "skills": ["Python", "Object-Oriented Programming", "Automated Testing (pytest)", "Regular Expressions", "File I/O", "APIs & Libraries"],
-      "description": "Comprehensive 10-week intensive course on software development principles, testing, and system design, culminating in an evaluated final project."
+      "description": "Rigorous 10-week intensive computer science program emphasizing algorithm design, software architecture, test-driven development, and modular systems."
     }
   ],
   "experience": [
     {
-      "role": "Software Engineering Student & Builder",
-      "organization": "Harvard CS50P / Self-Directed Projects",
-      "period": "2026 — Present",
+      "role": "AI & NLP Intern",
+      "organization": "Decimal Solutions",
+      "period": "Jun 2025 — Aug 2025",
+      "location": "Islamabad, Pakistan",
+      "highlights": [
+        "Engineered multilingual conversational AI agents and NLP pipelines for automated document intelligence.",
+        "Implemented prompt engineering workflows and fine-tuning techniques for retrieval-augmented generation (RAG).",
+        "Collaborated across agile sprints to integrate AI microservices with production web backends."
+      ]
+    },
+    {
+      "role": "Web Engineering Intern",
+      "organization": "Software Engineering and Automation Lab (SEAL)",
+      "period": "Jun 2024 — Aug 2024",
+      "location": "Islamabad, Pakistan",
+      "highlights": [
+        "Developed responsive full-stack web applications and internal tools for automated lab workflows.",
+        "Integrated RESTful APIs, optimized database queries, and implemented automated unit tests.",
+        "Participated in agile code reviews and software quality assurance procedures."
+      ]
+    },
+    {
+      "role": "IT Support Intern",
+      "organization": "GAO Tek Inc.",
+      "period": "May 2024 — Aug 2024",
       "location": "Remote",
       "highlights": [
-        "Architected full-stack Python web applications, CLI tools, and static site generators.",
-        "Employed Test-Driven Development (TDD) with pytest achieving robust automated test coverage.",
-        "Created interactive web architectures with Jinja2, clean JavaScript, and modern CSS3."
+        "Assisted in enterprise IT operations, technical customer support, and system troubleshooting.",
+        "Documented technical support workflows, troubleshooting guidelines, and equipment tracking procedures."
       ]
     },
     {
@@ -276,12 +349,15 @@
       "location": "Independent Project",
       "highlights": [
         "Designed and implemented a responsive static site generator complying with all CS50P requirements.",
-        "Packaged and deployed automated CI/CD continuous deployment to Render via GitHub."
+        "Engineered modular Python architecture with 100% test coverage using pytest.",
+        "Crafted immersive canvas particle engines, responsive modal panels, and CI/CD pipelines."
       ]
     }
   ],
   "contact": {
     "email": "arwa95025@gmail.com",
+    "phone": "+92 310 2105238",
+    "location": "Islamabad, Pakistan",
     "linkedin": "https://www.linkedin.com/in/arwa-ahmed-854553349",
     "github": "https://github.com/ArwaAhmed123456",
     "status": "Available for Software Engineering Opportunities"
