@@ -17,10 +17,10 @@
       "shelf_number": 1,
       "color": "#c0843a",
       "hotspot": {
-        "top": 21,
-        "left": 40.0,
-        "width": 20.0,
-        "height": 13
+        "top": 40.0,
+        "left": 34.6,
+        "width": 30.7,
+        "height": 7.5
       },
       "skills": [
         {
@@ -56,10 +56,10 @@
       "shelf_number": 2,
       "color": "#7b5ea7",
       "hotspot": {
-        "top": 35,
-        "left": 40.0,
-        "width": 20.0,
-        "height": 13
+        "top": 48.0,
+        "left": 34.6,
+        "width": 30.7,
+        "height": 7.8
       },
       "skills": [
         {
@@ -95,10 +95,10 @@
       "shelf_number": 3,
       "color": "#3a8c6e",
       "hotspot": {
-        "top": 49,
-        "left": 40.0,
-        "width": 20.0,
-        "height": 13
+        "top": 56.2,
+        "left": 34.6,
+        "width": 30.7,
+        "height": 7.6
       },
       "skills": [
         {
@@ -134,10 +134,10 @@
       "shelf_number": 4,
       "color": "#b04a4a",
       "hotspot": {
-        "top": 63,
-        "left": 40.0,
-        "width": 20.0,
-        "height": 13
+        "top": 64.2,
+        "left": 34.6,
+        "width": 30.7,
+        "height": 7.5
       },
       "skills": [
         {
@@ -184,10 +184,10 @@
       "demo_url": "#",
       "color": "#c0843a",
       "hotspot": {
-        "top": 69,
-        "left": 44.1,
-        "width": 11.8,
-        "height": 18
+        "top": 68.0,
+        "left": 37.0,
+        "width": 26.0,
+        "height": 18.5
       }
     },
     {
@@ -204,10 +204,10 @@
       "demo_url": "#",
       "color": "#e07a3b",
       "hotspot": {
-        "top": 56,
-        "left": 8.5,
-        "width": 17.5,
-        "height": 25
+        "top": 32.0,
+        "left": 1.5,
+        "width": 22.0,
+        "height": 42.0
       }
     },
     {
@@ -224,19 +224,19 @@
       "demo_url": "#",
       "color": "#4da1a9",
       "hotspot": {
-        "top": 60,
-        "left": 77.0,
-        "width": 16.0,
-        "height": 20
+        "top": 32.0,
+        "left": 76.5,
+        "width": 22.0,
+        "height": 42.0
       }
     }
   ],
   "about": {
     "hotspot": {
-      "top": 68.5,
-      "left": 47.3,
-      "width": 7.0,
-      "height": 19.0
+      "top": 76.5,
+      "left": 63.5,
+      "width": 12.0,
+      "height": 10.0
     },
     "paragraphs": [
       "I am Arwa Ahmed, a passionate software engineer who discovered programming through curious exploration and refined it through CS50.",

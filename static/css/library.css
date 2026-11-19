@@ -141,25 +141,48 @@ html, body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background: #080d0a;
 }
 
-/* ── High-Resolution Library Panorama Stage (2560 x 1200) ── */
-.lib-stage {
+/* Atmospheric Ambient Backdrop (Fills widescreen viewports with glowing wisteria ambiance) */
+.lib-backdrop {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: max(100vw, calc(100vh * (2560 / 1200)));
-  height: max(100vh, calc(100vw * (1200 / 2560)));
+  inset: -30px;
+  background-image: url('../images/library.jpg?v=full_view');
+  background-size: cover;
+  background-position: center center;
+  filter: blur(36px) brightness(0.38) saturate(1.2);
+  transform: scale(1.1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lib-backdrop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(10, 18, 14, 0.4) 40%, rgba(4, 8, 6, 0.88) 95%),
+    linear-gradient(to bottom, rgba(5, 10, 7, 0.7) 0%, transparent 20%, transparent 80%, rgba(5, 10, 7, 0.8) 100%);
+}
+
+/* ── High-Resolution Full Library View Stage (896 x 1200) ── */
+.lib-stage {
+  position: relative;
+  z-index: 10;
+  width: min(100vw, calc(100vh * (896 / 1200)));
+  height: min(100vh, calc(100vw * (1200 / 896)));
+  aspect-ratio: 896 / 1200;
   overflow: hidden;
-  z-index: 1;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.9), 0 0 100px rgba(8, 16, 12, 0.85);
+  border-radius: 4px;
 }
 
 .lib-artwork {
   position: absolute;
   inset: 0;
-  background-image: url('../images/library.jpg?v=3d_room');
-  background-size: cover;
+  background-image: url('../images/library.jpg?v=full_view');
+  background-size: 100% 100%;
   background-position: center center;
   background-repeat: no-repeat;
 }
