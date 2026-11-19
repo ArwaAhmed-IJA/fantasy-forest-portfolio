@@ -11,7 +11,7 @@
     "phone": "+92 310 2105238",
     "education": "Software Engineering, FAST-NUCES, Islamabad (FAST)",
     "headline": "Full-Stack & Mobile Developer | Applied AI Engineer | Cloud-Certified (AWS & Azure AI)",
-    "bio": "I’m a Software Engineer passionate about building reliable, user-centered products from initial architecture to live production. Over the past year, I’ve delivered commercial web platforms and App Store mobile applications—including Observant Security and Tripod Hub—for UK clients, alongside building intelligent AI systems and cloud-backed architectures. Whether I’m shipping cross-platform apps, designing scalable APIs, or integrating LLMs, I focus on clean code, thoughtful design, and measurable real-world impact.",
+    "bio": "Software Engineer focused on engineering reliable, user-centered web and mobile products from architecture to production. I’ve delivered commercial platforms and App Store mobile apps—including Observant Security and Tripod Hub—for UK clients, combining robust full-stack systems with cloud-backed AI architectures.",
     "resume_url": "static/docs/Arwa_Ahmed_Resume.pdf"
   },
   "shelves": [
@@ -27,36 +27,17 @@
         "height": 10.8
       },
       "skills": [
-        {
-          "name": "Python",
-          "level": 90,
-          "icon": "\ud83d\udc0d"
-        },
-        {
-          "name": "JavaScript",
-          "level": 80,
-          "icon": "\ud83c\udf10"
-        },
-        {
-          "name": "TypeScript",
-          "level": 72,
-          "icon": "\ud83d\udcd8"
-        },
-        {
-          "name": "SQL",
-          "level": 75,
-          "icon": "\ud83d\uddc4\ufe0f"
-        },
-        {
-          "name": "HTML/CSS",
-          "level": 85,
-          "icon": "\ud83c\udfa8"
-        }
+        { "name": "Python", "svg_id": "python", "icon": "" },
+        { "name": "JavaScript", "svg_id": "javascript", "icon": "" },
+        { "name": "TypeScript", "svg_id": "typescript", "icon": "" },
+        { "name": "C++", "svg_id": "cpp", "icon": "" },
+        { "name": "SQL", "svg_id": "sql", "icon": "" },
+        { "name": "HTML/CSS", "svg_id": "html5", "icon": "" }
       ]
     },
     {
       "id": "web",
-      "label": "Web & Frameworks",
+      "label": "Full-Stack & Mobile",
       "shelf_number": 2,
       "color": "#7b5ea7",
       "hotspot": {
@@ -66,36 +47,18 @@
         "height": 11.2
       },
       "skills": [
-        {
-          "name": "Flask",
-          "level": 82,
-          "icon": "\ud83e\uddea"
-        },
-        {
-          "name": "FastAPI",
-          "level": 75,
-          "icon": "\u26a1"
-        },
-        {
-          "name": "React",
-          "level": 70,
-          "icon": "\u269b\ufe0f"
-        },
-        {
-          "name": "Jinja2",
-          "level": 85,
-          "icon": "\ud83d\udcc4"
-        },
-        {
-          "name": "REST APIs",
-          "level": 80,
-          "icon": "\ud83d\udd17"
-        }
+        { "name": "React", "svg_id": "react", "icon": "" },
+        { "name": "React Native", "svg_id": "react", "icon": "" },
+        { "name": "Node.js", "svg_id": "nodejs", "icon": "" },
+        { "name": "Express", "svg_id": "express", "icon": "" },
+        { "name": "Android Dev", "svg_id": "android", "icon": "" },
+        { "name": "MERN Stack", "svg_id": "react", "icon": "" },
+        { "name": "REST APIs", "svg_id": "rest-api", "icon": "" }
       ]
     },
     {
       "id": "data",
-      "label": "Data & ML",
+      "label": "Cloud & Applied AI",
       "shelf_number": 3,
       "color": "#3a8c6e",
       "hotspot": {
@@ -105,36 +68,18 @@
         "height": 13.8
       },
       "skills": [
-        {
-          "name": "Pandas",
-          "level": 78,
-          "icon": "\ud83d\udc3c"
-        },
-        {
-          "name": "NumPy",
-          "level": 72,
-          "icon": "\ud83d\udd22"
-        },
-        {
-          "name": "Matplotlib",
-          "level": 68,
-          "icon": "\ud83d\udcca"
-        },
-        {
-          "name": "Scikit-learn",
-          "level": 65,
-          "icon": "\ud83e\udd16"
-        },
-        {
-          "name": "SQLite",
-          "level": 75,
-          "icon": "\ud83d\udcbe"
-        }
+        { "name": "AWS Cloud", "svg_id": "aws", "icon": "" },
+        { "name": "Azure AI", "svg_id": "azure", "icon": "" },
+        { "name": "AI & NLP", "svg_id": "nlp", "icon": "" },
+        { "name": "FastAPI", "svg_id": "fastapi", "icon": "" },
+        { "name": "Flask", "svg_id": "flask", "icon": "" },
+        { "name": "MongoDB", "svg_id": "mongodb", "icon": "" },
+        { "name": "SQLite", "svg_id": "sql", "icon": "" }
       ]
     },
     {
       "id": "tools",
-      "label": "Tools & Ops",
+      "label": "Tools & Quality",
       "shelf_number": 4,
       "color": "#b04a4a",
       "hotspot": {
@@ -144,31 +89,12 @@
         "height": 15.4
       },
       "skills": [
-        {
-          "name": "Git/GitHub",
-          "level": 85,
-          "icon": "\ud83d\udc19"
-        },
-        {
-          "name": "Docker",
-          "level": 65,
-          "icon": "\ud83d\udc33"
-        },
-        {
-          "name": "Linux/Bash",
-          "level": 75,
-          "icon": "\ud83d\udc27"
-        },
-        {
-          "name": "VS Code",
-          "level": 90,
-          "icon": "\ud83d\udcbb"
-        },
-        {
-          "name": "pytest",
-          "level": 80,
-          "icon": "\u2705"
-        }
+        { "name": "Git / GitHub", "svg_id": "git", "icon": "" },
+        { "name": "Docker", "svg_id": "docker", "icon": "" },
+        { "name": "Postman", "svg_id": "postman", "icon": "" },
+        { "name": "Jira / Trello", "svg_id": "jira", "icon": "" },
+        { "name": "Agile / Scrum", "svg_id": "agile", "icon": "" },
+        { "name": "pytest / Testing", "svg_id": "pytest", "icon": "" }
       ]
     }
   ],
@@ -242,33 +168,30 @@
       "width": 9.6,
       "height": 15.4
     },
-    "headline": "Full-Stack & Mobile Developer  |  Applied AI Engineer  |  Cloud-Certified (AWS & Azure AI)",
+    "headline": "Full-Stack & Mobile Developer | Applied AI Engineer | Cloud-Certified (AWS & Azure AI)",
     "paragraphs": [
-      "I’m a Software Engineer passionate about building reliable, user-centered products from initial architecture to live production. Over the past year, I’ve delivered commercial web platforms and App Store mobile applications—including Observant Security and Tripod Hub—for UK clients, alongside building intelligent AI systems and cloud-backed architectures.",
-      "Whether I’m shipping cross-platform apps, designing scalable APIs, or integrating LLMs, I focus on clean code, thoughtful design, and measurable real-world impact."
+      "Software Engineer focused on engineering reliable, user-centered web and mobile products from architecture to production. I’ve delivered commercial platforms and App Store mobile apps—including Observant Security and Tripod Hub—for UK clients, combining robust full-stack systems with cloud-backed AI architectures."
     ]
   },
   "certificates": [
     {
       "id": "aws-cloud-web-app",
-      "title": "AWS Academy Graduate - AWS Academy Cloud Web Application Builder",
+      "title": "AWS Academy Graduate: Cloud Web Application Builder",
       "issuer": "Amazon Web Services (AWS)",
       "year": "May 2026",
-      "credential_id": "AWS-ACADEMY-WEBAPP",
       "badge": "Training Badge",
-      "seal_icon": "☁️",
+      "badge_image": "static/images/badges/aws_academy_webapp.svg",
       "url": "https://www.credly.com",
       "skills": ["Cloud Architecture", "Full-Stack Web", "AWS Services", "Serverless"],
       "description": "Comprehensive AWS Academy curriculum on designing, architecting, and deploying scalable and secure cloud-based web applications on AWS infrastructure."
     },
     {
       "id": "aws-cloud-foundations",
-      "title": "AWS Academy Graduate - AWS Academy Cloud Foundations",
+      "title": "AWS Academy Graduate: Cloud Foundations",
       "issuer": "Amazon Web Services (AWS)",
       "year": "May 2026",
-      "credential_id": "AWS-ACADEMY-FOUNDATIONS",
       "badge": "Training Badge",
-      "seal_icon": "☁️",
+      "badge_image": "static/images/badges/aws_academy_foundations.svg",
       "url": "https://www.credly.com",
       "skills": ["Cloud Concepts", "Security & Compliance", "AWS Core Services", "Cloud Economics"],
       "description": "Demonstrated foundational mastery of cloud concepts, security practices, core architecture models, pricing strategies, and AWS core services."
@@ -278,9 +201,8 @@
       "title": "AWS Cloud Quest: Generative AI Practitioner",
       "issuer": "Amazon Web Services (AWS)",
       "year": "May 2026",
-      "credential_id": "AWS-QUEST-GENAI",
       "badge": "Quest Badge",
-      "seal_icon": "🤖",
+      "badge_image": "static/images/badges/aws_quest_genai.svg",
       "url": "https://www.credly.com",
       "skills": ["Generative AI", "LLMs", "Amazon Bedrock", "Prompt Engineering", "Cloud AI"],
       "description": "Hands-on technical badge verifying practical proficiency building real-world generative AI applications, foundation model integration, and prompt tuning."
@@ -290,9 +212,8 @@
       "title": "AWS Cloud Quest: Cloud Practitioner",
       "issuer": "Amazon Web Services (AWS)",
       "year": "March 2026",
-      "credential_id": "AWS-QUEST-CP",
       "badge": "Quest Badge",
-      "seal_icon": "⚡",
+      "badge_image": "static/images/badges/aws_quest_cp.svg",
       "url": "https://www.credly.com",
       "skills": ["AWS Cloud Computing", "VPC Networking", "S3 Storage", "IAM Security", "Cloud Databases"],
       "description": "Practical interactive credential validating hands-on cloud troubleshooting, networking, identity management, and serverless compute provisioning."
@@ -304,7 +225,7 @@
       "year": "2026",
       "credential_id": "CS50P-VERIFIED",
       "badge": "Verified Certificate",
-      "seal_icon": "🏛️",
+      "badge_image": "static/images/badges/cs50p_harvard.svg",
       "url": "https://cs50.harvard.edu/certificates/",
       "skills": ["Python", "Object-Oriented Programming", "Automated Testing (pytest)", "Regular Expressions", "File I/O", "APIs & Libraries"],
       "description": "Rigorous 10-week intensive computer science program emphasizing algorithm design, software architecture, test-driven development, and modular systems."
@@ -317,9 +238,9 @@
       "period": "Jun 2025 — Aug 2025",
       "location": "Islamabad, Pakistan",
       "highlights": [
-        "Engineered multilingual conversational AI agents and NLP pipelines for automated document intelligence.",
-        "Implemented prompt engineering workflows and fine-tuning techniques for retrieval-augmented generation (RAG).",
-        "Collaborated across agile sprints to integrate AI microservices with production web backends."
+        "Collaborated on the architectural layout of modular software components, ensuring efficient data flows.",
+        "Gained hands-on exposure to software development lifecycle (SDLC) practices, optimizing service workflows for deployments.",
+        "Partnered within cross-functional teams to debug, refine, and maintain stable application benchmarks."
       ]
     },
     {
@@ -328,9 +249,9 @@
       "period": "Jun 2024 — Aug 2024",
       "location": "Islamabad, Pakistan",
       "highlights": [
-        "Developed responsive full-stack web applications and internal tools for automated lab workflows.",
-        "Integrated RESTful APIs, optimized database queries, and implemented automated unit tests.",
-        "Participated in agile code reviews and software quality assurance procedures."
+        "Created dynamic, responsive, and database-driven web applications while managing fast-paced deadlines.",
+        "Handled full-stack operations, integrating frontend components cleanly with backend APIs and data stores.",
+        "Utilized Trello and Agile practices within cross-functional teams to coordinate tasks and deliver reliable software solutions."
       ]
     },
     {
@@ -339,19 +260,9 @@
       "period": "May 2024 — Aug 2024",
       "location": "Remote",
       "highlights": [
-        "Assisted in enterprise IT operations, technical customer support, and system troubleshooting.",
-        "Documented technical support workflows, troubleshooting guidelines, and equipment tracking procedures."
-      ]
-    },
-    {
-      "role": "CS50P Final Project Lead",
-      "organization": "Fantasy Forest Portfolio",
-      "period": "2026",
-      "location": "Independent Project",
-      "highlights": [
-        "Designed and implemented a responsive static site generator complying with all CS50P requirements.",
-        "Engineered modular Python architecture with 100% test coverage using pytest.",
-        "Crafted immersive canvas particle engines, responsive modal panels, and CI/CD pipelines."
+        "Completed a three-month on-the-job internship with certified training in Technical Support.",
+        "Gained hands-on experience troubleshooting complex technical issues, assisting users with hardware and software bugs.",
+        "Provided remote support and strictly followed corporate IT support procedures in a professional, remote enterprise work environment."
       ]
     }
   ],
@@ -368,7 +279,7 @@
       "id": "book-about",
       "target": "about",
       "label": "About Me",
-      "icon": "📖",
+      "icon": "",
       "color": "#d4a853",
       "hotspot": {
         "top": 25.8,
@@ -381,7 +292,7 @@
       "id": "book-skills",
       "target": "skills",
       "label": "Skills",
-      "icon": "⚡",
+      "icon": "",
       "color": "#c0843a",
       "hotspot": {
         "top": 32.3,
@@ -393,8 +304,8 @@
     {
       "id": "book-certs",
       "target": "certs",
-      "label": "Certs",
-      "icon": "🎓",
+      "label": "Certificates",
+      "icon": "",
       "color": "#7b5ea7",
       "hotspot": {
         "top": 45.1,
@@ -407,7 +318,7 @@
       "id": "book-projects",
       "target": "cs50p",
       "label": "Projects",
-      "icon": "✨",
+      "icon": "",
       "color": "#e07a3b",
       "hotspot": {
         "top": 64.2,
@@ -420,7 +331,7 @@
       "id": "book-experience",
       "target": "experience",
       "label": "Experience",
-      "icon": "📜",
+      "icon": "",
       "color": "#3a8c6e",
       "hotspot": {
         "top": 58.2,
@@ -433,7 +344,7 @@
       "id": "book-contact",
       "target": "contact",
       "label": "Contact",
-      "icon": "✉️",
+      "icon": "",
       "color": "#b04a4a",
       "hotspot": {
         "top": 43.7,

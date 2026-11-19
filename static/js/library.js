@@ -261,24 +261,56 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Success feedback
+      // Delivering straight to arwa95025@gmail.com
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.style.opacity = '0.6';
+        submitBtn.innerHTML = '<span>Delivering message…</span>';
       }
       if (formStatus) {
-        formStatus.textContent = 'Message sent! Arwa will reply soon. ✨';
+        formStatus.textContent = 'Sending to arwa95025@gmail.com…';
         formStatus.className = 'form-status';
       }
 
-      contactForm.reset();
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('message', message);
+      formData.append('_subject', 'Portfolio Message from ' + name);
+      formData.append('_replyto', email);
 
-      setTimeout(() => {
+      fetch('https://formsubmit.co/ajax/arwa95025@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Network error');
+        return res.json();
+      })
+      .then(function() {
+        if (formStatus) {
+          formStatus.innerHTML = '✓ Message delivered directly to <strong>arwa95025@gmail.com</strong>! Arwa will reply to your email promptly.';
+          formStatus.className = 'form-status';
+        }
+        contactForm.reset();
+      })
+      .catch(function() {
+        // Fallback: Open mailto directly with the filled message
+        const mailtoUrl = 'mailto:arwa95025@gmail.com?subject=' + encodeURIComponent('Portfolio Inquiry from ' + name) + '&body=' + encodeURIComponent('From: ' + name + ' (' + email + ')\n\nMessage:\n' + message);
+        if (formStatus) {
+          formStatus.innerHTML = 'Connecting to email app… <a href="' + mailtoUrl + '" style="color:#d4a853;text-decoration:underline;">Click here if your email client does not open automatically</a>';
+          formStatus.className = 'form-status';
+        }
+        window.location.href = mailtoUrl;
+      })
+      .finally(function() {
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.style.opacity = '1';
+          submitBtn.innerHTML = '<span>Send Message</span><span class="submit-arrow">&#10148;</span>';
         }
-      }, 3500);
+      });
     });
   }
 

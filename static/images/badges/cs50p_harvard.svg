@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="crimsonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a51c30"/>
+      <stop offset="100%" stop-color="#6e121f"/>
+    </linearGradient>
+    <filter id="harvardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <circle cx="100" cy="100" r="94" fill="#ffffff" stroke="#e0e0e0" stroke-width="4" filter="url(#harvardShadow)"/>
+  <circle cx="100" cy="100" r="84" fill="#fcfcfc" stroke="#a51c30" stroke-width="3" stroke-dasharray="5 2.5"/>
+  <circle cx="100" cy="100" r="74" fill="url(#crimsonGrad)"/>
+  <text x="100" y="68" font-family="'Cinzel', Georgia, serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="2">HARVARD</text>
+  <text x="100" y="104" font-family="'Cinzel', Georgia, serif" font-size="26" font-weight="800" fill="#ffffff" text-anchor="middle">CS50P</text>
+  <rect x="44" y="122" width="112" height="20" rx="10" fill="#ffffff"/>
+  <text x="100" y="136" font-family="Arial, sans-serif" font-size="9" font-weight="800" fill="#a51c30" text-anchor="middle" letter-spacing="0.8">PYTHON VERIFIED</text>
+  <text x="100" y="159" font-family="Arial, sans-serif" font-size="8.5" font-weight="600" fill="rgba(255,255,255,0.9)" text-anchor="middle">ACADEMIC COMPLETION</text>
+</svg>
