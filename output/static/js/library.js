@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyEmailBtn = document.getElementById('copyEmailBtn');
   if (copyEmailBtn) {
     copyEmailBtn.addEventListener('click', () => {
-      const email = copyEmailBtn.getAttribute('data-email') || 'arwa@example.com';
+      const email = copyEmailBtn.getAttribute('data-email') || 'arwa95025@gmail.com';
       const handleSuccess = () => {
         const originalText = copyEmailBtn.textContent;
         copyEmailBtn.textContent = 'Copied! ✓';
