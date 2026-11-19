@@ -18,10 +18,10 @@
       "shelf_number": 1,
       "color": "#c0843a",
       "hotspot": {
-        "top": 28.5,
-        "left": 44.8,
-        "width": 6.0,
-        "height": 8.5
+        "top": 32.3,
+        "left": 44.1,
+        "width": 8.0,
+        "height": 10.8
       },
       "skills": [
         {
@@ -57,10 +57,10 @@
       "shelf_number": 2,
       "color": "#7b5ea7",
       "hotspot": {
-        "top": 41.5,
-        "left": 50.8,
-        "width": 5.8,
-        "height": 9.2
+        "top": 45.1,
+        "left": 50.5,
+        "width": 7.2,
+        "height": 11.2
       },
       "skills": [
         {
@@ -96,10 +96,10 @@
       "shelf_number": 3,
       "color": "#3a8c6e",
       "hotspot": {
-        "top": 41.2,
-        "left": 75.2,
-        "width": 8.2,
-        "height": 13.5
+        "top": 43.7,
+        "left": 74.8,
+        "width": 12.0,
+        "height": 13.8
       },
       "skills": [
         {
@@ -135,10 +135,10 @@
       "shelf_number": 4,
       "color": "#b04a4a",
       "hotspot": {
-        "top": 20.2,
-        "left": 9.2,
-        "width": 6.5,
-        "height": 15.5
+        "top": 25.8,
+        "left": 8.6,
+        "width": 9.6,
+        "height": 15.4
       },
       "skills": [
         {
