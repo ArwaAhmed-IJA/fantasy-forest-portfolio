@@ -1702,7 +1702,7 @@ html, body {
 
 .contact-channels {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.85rem;
 }
 
@@ -1715,6 +1715,10 @@ html, body {
   border-radius: 8px;
   padding: 0.75rem 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.channel-item.channel-item-main {
+  grid-column: 1 / -1;
 }
 
 .channel-icon {
