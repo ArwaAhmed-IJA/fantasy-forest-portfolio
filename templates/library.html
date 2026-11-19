@@ -73,14 +73,6 @@
           <polyline points="22,6 12,13 2,6"/>
         </svg>
       </button>
-
-      <button
-        class="hire-me-btn"
-        data-target="contact"
-        aria-label="Open Hire Me inquiry form"
-      >
-        Hire Me
-      </button>
     </div>
   </header>
 
@@ -330,9 +322,9 @@
   </aside>
   {% endfor %}
 
-  <!-- About Me Panel -->
+  <!-- About Me Panel (Magical Open Book Spread) -->
   <aside
-    class="panel about-panel"
+    class="panel about-panel open-book-panel"
     id="panel-about"
     role="dialog"
     aria-modal="true"
@@ -340,34 +332,119 @@
     aria-hidden="true"
     tabindex="-1"
   >
-    <div class="panel-inner">
-      <button class="panel-close" aria-label="Close About panel">&times;</button>
-      <div class="panel-scroll-top" aria-hidden="true"></div>
+    <div class="open-book-wrap">
+      <button class="panel-close book-close-btn" aria-label="Close About book">&times;</button>
 
-      <div class="panel-header">
-        <span class="panel-eyebrow">The Engineer’s Chronicle</span>
-        <h2 class="panel-title" data-title-color="#d4a853">About {{ owner.name }}</h2>
-        <p class="panel-subtitle">{{ owner.title }} — {{ owner.city }}, {{ owner.country }}</p>
-      </div>
+      <!-- Center spine bookmark ribbon -->
+      <div class="book-spine-ribbon" aria-hidden="true"></div>
 
-      {% for para in about.paragraphs %}
-      <p class="panel-desc">{{ para }}</p>
-      {% endfor %}
+      <!-- Open Book Two-Page Spread -->
+      <div class="open-book-spread">
 
-      <div class="panel-links">
-        <a href="mailto:{{ owner.email }}" class="panel-link">Email Me</a>
-        {% if owner.resume_url and owner.resume_url != '#' %}
-        <a href="{{ owner.resume_url }}" class="panel-link panel-link-demo" target="_blank" rel="noopener noreferrer">
-          Résumé ↗
-        </a>
-        {% endif %}
-        <a href="https://github.com/{{ owner.github }}" class="panel-link" target="_blank" rel="noopener noreferrer">
-          GitHub ↗
-        </a>
-      </div>
+        <!-- ── LEFT PAGE: Identity & Professional Overview ── -->
+        <article class="open-book-page open-book-left" aria-label="Personal Overview">
+          <div class="page-corner-ornament top-left" aria-hidden="true"></div>
 
-      <div class="panel-scroll-bot" aria-hidden="true"></div>
-    </div>
+          <!-- Status badge matching user attachment -->
+          <div class="book-status-pill">
+            <span class="status-pulse-dot" aria-hidden="true"></span>
+            <span>AVAILABLE FOR WORK</span>
+          </div>
+
+          <!-- Code intro -->
+          <div class="book-code-intro" aria-hidden="true">// Hi, I'm</div>
+
+          <!-- Name with cyan highlight -->
+          <h2 class="book-hero-name">
+            Arwa <span class="hero-name-accent">Ahmed</span>
+          </h2>
+
+          <!-- Terminal Role Prompt with Blinking Cursor -->
+          <div class="book-terminal-role" aria-label="Role: Software Engineer">
+            <span class="role-chevron" aria-hidden="true">&gt;</span>
+            <span class="role-title">Software Engineer</span><span class="role-cursor" aria-hidden="true">|</span>
+          </div>
+
+          <!-- Professional Bio Summary -->
+          <p class="book-bio-lead">
+            Software Engineer based in <strong>{{ owner.city }}, {{ owner.country }}</strong>. Passionate about building elegant solutions, clean backend architectures, and intuitive web applications. CS50P graduate with proven competency in full-stack Python development, robust automated testing, and modular software design.
+          </p>
+
+          <!-- Primary Actions (Matching user screenshot) -->
+          <div class="book-action-buttons">
+            <button class="book-cta-btn primary" data-switch-to="cs50p" aria-label="View Projects">
+              <span>View Projects</span>
+              <span class="cta-arrow">&#8594;</span>
+            </button>
+            <button class="book-cta-btn secondary" data-switch-to="contact" aria-label="Contact Me">
+              <span>Contact Me ✉</span>
+            </button>
+          </div>
+
+          <div class="page-footer-num" aria-hidden="true">Folio 01</div>
+        </article>
+
+        <!-- Spine Crease Shadow Divider -->
+        <div class="book-spine-crease" aria-hidden="true"></div>
+
+        <!-- ── RIGHT PAGE: Metrics, Competencies & Verified Credentials ── -->
+        <article class="open-book-page open-book-right" aria-label="Credentials and Key Stats">
+          <div class="page-corner-ornament top-right" aria-hidden="true"></div>
+
+          <div class="folio-heading">
+            <span class="folio-chapter">// Proven Impact</span>
+            <h3 class="folio-title">Credentials & Highlights</h3>
+          </div>
+
+          <!-- Quick Stats Counter Row (Matching 11+ Projects / Live Demos / Tech Stacks) -->
+          <div class="book-stats-grid">
+            <div class="book-stat-card">
+              <span class="stat-number">CS50P</span>
+              <span class="stat-caption">HARVARD VERIFIED</span>
+            </div>
+            <div class="book-stat-card">
+              <span class="stat-number">100%</span>
+              <span class="stat-caption">TEST COVERAGE</span>
+            </div>
+            <div class="book-stat-card">
+              <span class="stat-number">Python 3</span>
+              <span class="stat-caption">CORE BACKEND</span>
+            </div>
+            <div class="book-stat-card">
+              <span class="stat-number">Islamabad</span>
+              <span class="stat-caption">PAKISTAN</span>
+            </div>
+          </div>
+
+          <!-- Competency Highlights List -->
+          <div class="book-competencies-card">
+            <h4 class="competencies-title">Key Engineering Strengths</h4>
+            <ul class="competencies-list">
+              <li><span class="comp-bullet">✦</span> <strong>Backend Architecture:</strong> Modular Python development, APIs, and CLI tools</li>
+              <li><span class="comp-bullet">✦</span> <strong>Test-Driven Design:</strong> Rigorous <code>pytest</code> suites and CI/CD pipelines</li>
+              <li><span class="comp-bullet">✦</span> <strong>Interactive Web:</strong> Responsive UIs with Jinja2, clean JavaScript &amp; CSS3</li>
+              <li><span class="comp-bullet">✦</span> <strong>Reliable Systems:</strong> Input validation, regular expressions, and error trapping</li>
+            </ul>
+          </div>
+
+          <!-- Quick Social Links Footer -->
+          <div class="book-links-row">
+            <a href="https://github.com/{{ owner.github }}" target="_blank" rel="noopener noreferrer" class="book-social-chip">
+              <span>GitHub</span> <span class="chip-arrow">↗</span>
+            </a>
+            <a href="{{ owner.linkedin }}" target="_blank" rel="noopener noreferrer" class="book-social-chip">
+              <span>LinkedIn</span> <span class="chip-arrow">↗</span>
+            </a>
+            <a href="mailto:{{ owner.email }}" class="book-social-chip">
+              <span>{{ owner.email }}</span>
+            </a>
+          </div>
+
+          <div class="page-footer-num" aria-hidden="true">Folio 02</div>
+        </article>
+
+      </div><!-- /.open-book-spread -->
+    </div><!-- /.open-book-wrap -->
   </aside>
 
   <!-- Unified Skills Overview Panel -->
@@ -554,8 +631,8 @@
       <div class="panel-scroll-top" aria-hidden="true"></div>
 
       <div class="panel-header">
-        <span class="panel-eyebrow">Send a Raven</span>
-        <h2 class="panel-title" data-title-color="#d4a853">Get in Touch</h2>
+        <span class="panel-eyebrow">Get in Touch</span>
+        <h2 class="panel-title" data-title-color="#d4a853">Contact &amp; Inquiries</h2>
         <p class="panel-subtitle">Available for software engineering roles, collaboration, and inquiries</p>
       </div>
 

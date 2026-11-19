@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.style.opacity = '0.6';
       }
       if (formStatus) {
-        formStatus.textContent = 'Raven dispatched! Arwa will reply soon. ✨';
+        formStatus.textContent = 'Message sent! Arwa will reply soon. ✨';
         formStatus.className = 'form-status';
       }
 
@@ -282,8 +282,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Project Tabs Switcher (Inside Project Modal) ──
-  projectTabButtons.forEach(btn => {
+  // ── Tab & Modal Switchers (Works on all elements with data-switch-to) ──
+  document.querySelectorAll('[data-switch-to]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const target = btn.getAttribute('data-switch-to');
