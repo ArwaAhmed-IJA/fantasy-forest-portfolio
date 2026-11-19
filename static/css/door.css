@@ -163,102 +163,52 @@ html, body {
 
 .swan-anchor {
   position: absolute;
-  left: 74.00%;
-  top: 52.33%;
-  width: 26.00%;
-  height: 31.25%;
+  left: 87.49%;
+  top: 66.86%;
+  width: 12.26%;
+  height: 16.72%;
   pointer-events: none;
 }
 
-/* Concentric expanding ripples beneath the swimming swan */
-.swan-ripple {
-  position: absolute;
-  left: 50%;
-  top: 76%;
-  width: 95%;
-  height: 38%;
-  border-radius: 50%;
-  border: 1.5px solid rgba(225, 245, 255, 0.55);
-  box-shadow: 0 0 12px rgba(185, 235, 255, 0.4), inset 0 0 8px rgba(220, 245, 255, 0.25);
-  transform: translate(-50%, -50%) scale(0.45);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.swan-ripple.r1 {
-  animation: swanRippleSpread 6s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
-}
-
-.swan-ripple.r2 {
-  animation: swanRippleSpread 6s cubic-bezier(0.22, 0.61, 0.36, 1) 2s infinite;
-}
-
-.swan-ripple.r3 {
-  animation: swanRippleSpread 6s cubic-bezier(0.22, 0.61, 0.36, 1) 4s infinite;
-}
-
-@keyframes swanRippleSpread {
-  0% {
-    transform: translate(-50%, -50%) scale(0.45);
-    opacity: 0.75;
-  }
-  50% {
-    opacity: 0.45;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.9);
-    opacity: 0;
-  }
-}
-
-/* Gentle water gliding drift & pitch */
+/* Natural waterfowl floating motion: calm lake drift & gentle buoyancy bob */
 .swan-drifter {
   position: absolute;
   inset: 0;
-  animation: swanGlidingDrift 11s ease-in-out infinite alternate;
-  transform-origin: 50% 80%;
+  animation: swanNaturalDrift 11s ease-in-out infinite alternate;
 }
 
-@keyframes swanGlidingDrift {
+@keyframes swanNaturalDrift {
   0% {
-    transform: translate(0px, 0px) rotate(0deg);
-  }
-  25% {
-    transform: translate(4px, -3px) rotate(0.8deg);
+    transform: translate(0px, 0px);
   }
   50% {
-    transform: translate(7px, 2px) rotate(-0.5deg);
-  }
-  75% {
-    transform: translate(2px, 4px) rotate(-1.1deg);
+    transform: translate(-3.5px, 0.8px);
   }
   100% {
-    transform: translate(-3px, -1px) rotate(0.4deg);
+    transform: translate(2px, -0.6px);
   }
 }
 
-/* Lifelike breathing & water buoyancy bob */
+/* Realistic water buoyancy (no tilt, no size stretch, smooth vertical float) */
 .swan-sprite {
   width: 100%;
   height: 100%;
   background-image: url('../images/swan_animated.png');
   background-size: contain;
-  background-position: center bottom;
+  background-position: center center;
   background-repeat: no-repeat;
-  filter: drop-shadow(0 4px 12px rgba(0, 18, 12, 0.45));
-  animation: swanBreathingBob 4.8s ease-in-out infinite alternate;
-  transform-origin: 50% 85%;
+  animation: swanNaturalBuoyancy 4.6s ease-in-out infinite alternate;
 }
 
-@keyframes swanBreathingBob {
+@keyframes swanNaturalBuoyancy {
   0% {
-    transform: translateY(0px) scale(1, 1);
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-4px) scale(1.008, 0.992);
+    transform: translateY(-2px);
   }
   100% {
-    transform: translateY(3px) scale(0.994, 1.006);
+    transform: translateY(1.2px);
   }
 }
 
