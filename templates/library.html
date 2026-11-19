@@ -19,25 +19,69 @@
   <header class="lib-header" aria-label="Library Navigation">
     <div class="lib-header-left">
       <a href="index.html" class="nav-btn back-btn" aria-label="Return to entrance door">
-        <span class="back-arrow">&#8592;</span> Forest Entrance
+        <span class="back-arrow">&#8592;</span> Entrance
       </a>
-      <span class="lib-owner-title">{{ owner.name }}’s Library</span>
+      <span class="lib-owner-title">{{ owner.name }}</span>
     </div>
 
-    <!-- Quick Access Menu for instant 1-click access -->
-    <nav class="quick-nav" aria-label="Category shortcuts">
-      {% for shelf in shelves %}
-      <button class="quick-btn" data-target="{{ shelf.id }}" data-accent="{{ shelf.color }}">
-        {{ shelf.label }}
-      </button>
-      {% endfor %}
-      <button class="quick-btn" data-target="cs50p" data-accent="#c0843a">
-        Projects
-      </button>
-      <button class="quick-btn" data-target="about" data-accent="#d4a853">
-        About
-      </button>
+    <!-- Center Navigation Menu (Matching requested portfolio sections) -->
+    <nav class="quick-nav" aria-label="Primary sections">
+      <button class="quick-btn" data-target="about">About</button>
+      <button class="quick-btn" data-target="skills">Skills</button>
+      <button class="quick-btn" data-target="certs">Certs</button>
+      <button class="quick-btn" data-target="cs50p">Projects</button>
+      <button class="quick-btn" data-target="experience">Experience</button>
+      <button class="quick-btn" data-target="contact">Contact</button>
     </nav>
+
+    <!-- Right: Social Icons & Hire Me CTA -->
+    <div class="lib-header-right">
+      <a
+        href="https://github.com/{{ owner.github }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-icon-btn"
+        aria-label="GitHub Profile"
+        title="GitHub Profile ({{ owner.github }})"
+      >
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
+
+      <a
+        href="{{ owner.linkedin }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-icon-btn"
+        aria-label="LinkedIn Profile"
+        title="LinkedIn Profile"
+      >
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+        </svg>
+      </a>
+
+      <button
+        class="social-icon-btn"
+        data-target="contact"
+        aria-label="Send an Email"
+        title="Send an Email"
+      >
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </button>
+
+      <button
+        class="hire-me-btn"
+        data-target="contact"
+        aria-label="Open Hire Me inquiry form"
+      >
+        Hire Me
+      </button>
+    </div>
   </header>
 
   <!-- Main Scene Wrapper (100vw x 100vh) -->
@@ -299,6 +343,261 @@
         <a href="https://github.com/{{ owner.github }}" class="panel-link" target="_blank" rel="noopener noreferrer">
           GitHub ↗
         </a>
+      </div>
+
+      <div class="panel-scroll-bot" aria-hidden="true"></div>
+    </div>
+  </aside>
+
+  <!-- Unified Skills Overview Panel -->
+  <aside
+    class="panel skills-overview-panel"
+    id="panel-skills"
+    role="dialog"
+    aria-modal="true"
+    aria-label="All Skills and Proficiencies"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="panel-inner">
+      <button class="panel-close" aria-label="Close Skills panel">&times;</button>
+      <div class="panel-scroll-top" aria-hidden="true"></div>
+
+      <div class="panel-header">
+        <span class="panel-eyebrow">The Grand Archives</span>
+        <h2 class="panel-title" data-title-color="#f0cb75">Technical Compendium</h2>
+        <p class="panel-subtitle">Skills, frameworks, pipelines, and developer tooling</p>
+      </div>
+
+      <div class="skills-categories-grid">
+        {% for shelf in shelves %}
+        <div class="skill-category-card">
+          <div class="category-header">
+            <span class="category-indicator" style="background: {{ shelf.color }};"></span>
+            <h3 class="category-title" style="color: {{ shelf.color }};">{{ shelf.label }}</h3>
+          </div>
+          <ul class="skill-list" aria-label="{{ shelf.label }} skills">
+            {% for skill in shelf.skills %}
+            <li class="skill-item">
+              <span class="skill-icon" aria-hidden="true">{{ skill.icon }}</span>
+              <span class="skill-name">{{ skill.name }}</span>
+              <div class="skill-bar-wrap" role="progressbar" aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-bar" data-bar-w="{{ skill.level }}" data-bar-color="{{ shelf.color }}"></div>
+              </div>
+              <span class="skill-pct">{{ skill.level }}%</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="panel-scroll-bot" aria-hidden="true"></div>
+    </div>
+  </aside>
+
+  <!-- Certificates (Certs) Panel -->
+  <aside
+    class="panel certs-panel"
+    id="panel-certs"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Certificates and Credentials"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="panel-inner">
+      <button class="panel-close" aria-label="Close Certificates panel">&times;</button>
+      <div class="panel-scroll-top" aria-hidden="true"></div>
+
+      <div class="panel-header">
+        <span class="panel-eyebrow">Accreditation & Badges</span>
+        <h2 class="panel-title" data-title-color="#d4a853">Verified Certifications</h2>
+        <p class="panel-subtitle">Rigorous academic completions & verified technical competencies</p>
+      </div>
+
+      <div class="cert-cards-container">
+        {% for cert in certificates %}
+        <div class="cert-card">
+          <div class="cert-seal" aria-hidden="true">
+            <span class="seal-icon">🏛️</span>
+          </div>
+          <div class="cert-body">
+            <span class="cert-issuer">{{ cert.issuer }} • {{ cert.year }}</span>
+            <h3 class="cert-title">{{ cert.title }}</h3>
+            <p class="cert-desc">{{ cert.description }}</p>
+
+            <div class="tech-tags cert-skills">
+              {% for s in cert.skills %}
+              <span class="tech-tag">{{ s }}</span>
+              {% endfor %}
+            </div>
+
+            <div class="cert-footer">
+              <span class="cert-id-badge">ID: {{ cert.credential_id }}</span>
+              {% if cert.url and cert.url != '#' %}
+              <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer" class="panel-link panel-link-demo">
+                Verify Credential ↗
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <div class="cert-card">
+          <div class="cert-seal" aria-hidden="true">
+            <span class="seal-icon">🎓</span>
+          </div>
+          <div class="cert-body">
+            <span class="cert-issuer">Harvard University / CS50 • 2026</span>
+            <h3 class="cert-title">CS50's Introduction to Programming with Python</h3>
+            <p class="cert-desc">10-week rigorous software development course covering data structures, algorithms, object-oriented design, regex, and pytest automated testing.</p>
+            <div class="tech-tags cert-skills">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">pytest</span>
+              <span class="tech-tag">OOP</span>
+              <span class="tech-tag">RegEx</span>
+              <span class="tech-tag">APIs</span>
+            </div>
+            <div class="cert-footer">
+              <span class="cert-id-badge">CS50P-VERIFIED</span>
+              <a href="https://cs50.harvard.edu/certificates/" target="_blank" rel="noopener noreferrer" class="panel-link panel-link-demo">
+                Verify Credential ↗
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="panel-scroll-bot" aria-hidden="true"></div>
+    </div>
+  </aside>
+
+  <!-- Experience Panel -->
+  <aside
+    class="panel experience-panel"
+    id="panel-experience"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Engineering Experience and Journey"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="panel-inner">
+      <button class="panel-close" aria-label="Close Experience panel">&times;</button>
+      <div class="panel-scroll-top" aria-hidden="true"></div>
+
+      <div class="panel-header">
+        <span class="panel-eyebrow">The Journey</span>
+        <h2 class="panel-title" data-title-color="#e07a3b">Engineering Chronicles</h2>
+        <p class="panel-subtitle">Milestones, project leadership, and continuous learning</p>
+      </div>
+
+      <div class="timeline-container">
+        {% for exp in experience %}
+        <div class="timeline-item">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3 class="timeline-role">{{ exp.role }}</h3>
+              <span class="timeline-period">{{ exp.period }}</span>
+            </div>
+            <div class="timeline-org">{{ exp.organization }} • {{ exp.location }}</div>
+            <ul class="timeline-highlights">
+              {% for h in exp.highlights %}
+              <li>{{ h }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="panel-scroll-bot" aria-hidden="true"></div>
+    </div>
+  </aside>
+
+  <!-- Contact Panel -->
+  <aside
+    class="panel contact-panel"
+    id="panel-contact"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Contact and Inquiries"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="panel-inner">
+      <button class="panel-close" aria-label="Close Contact panel">&times;</button>
+      <div class="panel-scroll-top" aria-hidden="true"></div>
+
+      <div class="panel-header">
+        <span class="panel-eyebrow">Send a Raven</span>
+        <h2 class="panel-title" data-title-color="#d4a853">Get in Touch</h2>
+        <p class="panel-subtitle">Available for software engineering roles, collaboration, and inquiries</p>
+      </div>
+
+      <div class="contact-card-grid">
+        <!-- Direct Quick Connect Channels -->
+        <div class="contact-channels">
+          <div class="channel-item">
+            <span class="channel-icon">📧</span>
+            <div class="channel-info">
+              <span class="channel-label">Direct Email</span>
+              <a href="mailto:{{ owner.email }}" class="channel-link">{{ owner.email }}</a>
+            </div>
+            <button class="copy-email-btn" id="copyEmailBtn" data-email="{{ owner.email }}" aria-label="Copy Email">
+              Copy
+            </button>
+          </div>
+
+          <div class="channel-item">
+            <span class="channel-icon">💼</span>
+            <div class="channel-info">
+              <span class="channel-label">LinkedIn</span>
+              <a href="{{ owner.linkedin }}" target="_blank" rel="noopener noreferrer" class="channel-link">
+                linkedin.com/in/arwa-ahmed ↗
+              </a>
+            </div>
+          </div>
+
+          <div class="channel-item">
+            <span class="channel-icon">🐙</span>
+            <div class="channel-info">
+              <span class="channel-label">GitHub</span>
+              <a href="https://github.com/{{ owner.github }}" target="_blank" rel="noopener noreferrer" class="channel-link">
+                github.com/{{ owner.github }} ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Working Contact Form -->
+        <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); submitContactForm();">
+          <div class="form-group">
+            <label for="contactName" class="form-label">Your Name</label>
+            <input type="text" id="contactName" name="name" class="form-input" placeholder="e.g. Eleanor Vance" required minlength="2" />
+          </div>
+
+          <div class="form-group">
+            <label for="contactEmail" class="form-label">Your Email</label>
+            <input type="email" id="contactEmail" name="email" class="form-input" placeholder="e.g. eleanor@example.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="contactMsg" class="form-label">Your Message</label>
+            <textarea id="contactMsg" name="message" class="form-textarea" rows="4" placeholder="Tell me about your project, role, or say hello..." required minlength="10"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="contact-submit-btn" id="contactSubmitBtn">
+              <span>Send Message</span>
+              <span class="submit-arrow">&#10148;</span>
+            </button>
+            <span class="form-status" id="formStatus" aria-live="polite"></span>
+          </div>
+        </form>
       </div>
 
       <div class="panel-scroll-bot" aria-hidden="true"></div>

@@ -169,14 +169,118 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Quick Access Toolbar Clicks ──
-  quickButtons.forEach(btn => {
+  // ── Target Navigation Clicks (Quick Nav, Hire Me, Email Icon) ──
+  const targetTriggers = document.querySelectorAll('[data-target]:not(.hotspot-btn)');
+  targetTriggers.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const target = btn.getAttribute('data-target');
       openPanel(target);
     });
   });
+
+  // ── Copy Email to Clipboard ──
+  const copyEmailBtn = document.getElementById('copyEmailBtn');
+  if (copyEmailBtn) {
+    copyEmailBtn.addEventListener('click', () => {
+      const email = copyEmailBtn.getAttribute('data-email') || 'arwa@example.com';
+      const handleSuccess = () => {
+        const originalText = copyEmailBtn.textContent;
+        copyEmailBtn.textContent = 'Copied! ✓';
+        copyEmailBtn.style.background = '#d4a853';
+        copyEmailBtn.style.color = '#121e14';
+        setTimeout(() => {
+          copyEmailBtn.textContent = originalText;
+          copyEmailBtn.style.background = '';
+          copyEmailBtn.style.color = '';
+        }, 2000);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(handleSuccess).catch(() => fallbackCopy(email, handleSuccess));
+      } else {
+        fallbackCopy(email, handleSuccess);
+      }
+    });
+  }
+
+  function fallbackCopy(text, onSuccess) {
+    const tempInput = document.createElement('input');
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    try {
+      document.execCommand('copy');
+      if (onSuccess) onSuccess();
+    } catch (e) {}
+    document.body.removeChild(tempInput);
+  }
+
+  // ── Contact Form Handling ──
+  const contactForm = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+  const submitBtn = document.getElementById('contactSubmitBtn');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nameInput = document.getElementById('contactName');
+      const emailInput = document.getElementById('contactEmail');
+      const msgInput = document.getElementById('contactMsg');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      const message = msgInput ? msgInput.value.trim() : '';
+
+      // Client validation matching CS50P rules
+      if (name.length < 2) {
+        if (formStatus) {
+          formStatus.textContent = 'Please enter your name (min 2 characters).';
+          formStatus.className = 'form-status error';
+        }
+        if (nameInput) nameInput.focus();
+        return;
+      }
+
+      const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+      if (!emailRegex.test(email)) {
+        if (formStatus) {
+          formStatus.textContent = 'Please enter a valid email address.';
+          formStatus.className = 'form-status error';
+        }
+        if (emailInput) emailInput.focus();
+        return;
+      }
+
+      if (message.length < 10) {
+        if (formStatus) {
+          formStatus.textContent = 'Message must be at least 10 characters.';
+          formStatus.className = 'form-status error';
+        }
+        if (msgInput) msgInput.focus();
+        return;
+      }
+
+      // Success feedback
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.6';
+      }
+      if (formStatus) {
+        formStatus.textContent = 'Raven dispatched! Arwa will reply soon. ✨';
+        formStatus.className = 'form-status';
+      }
+
+      contactForm.reset();
+
+      setTimeout(() => {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
+        }
+      }, 3500);
+    });
+  }
 
   // ── Project Tabs Switcher (Inside Project Modal) ──
   projectTabButtons.forEach(btn => {

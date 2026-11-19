@@ -74,6 +74,63 @@ html, body {
   gap: 1.2rem;
 }
 
+.lib-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.social-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(18, 30, 22, 0.85);
+  border: 1px solid rgba(212, 168, 83, 0.45);
+  color: #e5ede7;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.social-icon-btn svg {
+  display: block;
+}
+
+.social-icon-btn:hover, .social-icon-btn:focus-visible {
+  background: rgba(45, 75, 55, 0.95);
+  color: var(--gold-warm);
+  border-color: var(--gold);
+  box-shadow: 0 0 14px rgba(212, 168, 83, 0.6);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.hire-me-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #121e14;
+  background: linear-gradient(135deg, #f7d583 0%, #d4a853 50%, #b88628 100%);
+  border: 1px solid #ffd984;
+  border-radius: 20px;
+  padding: 0.45rem 1.15rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 12px rgba(212, 168, 83, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  margin-left: 0.35rem;
+}
+
+.hire-me-btn:hover, .hire-me-btn:focus-visible {
+  background: linear-gradient(135deg, #ffe099 0%, #e8b347 50%, #c49233 100%);
+  box-shadow: 0 0 20px rgba(255, 215, 100, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.7);
+  transform: translateY(-2px) scale(1.02);
+  outline: none;
+}
+
 .nav-btn {
   font-family: 'Cinzel', serif;
   font-size: 0.8rem;
@@ -638,10 +695,455 @@ html, body {
   color: #fff;
 }
 
+/* ══════════════════════════════════════════════
+   NEW SECTIONS: SKILLS COMPENDIUM, CERTS, EXPERIENCE, CONTACT
+   ══════════════════════════════════════════════ */
+
+/* Wide Panel Modifier */
+.skills-overview-panel,
+.certs-panel,
+.experience-panel,
+.contact-panel {
+  width: min(680px, 94vw);
+}
+
+/* ── Unified Skills Compendium ── */
+.skills-categories-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.skill-category-card {
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(140, 100, 45, 0.28);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(140, 100, 45, 0.2);
+  padding-bottom: 0.4rem;
+}
+
+.category-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.category-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+/* ── Certificates Panel ── */
+.cert-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.cert-card {
+  display: flex;
+  gap: 1.2rem;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1.5px solid rgba(190, 140, 60, 0.4);
+  border-radius: 10px;
+  padding: 1.3rem;
+  box-shadow: 0 4px 15px rgba(50, 30, 10, 0.08);
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(50, 30, 10, 0.12);
+  border-color: rgba(212, 168, 83, 0.7);
+}
+
+.cert-seal {
+  font-size: 2.2rem;
+  line-height: 1;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 0.2rem;
+}
+
+.cert-body {
+  flex: 1;
+}
+
+.cert-issuer {
+  font-family: 'Cinzel', serif;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  color: #7a5015;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.cert-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.12rem;
+  color: #2b1f11;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+  line-height: 1.3;
+}
+
+.cert-desc {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: #3b2c1c;
+  margin-bottom: 0.85rem;
+}
+
+.cert-skills {
+  margin-bottom: 0.85rem;
+}
+
+.cert-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed rgba(140, 100, 45, 0.3);
+}
+
+.cert-id-badge {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: rgba(140, 100, 45, 0.12);
+  color: #5c3a10;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  border: 1px solid rgba(140, 100, 45, 0.3);
+}
+
+/* ── Experience Timeline ── */
+.timeline-container {
+  position: relative;
+  padding-left: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  left: 7px;
+  width: 2px;
+  background: linear-gradient(180deg, #d4a853 0%, rgba(212, 168, 83, 0.3) 100%);
+}
+
+.timeline-item {
+  position: relative;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 0.35rem;
+  left: -1.8rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #f7ebd2;
+  border: 3px solid #d4a853;
+  box-shadow: 0 0 8px rgba(212, 168, 83, 0.7);
+  box-sizing: border-box;
+}
+
+.timeline-card {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(140, 100, 45, 0.3);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.timeline-role {
+  font-family: 'Cinzel', serif;
+  font-size: 1.02rem;
+  color: #2b1f11;
+  font-weight: 700;
+  margin: 0;
+}
+
+.timeline-period {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #8c5b1b;
+  background: rgba(140, 100, 45, 0.12);
+  padding: 0.2rem 0.55rem;
+  border-radius: 12px;
+}
+
+.timeline-org {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #614424;
+  margin-bottom: 0.65rem;
+}
+
+.timeline-highlights {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.timeline-highlights li {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 0.96rem;
+  line-height: 1.5;
+  color: #3b2c1c;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.timeline-highlights li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: #c0843a;
+  font-size: 0.8rem;
+  top: 0.1rem;
+}
+
+/* ── Contact Panel & Form ── */
+.contact-card-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-channels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.85rem;
+}
+
+.channel-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(140, 100, 45, 0.3);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.channel-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.channel-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.channel-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #8c5b1b;
+  display: block;
+  letter-spacing: 0.06em;
+}
+
+.channel-link {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1a2215;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.channel-link:hover {
+  color: #8c5b1b;
+  text-decoration: underline;
+}
+
+.copy-email-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #5c3a10;
+  background: rgba(140, 100, 45, 0.12);
+  border: 1px solid rgba(140, 100, 45, 0.35);
+  border-radius: 12px;
+  padding: 0.3rem 0.65rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-email-btn:hover {
+  background: #d4a853;
+  color: #121e14;
+  border-color: #b08530;
+}
+
+.contact-form {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1.5px solid rgba(140, 100, 45, 0.35);
+  border-radius: 10px;
+  padding: 1.3rem;
+  box-shadow: 0 4px 15px rgba(50, 30, 10, 0.06);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #4a341e;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.35rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.92rem;
+  color: #2b1f11;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(140, 100, 45, 0.35);
+  border-radius: 6px;
+  padding: 0.55rem 0.8rem;
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  background: #fff;
+  border-color: #d4a853;
+  outline: none;
+  box-shadow: 0 0 10px rgba(212, 168, 83, 0.45);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 85px;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.contact-submit-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #121e14;
+  background: linear-gradient(135deg, #f7d583 0%, #d4a853 50%, #b88628 100%);
+  border: 1px solid #ffd984;
+  border-radius: 20px;
+  padding: 0.55rem 1.4rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.contact-submit-btn:hover {
+  background: linear-gradient(135deg, #ffe099 0%, #e8b347 50%, #c49233 100%);
+  box-shadow: 0 0 14px rgba(212, 168, 83, 0.7);
+  transform: translateY(-2px);
+}
+
+.submit-arrow {
+  font-size: 0.95rem;
+  transition: transform 0.2s ease;
+}
+
+.contact-submit-btn:hover .submit-arrow {
+  transform: translateX(3px);
+}
+
+.form-status {
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #2e6930;
+}
+
+.form-status.error {
+  color: #9c2828;
+}
+
 /* Responsive Tweaks */
 @media (max-width: 768px) {
   .quick-nav {
     display: none;
+  }
+  .lib-header-right .hire-me-btn {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.74rem;
+  }
+  .skills-overview-panel,
+  .certs-panel,
+  .experience-panel,
+  .contact-panel {
+    width: 95vw;
+  }
+  .cert-card {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .contact-channels {
+    grid-template-columns: 1fr;
   }
   .skill-item {
     grid-template-columns: 24px 100px 1fr 38px;

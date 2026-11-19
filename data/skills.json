@@ -3,11 +3,12 @@
     "name": "Arwa Ahmed",
     "title": "Software Engineer",
     "github": "ArwaAhmed-IJA",
+    "linkedin": "https://www.linkedin.com/in/arwa-ahmed-854553349",
     "edx": "ArwaAhmed-IJA",
     "city": "Cairo",
     "country": "Egypt",
     "email": "arwa@example.com",
-    "bio": "I'm a passionate software engineer who loves building elegant solutions. CS50P taught me to think like a programmer \u2014 this fantasy forest portfolio is proof of that journey.",
+    "bio": "I'm a passionate software engineer who loves building elegant solutions. CS50P taught me to think like a programmer — this fantasy forest portfolio is proof of that journey.",
     "resume_url": "#"
   },
   "shelves": [
@@ -243,5 +244,46 @@
       "I specialize in Python, backend development, and crafting intuitive, visually captivating web applications.",
       "When I am not designing clean software architectures, I am exploring nature, reading classical literature, and brewing great coffee."
     ]
+  },
+  "certificates": [
+    {
+      "id": "cs50p-cert",
+      "title": "CS50's Introduction to Programming with Python",
+      "issuer": "Harvard University / CS50",
+      "year": "2026",
+      "credential_id": "CS50P-VERIFIED",
+      "url": "https://cs50.harvard.edu/certificates/",
+      "skills": ["Python", "Object-Oriented Programming", "Automated Testing (pytest)", "Regular Expressions", "File I/O", "APIs & Libraries"],
+      "description": "Comprehensive 10-week intensive course on software development principles, testing, and system design, culminating in an evaluated final project."
+    }
+  ],
+  "experience": [
+    {
+      "role": "Software Engineering Student & Builder",
+      "organization": "Harvard CS50P / Self-Directed Projects",
+      "period": "2026 — Present",
+      "location": "Remote",
+      "highlights": [
+        "Architected full-stack Python web applications, CLI tools, and static site generators.",
+        "Employed Test-Driven Development (TDD) with pytest achieving robust automated test coverage.",
+        "Created interactive web architectures with Jinja2, clean JavaScript, and modern CSS3."
+      ]
+    },
+    {
+      "role": "CS50P Final Project Lead",
+      "organization": "Fantasy Forest Portfolio",
+      "period": "2026",
+      "location": "Independent Project",
+      "highlights": [
+        "Designed and implemented a responsive static site generator complying with all CS50P requirements.",
+        "Packaged and deployed automated CI/CD continuous deployment to Render via GitHub."
+      ]
+    }
+  ],
+  "contact": {
+    "email": "arwa@example.com",
+    "linkedin": "https://www.linkedin.com/in/arwa-ahmed-854553349",
+    "github": "https://github.com/ArwaAhmed-IJA",
+    "status": "Available for Software Engineering Opportunities"
   }
 }
