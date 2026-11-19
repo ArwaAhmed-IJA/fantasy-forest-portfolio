@@ -272,57 +272,87 @@ html, body {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  border: 1.5px solid transparent;
+  border: none !important;
+  outline: none !important;
   transition: all 0.35s ease;
   pointer-events: none;
 }
 
 .hotspot-btn:hover .hotspot-shimmer,
 .hotspot-btn:focus-visible .hotspot-shimmer {
-  border-color: var(--hs-color, var(--gold));
-  background: radial-gradient(ellipse at center, rgba(255, 230, 140, 0.18) 0%, transparent 75%);
-  box-shadow: 0 0 25px var(--hs-color, var(--gold)), inset 0 0 15px rgba(255, 230, 140, 0.15);
+  border: none !important;
+  background: radial-gradient(ellipse at center, rgba(255, 235, 150, 0.25) 0%, transparent 75%);
+  box-shadow: 0 0 25px var(--hs-color, var(--gold));
 }
 
-/* ── Interactive Books & Artifacts (Glowing like the entrance door) ── */
+/* ── Interactive Books & Artifacts (Glittering Magic Volumes) ── */
 .project-hotspot,
 .shelf-hotspot,
 .about-hotspot {
   z-index: 28;
-  border-radius: 3px;
+  border-radius: 6px;
+  border: none !important;
+  outline: none !important;
 }
 
-/* Golden Breathing Glow Outline (exact door-style aura) */
+/* ── Magical Book Stardust & Glitter Aura (Whole book glitters, NO square outline) ── */
 .book-rune-pulse {
   position: absolute;
-  inset: 0;
-  border-radius: 3px;
-  border: 2px solid rgba(240, 203, 117, 0.65);
-  box-shadow: 0 0 18px rgba(240, 203, 117, 0.5), inset 0 0 12px rgba(240, 203, 117, 0.35);
+  inset: -3px;
+  border-radius: 8px;
+  border: none !important;
+  outline: none !important;
+  pointer-events: none;
+  /* Multi-layered sparkling stardust glitter across the entire volume of the book */
+  background:
+    radial-gradient(ellipse 95% 90% at 50% 50%, rgba(255, 235, 160, 0.38) 0%, rgba(240, 195, 80, 0.22) 50%, transparent 85%),
+    radial-gradient(2px 2px at 18% 22%, #ffffff 100%, transparent),
+    radial-gradient(2.5px 2.5px at 42% 38%, #fffde0 100%, transparent),
+    radial-gradient(1.8px 1.8px at 68% 26%, #ffffff 100%, transparent),
+    radial-gradient(2.2px 2.2px at 58% 68%, #ffea88 100%, transparent),
+    radial-gradient(1.6px 1.6px at 28% 76%, #ffffff 100%, transparent),
+    radial-gradient(2.4px 2.4px at 82% 78%, #fff4be 100%, transparent),
+    radial-gradient(1.8px 1.8px at 85% 32%, #ffffff 100%, transparent);
+  background-size: 100% 100%;
+  /* Soft organic starlight halo that wraps the book naturally without sharp bounding edges */
+  box-shadow:
+    0 0 18px 5px rgba(245, 205, 95, 0.5),
+    inset 0 0 16px 3px rgba(255, 230, 130, 0.4);
+  filter: drop-shadow(0 0 10px rgba(255, 215, 100, 0.85));
   opacity: 0.85;
   transition: all 0.35s ease;
-  animation: bookRuneBreathing 2.6s ease-in-out infinite alternate;
-  pointer-events: none;
+  animation: bookGlitterSparkle 2.4s ease-in-out infinite alternate;
 }
 
-@keyframes bookRuneBreathing {
+@keyframes bookGlitterSparkle {
   0% {
-    opacity: 0.55;
-    box-shadow: 0 0 10px rgba(240, 203, 117, 0.35), inset 0 0 6px rgba(240, 203, 117, 0.2);
-    border-color: rgba(240, 203, 117, 0.6);
+    opacity: 0.65;
+    filter: drop-shadow(0 0 6px rgba(255, 215, 100, 0.65));
+    box-shadow: 0 0 14px 3px rgba(245, 205, 95, 0.35), inset 0 0 12px 2px rgba(255, 225, 120, 0.25);
+    transform: scale(0.99);
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 16px rgba(255, 235, 150, 0.95)) drop-shadow(0 0 26px rgba(240, 190, 70, 0.6));
+    box-shadow: 0 0 25px 8px rgba(255, 215, 100, 0.65), inset 0 0 20px 5px rgba(255, 235, 150, 0.5);
+    transform: scale(1.015);
   }
   100% {
-    opacity: 1;
-    box-shadow: 0 0 26px rgba(240, 203, 117, 0.8), inset 0 0 16px rgba(240, 203, 117, 0.5);
-    border-color: #fff9ea;
+    opacity: 0.78;
+    filter: drop-shadow(0 0 9px rgba(255, 215, 100, 0.75));
+    box-shadow: 0 0 16px 4px rgba(245, 205, 95, 0.42), inset 0 0 14px 3px rgba(255, 225, 120, 0.3);
+    transform: scale(1.0);
   }
 }
 
 .hotspot-btn:hover .book-rune-pulse,
 .hotspot-btn:focus-visible .book-rune-pulse {
   opacity: 1;
-  border-color: #ffffff;
-  box-shadow: 0 0 35px var(--gold-glow), inset 0 0 22px var(--gold-glow);
+  border: none !important;
+  outline: none !important;
+  transform: scale(1.03);
+  filter: drop-shadow(0 0 20px rgba(255, 240, 160, 1)) drop-shadow(0 0 32px rgba(255, 205, 90, 0.8));
+  box-shadow: 0 0 34px 10px rgba(255, 225, 115, 0.8), inset 0 0 24px 6px rgba(255, 245, 180, 0.65);
 }
 
 /* Floating Golden Guide Arrow pointing down at the book */
