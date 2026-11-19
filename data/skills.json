@@ -10,7 +10,8 @@
     "email": "arwa95025@gmail.com",
     "phone": "+92 310 2105238",
     "education": "Software Engineering, FAST-NUCES, Islamabad (FAST)",
-    "bio": "Software Engineering undergraduate at FAST-NUCES with extensive hands-on experience building scalable web applications, mobile solutions, and database-driven systems. Adept at agile environments and delivering client-facing software.",
+    "headline": "Full-Stack & Mobile Developer | Applied AI Engineer | Cloud-Certified (AWS & Azure AI)",
+    "bio": "I’m a Software Engineer passionate about building reliable, user-centered products from initial architecture to live production. Over the past year, I’ve delivered commercial web platforms and App Store mobile applications—including Observant Security and Tripod Hub—for UK clients, alongside building intelligent AI systems and cloud-backed architectures. Whether I’m shipping cross-platform apps, designing scalable APIs, or integrating LLMs, I focus on clean code, thoughtful design, and measurable real-world impact.",
     "resume_url": "static/docs/Arwa_Ahmed_Resume.pdf"
   },
   "shelves": [
@@ -241,10 +242,10 @@
       "width": 9.6,
       "height": 15.4
     },
+    "headline": "Full-Stack & Mobile Developer  |  Applied AI Engineer  |  Cloud-Certified (AWS & Azure AI)",
     "paragraphs": [
-      "I am Arwa Ahmed, a passionate software engineer based in Islamabad, Pakistan, who discovered programming through curious exploration and refined it through CS50.",
-      "I specialize in Python, backend architecture, automated testing, and crafting intuitive, visually captivating web applications.",
-      "When I am not designing clean software systems, I am exploring nature, reading classical literature, and brewing great coffee."
+      "I’m a Software Engineer passionate about building reliable, user-centered products from initial architecture to live production. Over the past year, I’ve delivered commercial web platforms and App Store mobile applications—including Observant Security and Tripod Hub—for UK clients, alongside building intelligent AI systems and cloud-backed architectures.",
+      "Whether I’m shipping cross-platform apps, designing scalable APIs, or integrating LLMs, I focus on clean code, thoughtful design, and measurable real-world impact."
     ]
   },
   "certificates": [

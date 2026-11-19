@@ -802,17 +802,33 @@ html, body {
    ══════════════════════════════════════════════ */
 
 .open-book-panel {
-  width: min(920px, 95vw);
+  width: min(940px, 94vw);
   max-height: min(650px, 92vh);
-  background: #231407; /* Dark leather book binding */
-  border: 2px solid rgba(212, 168, 83, 0.6);
-  border-radius: 12px;
+  background: #1c0e04; /* Deep antique leather tome cover */
+  border: 3px solid #7d4d14;
+  border-radius: 14px 18px 18px 14px;
+  /* Multi-layered deckle page edges + ambient reading-table shadow */
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.85),
-    0 0 30px rgba(212, 168, 83, 0.25),
-    inset 0 0 15px rgba(0, 0, 0, 0.7);
+    -6px 6px 0px -2px #eadcc2,
+    -12px 12px 0px -4px #d8c49e,
+    -18px 18px 0px -6px #c4ad82,
+    6px 6px 0px -2px #eadcc2,
+    12px 12px 0px -4px #d8c49e,
+    18px 18px 0px -6px #c4ad82,
+    0 25px 65px rgba(0, 0, 0, 0.9),
+    0 0 40px rgba(212, 168, 83, 0.25),
+    inset 0 0 16px rgba(0, 0, 0, 0.75);
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
+  /* Authentic 3D Book Tilt (reading desk perspective) */
+  transform: translate(-50%, -50%) perspective(1800px) rotateX(4.8deg) rotateY(-1.4deg) rotateZ(-0.9deg) scale(0.94);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.18, 0.89, 0.32, 1.15);
+}
+
+.open-book-panel.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) perspective(1800px) rotateX(4.8deg) rotateY(-1.4deg) rotateZ(-0.9deg) scale(1);
 }
 
 .open-book-wrap {
@@ -874,20 +890,21 @@ html, body {
   border-bottom: 7px solid #231407;
 }
 
-/* Two-Page Open Spread */
+/* Two-Page Open Spread with 3D depth */
 .open-book-spread {
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
-  background: #f7ebd2;
+  background: #f8eee0;
   border-radius: 6px;
   box-shadow:
-    inset 0 0 35px rgba(130, 90, 35, 0.25),
-    inset 10px 0 20px rgba(0, 0, 0, 0.08),
-    inset -10px 0 20px rgba(0, 0, 0, 0.08);
+    inset 0 0 38px rgba(130, 90, 35, 0.22),
+    inset 12px 0 22px rgba(0, 0, 0, 0.07),
+    inset -12px 0 22px rgba(0, 0, 0, 0.07);
   height: 100%;
   max-height: min(620px, calc(92vh - 24px));
   overflow: hidden;
+  perspective: 1200px;
 }
 
 /* Center Crease / Spine Shadow */
@@ -896,21 +913,21 @@ html, body {
   top: 0;
   bottom: 0;
   left: 50%;
-  width: 36px;
+  width: 42px;
   transform: translateX(-50%);
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.14) 0%,
-    rgba(0, 0, 0, 0.03) 35%,
-    rgba(35, 18, 5, 0.28) 50%,
-    rgba(0, 0, 0, 0.03) 65%,
-    rgba(0, 0, 0, 0.14) 100%
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(40, 20, 5, 0.03) 32%,
+    rgba(32, 16, 5, 0.36) 50%,
+    rgba(40, 20, 5, 0.03) 68%,
+    rgba(0, 0, 0, 0.15) 100%
   );
   pointer-events: none;
   z-index: 10;
 }
 
-/* Individual Pages */
+/* Individual Pages with soft authentic curvature */
 .open-book-page {
   padding: 2.2rem 2.2rem 1.8rem 2.2rem;
   display: flex;
@@ -923,11 +940,24 @@ html, body {
 
 .open-book-left {
   padding-right: 2.5rem;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(251, 243, 227, 0.9) 85%,
+    rgba(230, 212, 180, 0.65) 100%
+  );
+  border-radius: 6px 0 0 6px;
 }
 
 .open-book-right {
   padding-left: 2.5rem;
-  background: rgba(255, 255, 255, 0.15);
+  background: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(251, 243, 227, 0.88) 85%,
+    rgba(226, 206, 172, 0.65) 100%
+  );
+  border-radius: 0 6px 6px 0;
 }
 
 .page-corner-ornament {
@@ -963,90 +993,83 @@ html, body {
   border-top: 1px dashed rgba(140, 100, 45, 0.2);
 }
 
-/* ── Content Elements (Matching user screenshot) ── */
+/* ── Content Elements (Warm Antique Styling - No Sky Blue) ── */
 
-/* Status pill */
-.book-status-pill {
-  display: inline-flex;
+/* Folio Pretitle */
+.book-page-pretitle {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: #8c5b16;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+  display: flex;
   align-items: center;
-  gap: 0.55rem;
-  background: rgba(34, 197, 94, 0.12);
-  border: 1px solid rgba(34, 197, 94, 0.45);
-  color: #14532d;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  padding: 0.32rem 0.85rem;
-  border-radius: 20px;
-  margin-bottom: 0.9rem;
-  width: fit-content;
+  gap: 0.5rem;
 }
 
-.status-pulse-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 8px #22c55e;
-  animation: pulseDot 2s infinite ease-in-out;
-}
-
-@keyframes pulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.45; transform: scale(0.85); }
-}
-
-/* Code intro */
-.book-code-intro {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: #0284c7;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.3rem;
+.book-page-pretitle::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(140, 91, 22, 0.35) 0%, transparent 100%);
 }
 
 /* Hero Name */
 .book-hero-name {
   font-family: 'Cinzel', serif;
-  font-size: 2.2rem;
+  font-size: 1.78rem;
   font-weight: 700;
-  color: #1a1207;
-  line-height: 1.15;
-  margin: 0 0 0.5rem 0;
+  color: #1a1005;
+  line-height: 1.25;
+  margin: 0 0 0.8rem 0;
   letter-spacing: 0.02em;
 }
 
-.hero-name-accent {
-  color: #0284c7;
-  text-shadow: 0 0 20px rgba(2, 132, 199, 0.3);
+.hero-name-main {
+  color: #2b1704;
 }
 
-/* Terminal Role */
-.book-terminal-role {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1.05rem;
+.hero-name-separator {
+  color: #8c5b16;
+  font-weight: 400;
+  margin: 0 0.2rem;
+}
+
+.hero-title-accent {
+  color: #8c5b16;
   font-weight: 700;
-  color: #0f766e;
-  margin-bottom: 1.1rem;
+}
+
+/* Sub-Headline Strip */
+.book-subhead-strip {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.55rem;
+  background: rgba(140, 91, 22, 0.08);
+  border: 1px solid rgba(140, 91, 22, 0.25);
+  border-left: 3px solid #8c5b16;
+  padding: 0.5rem 0.85rem;
+  border-radius: 4px;
+  margin-bottom: 1.15rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.77rem;
+  font-weight: 600;
+  color: #4a2c0c;
+  letter-spacing: 0.03em;
+  line-height: 1.45;
 }
 
-.role-chevron {
-  color: #0284c7;
+.subhead-segment {
+  white-space: nowrap;
 }
 
-.role-cursor {
-  color: #0284c7;
-  animation: blinkCursor 1s step-end infinite;
-}
-
-@keyframes blinkCursor {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+.subhead-sep {
+  color: #8c5b16;
+  opacity: 0.55;
+  font-weight: 400;
 }
 
 /* Bio lead paragraph */
@@ -1054,12 +1077,13 @@ html, body {
   font-family: 'IM Fell English', Georgia, serif;
   font-size: 1.02rem;
   line-height: 1.62;
-  color: #2e2013;
-  margin-bottom: 1.4rem;
+  color: #2b1b0b;
+  margin-bottom: 1.35rem;
 }
 
 .book-bio-lead strong {
-  color: #1a1106;
+  color: #1a0f04;
+  font-weight: 700;
 }
 
 /* Action Buttons */
@@ -1086,16 +1110,18 @@ html, body {
 }
 
 .book-cta-btn.primary {
-  background: #0284c7;
+  background: linear-gradient(135deg, #a06b25 0%, #7d4f16 100%);
   color: #ffffff;
-  border: 1px solid #0369a1;
-  box-shadow: 0 3px 12px rgba(2, 132, 199, 0.35);
+  border: 1px solid #c0843a;
+  box-shadow: 0 3px 12px rgba(125, 79, 22, 0.35);
+  text-decoration: none;
 }
 
 .book-cta-btn.primary:hover {
-  background: #0369a1;
-  box-shadow: 0 4px 18px rgba(2, 132, 199, 0.55);
+  background: linear-gradient(135deg, #b87d2e 0%, #8f5a1a 100%);
+  box-shadow: 0 4px 18px rgba(160, 107, 37, 0.55);
   transform: translateY(-2px);
+  border-color: #df9e45;
 }
 
 .book-cta-btn.secondary {
@@ -1142,7 +1168,7 @@ html, body {
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.76rem;
   font-weight: 700;
-  color: #0284c7;
+  color: #8c5b16; /* Warm gold/bronze (No sky blue) */
   letter-spacing: 0.08em;
   display: block;
   margin-bottom: 0.25rem;
@@ -1176,7 +1202,7 @@ html, body {
   font-family: 'Cinzel', serif;
   font-size: 1.35rem;
   font-weight: 700;
-  color: #0284c7;
+  color: #8c5b16; /* Warm gold/bronze (No sky blue) */
   display: block;
   margin-bottom: 0.2rem;
   line-height: 1.2;
@@ -1235,7 +1261,7 @@ html, body {
   background: rgba(140, 100, 45, 0.12);
   padding: 0.1rem 0.35rem;
   border-radius: 3px;
-  color: #0284c7;
+  color: #7b4f17; /* Warm amber (No sky blue) */
 }
 
 /* Quick Links Row */
@@ -1264,9 +1290,9 @@ html, body {
 }
 
 .book-social-chip:hover {
-  background: #0284c7;
+  background: #8c5b16; /* Warm gold/amber (No sky blue) */
   color: #ffffff;
-  border-color: #0369a1;
+  border-color: #a06b25;
 }
 
 .chip-arrow {
