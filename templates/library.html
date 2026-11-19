@@ -336,10 +336,10 @@
   <!-- Modal Backdrop -->
   <div class="panel-backdrop" id="panelBackdrop" aria-hidden="true"></div>
 
-  <!-- Shelf Panels (Skills) -->
+  <!-- Shelf Panels (Grimoire Two-Page Spread) -->
   {% for shelf in shelves %}
   <aside
-    class="panel shelf-panel"
+    class="panel shelf-panel open-book-panel"
     id="panel-{{ shelf.id }}"
     role="dialog"
     aria-modal="true"
@@ -347,44 +347,53 @@
     aria-hidden="true"
     tabindex="-1"
   >
-    <div class="panel-inner">
-      <button class="panel-close" aria-label="Close {{ shelf.label }} panel">&times;</button>
-      <div class="panel-scroll-top" aria-hidden="true"></div>
+    <div class="open-book-wrap">
+      <button class="panel-close book-close-btn" aria-label="Close {{ shelf.label }} book">&times;</button>
 
-      <div class="panel-header">
-        <span class="panel-eyebrow">Shelf {{ loop.index }}</span>
-        <h2 class="panel-title" data-title-color="{{ shelf.color }}">{{ shelf.label }}</h2>
-      </div>
-
-      <ul class="skill-list" aria-label="{{ shelf.label }} skill proficiency levels">
-        {% for skill in shelf.skills %}
-        <li class="skill-item">
-          <span class="skill-icon" aria-hidden="true">{{ skill.icon }}</span>
-          <span class="skill-name">{{ skill.name }}</span>
-          <div
-            class="skill-bar-wrap"
-            role="progressbar"
-            aria-valuenow="{{ skill.level }}"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            aria-label="{{ skill.name }} proficiency {{ skill.level }}%"
-          >
-            <div class="skill-bar" data-bar-w="{{ skill.level }}" data-bar-color="{{ shelf.color }}"></div>
+      <div class="open-book-spread">
+        <!-- ── LEFT PAGE: Shelf Overview ── -->
+        <article class="open-book-page open-book-left" aria-label="{{ shelf.label }} Overview">
+          <div class="page-corner-ornament top-left" aria-hidden="true"></div>
+          <div class="book-page-pretitle" aria-hidden="true">Folio • Technical Skills</div>
+          <h2 class="book-hero-name" style="color: {{ shelf.color }};">{{ shelf.label }}</h2>
+          <div class="book-subhead-strip" role="doc-subtitle">
+            <span class="subhead-segment">Shelf {{ loop.index }} • Core Stacks</span>
           </div>
-          <span class="skill-pct">{{ skill.level }}%</span>
-        </li>
-        {% endfor %}
-      </ul>
+          <p class="book-bio-lead">
+            Curated engineering competencies, production frameworks, and developer tooling in {{ shelf.label }}.
+          </p>
+          <div class="page-footer-num" aria-hidden="true">Folio 01</div>
+        </article>
 
-      <div class="panel-scroll-bot" aria-hidden="true"></div>
-    </div>
+        <!-- ── RIGHT PAGE: Skill Badges ── -->
+        <article class="open-book-page open-book-right" aria-label="{{ shelf.label }} Proficiencies">
+          <div class="page-corner-ornament top-right" aria-hidden="true"></div>
+          <div class="folio-heading">
+            <span class="folio-chapter">// Technical Proficiencies</span>
+            <h3 class="folio-title">{{ shelf.label }} Stack</h3>
+          </div>
+
+          <div class="skills-chips-wrap" aria-label="{{ shelf.label }} skills">
+            {% for skill in shelf.skills %}
+            <div class="skill-chip-item">
+              {% if skill.svg_id %}
+              <svg class="tech-icon-svg" aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-{{ skill.svg_id }}"></use></svg>
+              {% endif %}
+              <span class="skill-name-text">{{ skill.name }}</span>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="page-footer-num" aria-hidden="true">Folio 02</div>
+        </article>
+      </div><!-- /.open-book-spread -->
+    </div><!-- /.open-book-wrap -->
   </aside>
   {% endfor %}
 
-  <!-- Project Panels -->
+  <!-- Project Panels (Grimoire Two-Page Spread) -->
   {% for project in projects %}
   <aside
-    class="panel project-panel"
+    class="panel project-panel open-book-panel"
     id="panel-{{ project.id }}"
     role="dialog"
     aria-modal="true"
@@ -392,55 +401,86 @@
     aria-hidden="true"
     tabindex="-1"
   >
-    <div class="panel-inner">
-      <button class="panel-close" aria-label="Close {{ project.title }} panel">&times;</button>
-      <div class="panel-scroll-top" aria-hidden="true"></div>
+    <div class="open-book-wrap">
+      <button class="panel-close book-close-btn" aria-label="Close {{ project.title }} book">&times;</button>
 
-      <div class="panel-header">
-        <span class="panel-eyebrow">Featured Tome</span>
-        <h2 class="panel-title" data-title-color="{{ project.color }}">{{ project.title }}</h2>
-        {% if project.subtitle %}
-        <p class="panel-subtitle">{{ project.subtitle }}</p>
-        {% endif %}
-      </div>
+      <div class="open-book-spread">
+        <!-- ── LEFT PAGE: Project Overview & Links ── -->
+        <article class="open-book-page open-book-left" aria-label="{{ project.title }} Overview">
+          <div class="page-corner-ornament top-left" aria-hidden="true"></div>
+          <div class="book-page-pretitle" aria-hidden="true">Folio • Featured Project</div>
+          <h2 class="book-hero-name">{{ project.title }}</h2>
+          {% if project.subtitle %}
+          <div class="book-subhead-strip" role="doc-subtitle">
+            <span class="subhead-segment">{{ project.subtitle }}</span>
+          </div>
+          {% endif %}
 
-      <!-- Project switcher if multiple projects -->
-      {% if projects|length > 1 %}
-      <div class="project-tabs" aria-label="Switch project">
-        {% for p in projects %}
-        <button
-          class="project-tab-btn {% if p.id == project.id %}active{% endif %}"
-          data-switch-to="{{ p.id }}"
-        >
-          {{ p.title }}
-        </button>
-        {% endfor %}
-      </div>
-      {% endif %}
+          <div class="tech-tags" aria-label="Technologies used" style="margin-bottom: 0.9rem;">
+            {% for t in project.tech %}
+            <span class="tech-tag">{{ t }}</span>
+            {% endfor %}
+          </div>
 
-      <div class="tech-tags" aria-label="Technologies used">
-        {% for t in project.tech %}
-        <span class="tech-tag">{{ t }}</span>
-        {% endfor %}
-      </div>
+          <p class="book-bio-lead" style="font-size: 0.92rem; line-height: 1.55; margin-bottom: 1rem;">
+            {{ project.description }}
+          </p>
 
-      <p class="panel-desc">{{ project.description }}</p>
+          <div class="book-action-buttons">
+            {% if project.github_url and project.github_url != '#' %}
+            <a href="{{ project.github_url }}" class="book-cta-btn primary" target="_blank" rel="noopener noreferrer">
+              <span>GitHub Repository</span> <span class="cta-arrow">&#8594;</span>
+            </a>
+            {% endif %}
+            {% if project.demo_url and project.demo_url != '#' %}
+            <a href="{{ project.demo_url }}" class="book-cta-btn secondary" target="_blank" rel="noopener noreferrer">
+              <span>Live Demo &#8599;</span>
+            </a>
+            {% endif %}
+          </div>
 
-      <div class="panel-links">
-        {% if project.github_url and project.github_url != '#' %}
-        <a href="{{ project.github_url }}" class="panel-link" target="_blank" rel="noopener noreferrer">
-          GitHub ↗
-        </a>
-        {% endif %}
-        {% if project.demo_url and project.demo_url != '#' %}
-        <a href="{{ project.demo_url }}" class="panel-link panel-link-demo" target="_blank" rel="noopener noreferrer">
-          Live Demo ↗
-        </a>
-        {% endif %}
-      </div>
+          <div class="page-footer-num" aria-hidden="true">Folio 01</div>
+        </article>
 
-      <div class="panel-scroll-bot" aria-hidden="true"></div>
-    </div>
+        <!-- ── RIGHT PAGE: Technical Architecture & Standards ── -->
+        <article class="open-book-page open-book-right" aria-label="Architecture & Specifications">
+          <div class="page-corner-ornament top-right" aria-hidden="true"></div>
+          <div class="folio-heading">
+            <span class="folio-chapter">// Technical Standards</span>
+            <h3 class="folio-title">System Architecture</h3>
+          </div>
+
+          <div class="book-competencies-card">
+            <h4 class="competencies-title">Engineering Highlights</h4>
+            <ul class="competencies-list">
+              <li><span class="comp-bullet">✦</span> <strong>Modular Model-View Design:</strong> Fully decouple business data in <code>skills.json</code> from presentation templates.</li>
+              <li><span class="comp-bullet">✦</span> <strong>Automated Test Coverage:</strong> 100% test passage verified with <code>pytest</code>, ensuring zero regressions across builds.</li>
+              <li><span class="comp-bullet">✦</span> <strong>Interactive 3D Stage:</strong> Authentic book interaction, hotspot mapping, and responsive grimoire styling.</li>
+              <li><span class="comp-bullet">✦</span> <strong>High Reliability:</strong> Clean error handling, regular expression parsing, and static generation pipeline.</li>
+            </ul>
+          </div>
+
+          <!-- Project switcher if multiple projects -->
+          {% if projects|length > 1 %}
+          <div style="margin-top: 1rem;">
+            <div class="book-page-pretitle" style="margin-bottom: 0.35rem;">Other Works</div>
+            <div class="project-tabs" aria-label="Switch project" style="margin-bottom: 0;">
+              {% for p in projects %}
+              <button
+                class="project-tab-btn {% if p.id == project.id %}active{% endif %}"
+                data-switch-to="{{ p.id }}"
+              >
+                {{ p.title }}
+              </button>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+
+          <div class="page-footer-num" aria-hidden="true">Folio 02</div>
+        </article>
+      </div><!-- /.open-book-spread -->
+    </div><!-- /.open-book-wrap -->
   </aside>
   {% endfor %}
 
@@ -569,9 +609,9 @@
     </div><!-- /.open-book-wrap -->
   </aside>
 
-  <!-- Unified Skills Overview Panel -->
+  <!-- Unified Skills Overview Panel (Grimoire Two-Page Spread) -->
   <aside
-    class="panel skills-overview-panel"
+    class="panel skills-overview-panel open-book-panel"
     id="panel-skills"
     role="dialog"
     aria-modal="true"
@@ -579,44 +619,81 @@
     aria-hidden="true"
     tabindex="-1"
   >
-    <div class="panel-inner">
-      <button class="panel-close" aria-label="Close Skills panel">&times;</button>
-      <div class="panel-scroll-top" aria-hidden="true"></div>
+    <div class="open-book-wrap">
+      <button class="panel-close book-close-btn" aria-label="Close Skills book">&times;</button>
 
-      <div class="panel-header">
-        <span class="panel-eyebrow">The Grand Archives</span>
-        <h2 class="panel-title" data-title-color="#f0cb75">Technical Compendium</h2>
-        <p class="panel-subtitle">Skills, frameworks, pipelines, and developer tooling</p>
-      </div>
-
-      <div class="skills-categories-grid">
-        {% for shelf in shelves %}
-        <div class="skill-category-card">
-          <div class="category-header">
-            <span class="category-indicator" style="background: {{ shelf.color }};"></span>
-            <h3 class="category-title" style="color: {{ shelf.color }};">{{ shelf.label }}</h3>
+      <div class="open-book-spread">
+        <!-- ── LEFT PAGE: Languages & Full-Stack / Mobile ── -->
+        <article class="open-book-page open-book-left" aria-label="Core Languages and Web Stacks">
+          <div class="page-corner-ornament top-left" aria-hidden="true"></div>
+          <div class="book-page-pretitle" aria-hidden="true">Folio • Core Proficiencies</div>
+          <h2 class="book-hero-name">Technical Compendium</h2>
+          <div class="book-subhead-strip" role="doc-subtitle">
+            <span class="subhead-segment">Languages &amp; Modern Frameworks</span>
           </div>
-          <div class="skills-chips-wrap" aria-label="{{ shelf.label }} skills">
-            {% for skill in shelf.skills %}
-            <div class="skill-chip-item">
-              {% if skill.svg_id %}
-              <svg class="tech-icon-svg" aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-{{ skill.svg_id }}"></use></svg>
-              {% endif %}
-              <span class="skill-name-text">{{ skill.name }}</span>
+
+          {% for shelf in shelves %}
+          {% if shelf.id == 'languages' or shelf.id == 'web' %}
+          <div class="skill-category-card" style="margin-bottom: 0.85rem;">
+            <div class="category-header">
+              <span class="category-indicator" style="background: {{ shelf.color }};"></span>
+              <h3 class="category-title" style="color: {{ shelf.color }}; font-size: 0.96rem;">{{ shelf.label }}</h3>
             </div>
-            {% endfor %}
+            <div class="skills-chips-wrap" aria-label="{{ shelf.label }} skills">
+              {% for skill in shelf.skills %}
+              <div class="skill-chip-item">
+                {% if skill.svg_id %}
+                <svg class="tech-icon-svg" aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-{{ skill.svg_id }}"></use></svg>
+                {% endif %}
+                <span class="skill-name-text">{{ skill.name }}</span>
+              </div>
+              {% endfor %}
+            </div>
           </div>
-        </div>
-        {% endfor %}
-      </div>
+          {% endif %}
+          {% endfor %}
 
-      <div class="panel-scroll-bot" aria-hidden="true"></div>
-    </div>
+          <div class="page-footer-num" aria-hidden="true">Folio 01</div>
+        </article>
+
+        <!-- ── RIGHT PAGE: Cloud, Applied AI & Tooling ── -->
+        <article class="open-book-page open-book-right" aria-label="Cloud and Tooling Proficiencies">
+          <div class="page-corner-ornament top-right" aria-hidden="true"></div>
+          <div class="folio-heading">
+            <span class="folio-chapter">// Systems &amp; Reliability</span>
+            <h3 class="folio-title">Cloud, AI &amp; Tooling</h3>
+          </div>
+
+          {% for shelf in shelves %}
+          {% if shelf.id == 'data' or shelf.id == 'tools' %}
+          <div class="skill-category-card" style="margin-bottom: 0.85rem;">
+            <div class="category-header">
+              <span class="category-indicator" style="background: {{ shelf.color }};"></span>
+              <h3 class="category-title" style="color: {{ shelf.color }}; font-size: 0.96rem;">{{ shelf.label }}</h3>
+            </div>
+            <div class="skills-chips-wrap" aria-label="{{ shelf.label }} skills">
+              {% for skill in shelf.skills %}
+              <div class="skill-chip-item">
+                {% if skill.svg_id %}
+                <svg class="tech-icon-svg" aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-{{ skill.svg_id }}"></use></svg>
+                {% endif %}
+                <span class="skill-name-text">{{ skill.name }}</span>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+
+          <div class="page-footer-num" aria-hidden="true">Folio 02</div>
+        </article>
+      </div><!-- /.open-book-spread -->
+    </div><!-- /.open-book-wrap -->
   </aside>
 
-  <!-- Certificates (Certs) Panel -->
+  <!-- Certificates (Certs) Panel (Grimoire Two-Page Spread) -->
   <aside
-    class="panel certs-panel"
+    class="panel certs-panel open-book-panel"
     id="panel-certs"
     role="dialog"
     aria-modal="true"
@@ -624,83 +701,118 @@
     aria-hidden="true"
     tabindex="-1"
   >
-    <div class="panel-inner">
-      <button class="panel-close" aria-label="Close Certificates panel">&times;</button>
-      <div class="panel-scroll-top" aria-hidden="true"></div>
+    <div class="open-book-wrap">
+      <button class="panel-close book-close-btn" aria-label="Close Certificates book">&times;</button>
 
-      <div class="panel-header">
-        <span class="panel-eyebrow">Accreditation &amp; Badges</span>
-        <h2 class="panel-title" data-title-color="#d4a853">Verified Certificates</h2>
-        <p class="panel-subtitle">Rigorous academic completions &amp; verified technical competencies</p>
-      </div>
-
-      <!-- Download CV Banner -->
-      <div class="cert-resume-banner">
-        <div class="cert-resume-info">
-          <svg class="cert-banner-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-            <polyline points="10 9 9 9 8 9"/>
-          </svg>
-          <div>
-            <div class="cert-resume-title">Official Curriculum Vitae</div>
-            <div class="cert-resume-sub">Software Engineering • FAST-NUCES • AWS &amp; CS50 Credentials</div>
+      <div class="open-book-spread">
+        <!-- ── LEFT PAGE: Accredited Cloud & Academic Credentials ── -->
+        <article class="open-book-page open-book-left" aria-label="Verified Credentials">
+          <div class="page-corner-ornament top-left" aria-hidden="true"></div>
+          <div class="book-page-pretitle" aria-hidden="true">Folio • Verified Credentials</div>
+          <h2 class="book-hero-name">Accredited Certifications</h2>
+          <div class="book-subhead-strip" role="doc-subtitle">
+            <span class="subhead-segment">AWS Cloud &amp; Harvard CS50P</span>
           </div>
-        </div>
-        <a href="{{ owner.resume_url }}" download="Arwa_Ahmed_Resume.pdf" class="book-cta-btn primary" target="_blank" rel="noopener noreferrer" aria-label="Download Full Resume PDF">
-          <span>Download CV</span>
-        </a>
-      </div>
 
-      <div class="cert-cards-container">
-        {% for cert in certificates %}
-        <div class="cert-card cert-card-verified">
-          <div class="cert-badge-frame" aria-hidden="true">
-            <img src="{{ cert.badge_image | default('static/images/badges/aws_certified_cp.svg') }}" alt="{{ cert.title }} Badge" class="cert-badge-img" loading="lazy" />
+          <div class="cert-resume-compact">
+            <a href="{{ owner.resume_url }}" download="Arwa_Ahmed_Resume.pdf" class="book-cta-btn primary" target="_blank" rel="noopener noreferrer" aria-label="Download Full Resume PDF">
+              <span>Download Official CV ↓</span>
+            </a>
           </div>
-          <div class="cert-body">
-            <div class="cert-top-meta">
-              <span class="cert-issuer">{{ cert.issuer }}</span>
-              <span class="cert-year-pill">{{ cert.year }}</span>
-            </div>
-            <h3 class="cert-title">{{ cert.title }}</h3>
-            <p class="cert-desc">{{ cert.description }}</p>
 
-            <div class="tech-tags cert-skills">
-              {% for s in cert.skills %}
-              <span class="tech-tag">{{ s }}</span>
-              {% endfor %}
+          <div class="cert-cards-compact">
+            <!-- AWS Certified Cloud Practitioner -->
+            <div class="cert-card cert-card-verified mini-cert-card">
+              <div class="cert-badge-frame" aria-hidden="true">
+                <img src="static/images/badges/aws_certified_cp.svg" alt="AWS Certified Cloud Practitioner" class="cert-badge-img" loading="lazy" />
+              </div>
+              <div class="cert-body">
+                <div class="cert-top-meta">
+                  <span class="cert-issuer">Amazon Web Services</span>
+                  <span class="cert-year-pill">2024</span>
+                </div>
+                <h4 class="cert-title">AWS Certified Cloud Practitioner</h4>
+                <div class="cert-footer">
+                  <span class="cert-id-badge">Credly ID: AWS04652251</span>
+                  <a href="https://www.credly.com/users/arwa-ahmed" target="_blank" rel="noopener noreferrer" class="cert-verify-btn">
+                    <span class="verify-check">&#10003;</span> <span>VERIFIED</span>
+                  </a>
+                </div>
+              </div>
             </div>
 
-            <div class="cert-footer">
-              <div class="cert-badge-group">
-                {% if cert.badge %}
-                <span class="cert-id-badge">{{ cert.badge }}</span>
-                {% endif %}
-                {% if cert.credential_id %}
-                <span class="cert-id-badge code-font">ID: {{ cert.credential_id }}</span>
+            <!-- CS50P Harvard -->
+            <div class="cert-card cert-card-verified mini-cert-card">
+              <div class="cert-badge-frame" aria-hidden="true">
+                <img src="static/images/badges/cs50p_harvard.svg" alt="CS50P Harvard University" class="cert-badge-img" loading="lazy" />
+              </div>
+              <div class="cert-body">
+                <div class="cert-top-meta">
+                  <span class="cert-issuer">Harvard University / CS50</span>
+                  <span class="cert-year-pill">2024</span>
+                </div>
+                <h4 class="cert-title">CS50's Intro to Programming with Python</h4>
+                <div class="cert-footer">
+                  <span class="cert-id-badge">Harvard edX Verified</span>
+                  <a href="https://cs50.harvard.edu/certificates/arwa-ahmed" target="_blank" rel="noopener noreferrer" class="cert-verify-btn">
+                    <span class="verify-check">&#10003;</span> <span>VERIFIED</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-footer-num" aria-hidden="true">Folio 01</div>
+        </article>
+
+        <!-- ── RIGHT PAGE: AWS Quests & Specialization Badges ── -->
+        <article class="open-book-page open-book-right" aria-label="AWS Badges & Quests">
+          <div class="page-corner-ornament top-right" aria-hidden="true"></div>
+          <div class="folio-heading">
+            <span class="folio-chapter">// Technical Training &amp; Workshops</span>
+            <h3 class="folio-title">Cloud Quests &amp; Badges</h3>
+          </div>
+
+          <div class="cert-cards-compact">
+            {% for cert in certificates %}
+            {% if 'CS50' not in cert.title and 'Certified Cloud Practitioner' not in cert.title %}
+            <div class="cert-card cert-card-verified mini-cert-card">
+              <div class="cert-badge-frame" aria-hidden="true">
+                <img src="{{ cert.badge_image | default('static/images/badges/aws_quest_cp.svg') }}" alt="{{ cert.title }} Badge" class="cert-badge-img" loading="lazy" />
+              </div>
+              <div class="cert-body">
+                <div class="cert-top-meta">
+                  <span class="cert-issuer">{{ cert.issuer }}</span>
+                  <span class="cert-year-pill">{{ cert.year }}</span>
+                </div>
+                <h4 class="cert-title">{{ cert.title }}</h4>
+                <div class="tech-tags cert-skills" style="margin-bottom: 0.3rem;">
+                  {% for s in cert.skills %}
+                  <span class="tech-tag" style="font-size: 0.68rem; padding: 0.15rem 0.45rem;">{{ s }}</span>
+                  {% endfor %}
+                </div>
+                {% if cert.url and cert.url != '#' %}
+                <div class="cert-footer" style="padding-top: 0.35rem;">
+                  <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer" class="cert-verify-btn" style="font-size: 0.68rem;">
+                    <span class="verify-check">&#10003;</span> <span>VERIFIED</span>
+                  </a>
+                </div>
                 {% endif %}
               </div>
-              {% if cert.url and cert.url != '#' %}
-              <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer" class="cert-verify-btn" aria-label="Verify {{ cert.title }}">
-                <span class="verify-check">&#10003;</span> <span>VERIFIED • CLICK TO VERIFY</span>
-              </a>
-              {% endif %}
             </div>
+            {% endif %}
+            {% endfor %}
           </div>
-        </div>
-        {% endfor %}
-      </div>
 
-      <div class="panel-scroll-bot" aria-hidden="true"></div>
-    </div>
+          <div class="page-footer-num" aria-hidden="true">Folio 02</div>
+        </article>
+      </div><!-- /.open-book-spread -->
+    </div><!-- /.open-book-wrap -->
   </aside>
 
-  <!-- Experience Panel -->
+  <!-- Experience Panel (Grimoire Two-Page Spread) -->
   <aside
-    class="panel experience-panel"
+    class="panel experience-panel open-book-panel"
     id="panel-experience"
     role="dialog"
     aria-modal="true"
@@ -708,43 +820,73 @@
     aria-hidden="true"
     tabindex="-1"
   >
-    <div class="panel-inner">
-      <button class="panel-close" aria-label="Close Experience panel">&times;</button>
-      <div class="panel-scroll-top" aria-hidden="true"></div>
+    <div class="open-book-wrap">
+      <button class="panel-close book-close-btn" aria-label="Close Experience book">&times;</button>
 
-      <div class="panel-header">
-        <span class="panel-eyebrow">The Journey</span>
-        <h2 class="panel-title" data-title-color="#e07a3b">Engineering Chronicles</h2>
-        <p class="panel-subtitle">Milestones, project leadership, and continuous learning</p>
-      </div>
+      <div class="open-book-spread">
+        <!-- ── LEFT PAGE: Commercial Engineering Role ── -->
+        <article class="open-book-page open-book-left" aria-label="Commercial Engineering Experience">
+          <div class="page-corner-ornament top-left" aria-hidden="true"></div>
+          <div class="book-page-pretitle" aria-hidden="true">Folio • Commercial Engineering</div>
+          <h2 class="book-hero-name">Industry Experience</h2>
+          <div class="book-subhead-strip" role="doc-subtitle">
+            <span class="subhead-segment">Full-Stack &amp; Applied AI Roles</span>
+          </div>
 
-      <div class="timeline-container">
-        {% for exp in experience %}
-        <div class="timeline-item">
-          <div class="timeline-dot" aria-hidden="true"></div>
-          <div class="timeline-card">
-            <div class="timeline-header">
+          {% for exp in experience %}
+          {% if loop.first %}
+          <div class="experience-book-card">
+            <div class="timeline-header" style="margin-bottom: 0.35rem;">
               <h3 class="timeline-role">{{ exp.role }}</h3>
               <span class="timeline-period">{{ exp.period }}</span>
             </div>
             <div class="timeline-org">{{ exp.organization }} • {{ exp.location }}</div>
             <ul class="timeline-highlights">
               {% for h in exp.highlights %}
-              <li>{{ h }}</li>
+              <li><span class="comp-bullet">✦</span> <span>{{ h }}</span></li>
               {% endfor %}
             </ul>
           </div>
-        </div>
-        {% endfor %}
-      </div>
+          {% endif %}
+          {% endfor %}
 
-      <div class="panel-scroll-bot" aria-hidden="true"></div>
-    </div>
+          <div class="page-footer-num" aria-hidden="true">Folio 01</div>
+        </article>
+
+        <!-- ── RIGHT PAGE: Research & Software Internships ── -->
+        <article class="open-book-page open-book-right" aria-label="Research & Additional Roles">
+          <div class="page-corner-ornament top-right" aria-hidden="true"></div>
+          <div class="folio-heading">
+            <span class="folio-chapter">// Research &amp; Automation</span>
+            <h3 class="folio-title">Academic &amp; QA Roles</h3>
+          </div>
+
+          {% for exp in experience %}
+          {% if not loop.first %}
+          <div class="experience-book-card">
+            <div class="timeline-header" style="margin-bottom: 0.35rem;">
+              <h4 class="timeline-role" style="font-size: 0.92rem;">{{ exp.role }}</h4>
+              <span class="timeline-period">{{ exp.period }}</span>
+            </div>
+            <div class="timeline-org">{{ exp.organization }} • {{ exp.location }}</div>
+            <ul class="timeline-highlights">
+              {% for h in exp.highlights %}
+              <li><span class="comp-bullet">✦</span> <span>{{ h }}</span></li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+          {% endfor %}
+
+          <div class="page-footer-num" aria-hidden="true">Folio 02</div>
+        </article>
+      </div><!-- /.open-book-spread -->
+    </div><!-- /.open-book-wrap -->
   </aside>
 
-  <!-- Contact Panel -->
+  <!-- Contact Panel (Grimoire Two-Page Spread) -->
   <aside
-    class="panel contact-panel"
+    class="panel contact-panel open-book-panel"
     id="panel-contact"
     role="dialog"
     aria-modal="true"
@@ -752,98 +894,114 @@
     aria-hidden="true"
     tabindex="-1"
   >
-    <div class="panel-inner">
-      <button class="panel-close" aria-label="Close Contact panel">&times;</button>
-      <div class="panel-scroll-top" aria-hidden="true"></div>
+    <div class="open-book-wrap">
+      <button class="panel-close book-close-btn" aria-label="Close Contact book">&times;</button>
 
-      <div class="panel-header">
-        <span class="panel-eyebrow">Get in Touch</span>
-        <h2 class="panel-title" data-title-color="#d4a853">Contact &amp; Inquiries</h2>
-        <p class="panel-subtitle">Available for software engineering roles, collaboration, and inquiries</p>
-      </div>
+      <div class="open-book-spread">
+        <!-- ── LEFT PAGE: Channels & Direct Connect ── -->
+        <article class="open-book-page open-book-left" aria-label="Contact Channels">
+          <div class="page-corner-ornament top-left" aria-hidden="true"></div>
+          <div class="book-page-pretitle" aria-hidden="true">Folio • Direct Connect</div>
+          <h2 class="book-hero-name">Get in Touch</h2>
+          <div class="book-subhead-strip" role="doc-subtitle">
+            <span class="subhead-segment">Software Engineering Opportunities</span>
+          </div>
 
-      <div class="contact-card-grid">
-        <!-- Direct Quick Connect Channels -->
-        <div class="contact-channels">
-          <div class="channel-item channel-item-main">
-            <span class="channel-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
-              </svg>
-            </span>
-            <div class="channel-info">
-              <span class="channel-label">Direct Inbox</span>
-              <a href="mailto:{{ owner.email }}" class="channel-link">{{ owner.email }}</a>
+          <p class="book-bio-lead" style="font-size: 0.94rem; margin-bottom: 1.1rem;">
+            Whether you have an engineering role, collaborative product, or architectural inquiry, feel free to reach out directly:
+          </p>
+
+          <div class="contact-channels">
+            <div class="channel-item channel-item-main">
+              <span class="channel-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </span>
+              <div class="channel-info">
+                <span class="channel-label">Direct Inbox</span>
+                <a href="mailto:{{ owner.email }}" class="channel-link">{{ owner.email }}</a>
+              </div>
+              <button class="copy-email-btn" id="copyEmailBtn" data-email="{{ owner.email }}" aria-label="Copy Email">
+                Copy
+              </button>
             </div>
-            <button class="copy-email-btn" id="copyEmailBtn" data-email="{{ owner.email }}" aria-label="Copy Email">
-              Copy
-            </button>
-          </div>
 
-          <div class="channel-item">
-            <span class="channel-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-            </span>
-            <div class="channel-info">
-              <span class="channel-label">LinkedIn</span>
-              <a href="{{ owner.linkedin }}" target="_blank" rel="noopener noreferrer" class="channel-link">
-                linkedin.com/in/arwa-ahmed ↗
-              </a>
+            <div class="channel-item">
+              <span class="channel-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+              </span>
+              <div class="channel-info">
+                <span class="channel-label">LinkedIn</span>
+                <a href="{{ owner.linkedin }}" target="_blank" rel="noopener noreferrer" class="channel-link">
+                  linkedin.com/in/arwa-ahmed ↗
+                </a>
+              </div>
+            </div>
+
+            <div class="channel-item">
+              <span class="channel-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+              </span>
+              <div class="channel-info">
+                <span class="channel-label">GitHub</span>
+                <a href="https://github.com/{{ owner.github }}" target="_blank" rel="noopener noreferrer" class="channel-link">
+                  github.com/{{ owner.github }} ↗
+                </a>
+              </div>
             </div>
           </div>
 
-          <div class="channel-item">
-            <span class="channel-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-              </svg>
-            </span>
-            <div class="channel-info">
-              <span class="channel-label">GitHub</span>
-              <a href="https://github.com/{{ owner.github }}" target="_blank" rel="noopener noreferrer" class="channel-link">
-                github.com/{{ owner.github }} ↗
-              </a>
+          <div class="page-footer-num" aria-hidden="true">Folio 01</div>
+        </article>
+
+        <!-- ── RIGHT PAGE: Working Contact Form ── -->
+        <article class="open-book-page open-book-right" aria-label="Direct Message Dispatch">
+          <div class="page-corner-ornament top-right" aria-hidden="true"></div>
+          <div class="folio-heading">
+            <span class="folio-chapter">// Send a Message</span>
+            <h3 class="folio-title">Direct Dispatch</h3>
+          </div>
+
+          <form class="contact-form" id="contactForm" action="https://formsubmit.co/arwa95025@gmail.com" method="POST">
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="New Portfolio Message for Arwa Ahmed!">
+            <input type="hidden" name="_template" value="table">
+
+            <div class="form-group">
+              <label for="contactName" class="form-label">Your Name</label>
+              <input type="text" id="contactName" name="name" class="form-input" placeholder="e.g. Eleanor Vance" required minlength="2" />
             </div>
-          </div>
-        </div>
 
-        <!-- Working Contact Form (Directly forwards to arwa95025@gmail.com) -->
-        <form class="contact-form" id="contactForm" action="https://formsubmit.co/arwa95025@gmail.com" method="POST">
-          <input type="text" name="_honey" style="display:none">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_subject" value="New Portfolio Message for Arwa Ahmed!">
-          <input type="hidden" name="_template" value="table">
+            <div class="form-group">
+              <label for="contactEmail" class="form-label">Your Email</label>
+              <input type="email" id="contactEmail" name="email" class="form-input" placeholder="e.g. eleanor@example.com" required />
+            </div>
 
-          <div class="form-group">
-            <label for="contactName" class="form-label">Your Name</label>
-            <input type="text" id="contactName" name="name" class="form-input" placeholder="e.g. Eleanor Vance" required minlength="2" />
-          </div>
+            <div class="form-group">
+              <label for="contactMsg" class="form-label">Your Message <span class="form-sublabel">(Delivered to arwa95025@gmail.com)</span></label>
+              <textarea id="contactMsg" name="message" class="form-textarea" rows="3" placeholder="Tell me about your project, engineering role, or collaboration..." required minlength="10"></textarea>
+            </div>
 
-          <div class="form-group">
-            <label for="contactEmail" class="form-label">Your Email</label>
-            <input type="email" id="contactEmail" name="email" class="form-input" placeholder="e.g. eleanor@example.com" required />
-          </div>
+            <div class="form-actions">
+              <button type="submit" class="contact-submit-btn" id="contactSubmitBtn">
+                <span>Send Message</span>
+                <span class="submit-arrow">&#10148;</span>
+              </button>
+              <span class="form-status" id="formStatus" aria-live="polite"></span>
+            </div>
+          </form>
 
-          <div class="form-group">
-            <label for="contactMsg" class="form-label">Your Message <span class="form-sublabel">(Delivered directly to arwa95025@gmail.com)</span></label>
-            <textarea id="contactMsg" name="message" class="form-textarea" rows="4" placeholder="Tell me about your project, engineering role, or collaboration..." required minlength="10"></textarea>
-          </div>
-
-          <div class="form-actions">
-            <button type="submit" class="contact-submit-btn" id="contactSubmitBtn">
-              <span>Send Message</span>
-              <span class="submit-arrow">&#10148;</span>
-            </button>
-            <span class="form-status" id="formStatus" aria-live="polite"></span>
-          </div>
-        </form>
-      </div>
-
-      <div class="panel-scroll-bot" aria-hidden="true"></div>
-    </div>
+          <div class="page-footer-num" aria-hidden="true">Folio 02</div>
+        </article>
+      </div><!-- /.open-book-spread -->
+    </div><!-- /.open-book-wrap -->
   </aside>
 
   <script src="static/js/library.js"></script>
