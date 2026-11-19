@@ -276,52 +276,42 @@ html, body {
   box-shadow: 0 0 45px var(--gold-glow), inset 0 0 30px var(--gold-glow);
 }
 
-/* ── Prominent Animated Arrow Pointing Directly Down at the Door ── */
+/* ── Prominent Animated Arrow Pointing Directly Down at the Door (Pure Arrow, No Circle) ── */
 .door-pointer-guide {
   position: absolute;
   left: 50.04%;
-  top: 35.2%;
+  top: 34.5%;
   transform: translate(-50%, 0);
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 30;
-  animation: guideBounce 1.5s ease-in-out infinite alternate;
+  pointer-events: none;
+  animation: guideBounce 1.6s ease-in-out infinite alternate;
 }
 
 @keyframes guideBounce {
   0% {
     transform: translate(-50%, 0);
-    filter: drop-shadow(0 0 8px rgba(240, 203, 117, 0.6));
+    filter: drop-shadow(0 0 6px rgba(240, 203, 117, 0.7)) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.7));
   }
   100% {
-    transform: translate(-50%, 10px);
-    filter: drop-shadow(0 0 20px rgba(240, 203, 117, 0.95)) drop-shadow(0 0 35px rgba(255, 230, 140, 0.8));
+    transform: translate(-50%, 12px);
+    filter: drop-shadow(0 0 16px rgba(245, 211, 120, 0.95)) drop-shadow(0 0 28px rgba(226, 180, 72, 0.8)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.85));
   }
 }
 
-.pointer-arrow-bounce {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(12, 24, 16, 0.92);
-  border: 2px solid var(--gold);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 20px rgba(240, 203, 117, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gold);
-  backdrop-filter: blur(8px);
-  transition: all 0.25s ease;
+.fantasy-arrow-svg {
+  display: block;
+  width: 36px;
+  height: 48px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
 }
 
-.door-enter-trigger:hover .pointer-arrow-bounce,
-.door-enter-trigger:focus-visible .pointer-arrow-bounce {
-  background: rgba(38, 65, 45, 0.98);
-  color: #fff;
-  border-color: #fff;
-  transform: scale(1.18);
-  box-shadow: 0 0 30px var(--gold-glow);
+.door-enter-trigger:hover .fantasy-arrow-svg,
+.door-enter-trigger:focus-visible .fantasy-arrow-svg {
+  transform: scale(1.22);
+  filter: drop-shadow(0 0 20px rgba(255, 245, 200, 1)) drop-shadow(0 0 32px rgba(240, 203, 117, 0.9));
 }
 
 /* Prompt Banner */

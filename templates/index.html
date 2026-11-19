@@ -60,14 +60,31 @@
     >
       <span class="rune-pulse" aria-hidden="true"></span>
 
-      <!-- Prominent Animated Arrow Pointing Directly Towards the Door -->
+      <!-- Visually Appealing Floating Fantasy Arrow (No circle) -->
       <div class="door-pointer-guide" aria-hidden="true">
-        <div class="pointer-arrow-bounce">
-          <svg class="pointer-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="4" x2="12" y2="19"></line>
-            <polyline points="19 12 12 19 5 12"></polyline>
-          </svg>
-        </div>
+        <svg class="fantasy-arrow-svg" width="34" height="46" viewBox="0 0 34 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="fantasyGoldGrad" x1="17" y1="0" x2="17" y2="46" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#fff8db" />
+              <stop offset="40%" stop-color="#f5d378" />
+              <stop offset="100%" stop-color="#c6922e" />
+            </linearGradient>
+            <filter id="goldGlow" x="-25%" y="-25%" width="150%" height="150%">
+              <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#f5d378" flood-opacity="0.9" />
+              <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#ffb703" flood-opacity="0.5" />
+            </filter>
+          </defs>
+          <!-- Elegant Top Diamond Accent -->
+          <polygon points="17,1 20.5,5.5 17,10 13.5,5.5" fill="url(#fantasyGoldGrad)" filter="url(#goldGlow)" />
+          <!-- Sleek Center Shaft -->
+          <path d="M17 9.5 V30" stroke="url(#fantasyGoldGrad)" stroke-width="2.8" stroke-linecap="round" filter="url(#goldGlow)" />
+          <!-- Graceful Flared Arrowhead -->
+          <path d="M5.5 21 L17 35.5 L28.5 21" stroke="url(#fantasyGoldGrad)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#goldGlow)" />
+          <!-- Inner Secondary Shimmer Chevron -->
+          <path d="M9.5 26.5 L17 35.5 L24.5 26.5" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" />
+          <!-- Trailing Starlight Dot -->
+          <circle cx="17" cy="41" r="1.5" fill="#fff9e6" filter="url(#goldGlow)" />
+        </svg>
       </div>
 
       <span class="enter-prompt" aria-hidden="true">
