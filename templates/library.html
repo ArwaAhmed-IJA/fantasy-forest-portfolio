@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ owner.name }} — Fantasy Library</title>
+  <meta name="description" content="Explore the fantasy library portfolio of {{ owner.name }}, {{ owner.title }}." />
+  <link rel="stylesheet" href="static/css/library.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+</head>
+<body class="library-page">
+
+  <!-- Skip link for keyboard users -->
+  <a href="#mainLibrary" class="skip-link">Skip to main library content</a>
+
+  <!-- Top Navigation & Quick Access Toolbar -->
+  <header class="lib-header" aria-label="Library Navigation">
+    <div class="lib-header-left">
+      <a href="index.html" class="nav-btn back-btn" aria-label="Return to entrance door">
+        <span class="back-arrow">&#8592;</span> Forest Entrance
+      </a>
+      <span class="lib-owner-title">{{ owner.name }}’s Library</span>
+    </div>
+
+    <!-- Quick Access Menu for instant 1-click access -->
+    <nav class="quick-nav" aria-label="Category shortcuts">
+      {% for shelf in shelves %}
+      <button class="quick-btn" data-target="{{ shelf.id }}" data-accent="{{ shelf.color }}">
+        {{ shelf.label }}
+      </button>
+      {% endfor %}
+      <button class="quick-btn" data-target="cs50p" data-accent="#c0843a">
+        Projects
+      </button>
+      <button class="quick-btn" data-target="about" data-accent="#d4a853">
+        About
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Scene Wrapper (100vw x 100vh) -->
+  <main class="lib-scene" id="mainLibrary" aria-label="Interactive library painting">
+
+    <!-- High-Resolution Library Panorama Stage (2133 x 1200) -->
+    <div class="lib-stage" id="libStage">
+
+      <!-- High-resolution artwork painting background -->
+      <div class="lib-artwork" aria-hidden="true"></div>
+
+      <!-- Atmospheric sunbeam and shadow layer -->
+      <div class="lib-lighting" aria-hidden="true"></div>
+
+      <!-- ── INTERACTIVE HOTSPOTS OVER THE PANORAMA ── -->
+
+      <!-- Bookshelf Hotspots (Shelves 1 to 4) -->
+      {% for shelf in shelves %}
+      <button
+        class="hotspot-btn shelf-hotspot"
+        data-target="{{ shelf.id }}"
+        aria-label="Open {{ shelf.label }} skills panel"
+        data-top="{{ shelf.hotspot.top }}"
+        data-left="{{ shelf.hotspot.left }}"
+        data-width="{{ shelf.hotspot.width }}"
+        data-height="{{ shelf.hotspot.height }}"
+        data-color="{{ shelf.color }}"
+      >
+        <span class="hotspot-shimmer" aria-hidden="true"></span>
+        <span class="hotspot-badge" aria-hidden="true">
+          <span class="badge-icon">✨</span>
+          <span class="badge-title">{{ shelf.label }}</span>
+        </span>
+      </button>
+      {% endfor %}
+
+      <!-- Foreground Table Book Stack (Featured Projects) -->
+      {% for project in projects %}
+      <button
+        class="hotspot-btn project-hotspot"
+        data-target="{{ project.id }}"
+        aria-label="Open {{ project.title }} project panel"
+        data-top="{{ project.hotspot.top }}"
+        data-left="{{ project.hotspot.left }}"
+        data-width="{{ project.hotspot.width }}"
+        data-height="{{ project.hotspot.height }}"
+        data-color="{{ project.color }}"
+      >
+        <span class="hotspot-shimmer" aria-hidden="true"></span>
+        <span class="hotspot-badge" aria-hidden="true">
+          <span class="badge-icon">📦</span>
+          <span class="badge-title">{{ project.title }}</span>
+        </span>
+      </button>
+      {% endfor %}
+
+      <!-- Table Roses & Candle (About Me Chronicle) -->
+      <button
+        class="hotspot-btn about-hotspot"
+        data-target="about"
+        aria-label="Open About Me chronicle"
+        data-top="{{ about.hotspot.top }}"
+        data-left="{{ about.hotspot.left }}"
+        data-width="{{ about.hotspot.width }}"
+        data-height="{{ about.hotspot.height }}"
+        data-color="#d4a853"
+      >
+        <span class="hotspot-shimmer" aria-hidden="true"></span>
+        <span class="hotspot-badge" aria-hidden="true">
+          <span class="badge-icon">🌸</span>
+          <span class="badge-title">About Arwa</span>
+        </span>
+      </button>
+
+      <!-- Ambient Floating Fireflies -->
+      <div class="fireflies" aria-hidden="true" id="fireflies"></div>
+
+    </div><!-- /.lib-stage -->
+
+  </main><!-- /.lib-scene -->
+
+  <!-- ═══════════════════════════════════════════
+       PARCHMENT SCROLL PANELS (MODALS)
+       ═══════════════════════════════════════════ -->
+
+  <!-- Modal Backdrop -->
+  <div class="panel-backdrop" id="panelBackdrop" aria-hidden="true"></div>
+
+  <!-- Shelf Panels (Skills) -->
+  {% for shelf in shelves %}
+  <aside
+    class="panel shelf-panel"
+    id="panel-{{ shelf.id }}"
+    role="dialog"
+    aria-modal="true"
+    aria-label="{{ shelf.label }} skills"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="panel-inner">
+      <button class="panel-close" aria-label="Close {{ shelf.label }} panel">&times;</button>
+      <div class="panel-scroll-top" aria-hidden="true"></div>
+
+      <div class="panel-header">
+        <span class="panel-eyebrow">Shelf {{ loop.index }}</span>
+        <h2 class="panel-title" data-title-color="{{ shelf.color }}">{{ shelf.label }}</h2>
+      </div>
+
+      <ul class="skill-list" aria-label="{{ shelf.label }} skill proficiency levels">
+        {% for skill in shelf.skills %}
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">{{ skill.icon }}</span>
+          <span class="skill-name">{{ skill.name }}</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="{{ skill.level }}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="{{ skill.name }} proficiency {{ skill.level }}%"
+          >
+            <div class="skill-bar" data-bar-w="{{ skill.level }}" data-bar-color="{{ shelf.color }}"></div>
+          </div>
+          <span class="skill-pct">{{ skill.level }}%</span>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <div class="panel-scroll-bot" aria-hidden="true"></div>
+    </div>
+  </aside>
+  {% endfor %}
+
+  <!-- Project Panels -->
+  {% for project in projects %}
+  <aside
+    class="panel project-panel"
+    id="panel-{{ project.id }}"
+    role="dialog"
+    aria-modal="true"
+    aria-label="{{ project.title }} project details"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="panel-inner">
+      <button class="panel-close" aria-label="Close {{ project.title }} panel">&times;</button>
+      <div class="panel-scroll-top" aria-hidden="true"></div>
+
+      <div class="panel-header">
+        <span class="panel-eyebrow">Featured Tome</span>
+        <h2 class="panel-title" data-title-color="{{ project.color }}">{{ project.title }}</h2>
+        {% if project.subtitle %}
+        <p class="panel-subtitle">{{ project.subtitle }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Project switcher if multiple projects -->
+      {% if projects|length > 1 %}
+      <div class="project-tabs" aria-label="Switch project">
+        {% for p in projects %}
+        <button
+          class="project-tab-btn {% if p.id == project.id %}active{% endif %}"
+          data-switch-to="{{ p.id }}"
+        >
+          {{ p.title }}
+        </button>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="tech-tags" aria-label="Technologies used">
+        {% for t in project.tech %}
+        <span class="tech-tag">{{ t }}</span>
+        {% endfor %}
+      </div>
+
+      <p class="panel-desc">{{ project.description }}</p>
+
+      <div class="panel-links">
+        {% if project.github_url and project.github_url != '#' %}
+        <a href="{{ project.github_url }}" class="panel-link" target="_blank" rel="noopener noreferrer">
+          GitHub ↗
+        </a>
+        {% endif %}
+        {% if project.demo_url and project.demo_url != '#' %}
+        <a href="{{ project.demo_url }}" class="panel-link panel-link-demo" target="_blank" rel="noopener noreferrer">
+          Live Demo ↗
+        </a>
+        {% endif %}
+      </div>
+
+      <div class="panel-scroll-bot" aria-hidden="true"></div>
+    </div>
+  </aside>
+  {% endfor %}
+
+  <!-- About Me Panel -->
+  <aside
+    class="panel about-panel"
+    id="panel-about"
+    role="dialog"
+    aria-modal="true"
+    aria-label="About {{ owner.name }}"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="panel-inner">
+      <button class="panel-close" aria-label="Close About panel">&times;</button>
+      <div class="panel-scroll-top" aria-hidden="true"></div>
+
+      <div class="panel-header">
+        <span class="panel-eyebrow">The Engineer’s Chronicle</span>
+        <h2 class="panel-title" data-title-color="#d4a853">About {{ owner.name }}</h2>
+        <p class="panel-subtitle">{{ owner.title }} — {{ owner.city }}, {{ owner.country }}</p>
+      </div>
+
+      {% for para in about.paragraphs %}
+      <p class="panel-desc">{{ para }}</p>
+      {% endfor %}
+
+      <div class="panel-links">
+        <a href="mailto:{{ owner.email }}" class="panel-link">Email Me</a>
+        {% if owner.resume_url and owner.resume_url != '#' %}
+        <a href="{{ owner.resume_url }}" class="panel-link panel-link-demo" target="_blank" rel="noopener noreferrer">
+          Résumé ↗
+        </a>
+        {% endif %}
+        <a href="https://github.com/{{ owner.github }}" class="panel-link" target="_blank" rel="noopener noreferrer">
+          GitHub ↗
+        </a>
+      </div>
+
+      <div class="panel-scroll-bot" aria-hidden="true"></div>
+    </div>
+  </aside>
+
+  <script src="static/js/library.js"></script>
+</body>
+</html>

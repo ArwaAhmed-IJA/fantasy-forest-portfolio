@@ -1,0 +1,357 @@
+/* ============================================================
+   door.css  —  Fantasy Forest Door Landing Page (Panorama)
+   CS50P Final Project — Arwa Ahmed
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --gold:         #f0cb75;
+  --gold-warm:    #e8b347;
+  --gold-glow:    rgba(255, 215, 100, 0.7);
+  --forest-dark:  #07120a;
+  --wisteria:     #8f6ab8;
+  --wisteria-lt:  #d2b9ec;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--forest-dark);
+  font-family: 'Lato', sans-serif;
+  color: #fff;
+}
+
+/* ── Accessibility Skip Link ── */
+.skip-link {
+  position: absolute;
+  top: -4rem;
+  left: 1.5rem;
+  background: #fdfaf0;
+  color: #1a2215;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  z-index: 10000;
+  transition: top 0.25s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+.skip-link:focus {
+  top: 1.2rem;
+  outline: 2px solid var(--gold);
+}
+
+/* ── Top Bar ── */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(5, 10, 7, 0.88) 0%, rgba(5, 10, 7, 0.4) 75%, transparent 100%);
+  backdrop-filter: blur(8px);
+  z-index: 500;
+  pointer-events: auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.08em;
+  font-size: 1.05rem;
+}
+
+.brand-name {
+  color: var(--gold);
+  font-weight: 700;
+  text-shadow: 0 0 12px rgba(240, 203, 117, 0.5);
+}
+
+.brand-dot {
+  color: var(--wisteria-lt);
+  opacity: 0.75;
+}
+
+.brand-title {
+  color: #d6e2d9;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.nav-explore-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  color: var(--gold);
+  text-decoration: none;
+  background: rgba(18, 30, 22, 0.75);
+  border: 1px solid rgba(240, 203, 117, 0.35);
+  padding: 0.4rem 1rem;
+  border-radius: 18px;
+  transition: all 0.25s ease;
+}
+
+.nav-explore-btn:hover, .nav-explore-btn:focus-visible {
+  background: rgba(38, 60, 45, 0.95);
+  border-color: var(--gold);
+  box-shadow: 0 0 14px rgba(240, 203, 117, 0.4);
+  color: #fff;
+  outline: none;
+}
+
+/* ── Full-Screen Scene Wrapper ── */
+.scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── Seamless Panorama Artwork (Swan lake + Door + Forest) ── */
+.scene-artwork {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: max(100vw, calc(100vh * (1536 / 688)));
+  height: max(100vh, calc(100vw * (688 / 1536)));
+  background-image: url('../images/door.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+/* Atmospheric Sunbeams & Twilight Mist */
+.sunbeam-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 80% at 50% 50%, transparent 40%, rgba(5, 10, 7, 0.4) 100%),
+    linear-gradient(135deg, rgba(255, 235, 170, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ── 3D Interactive Door Unit ── */
+.door-unit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: max(100vw, calc(100vh * (1536 / 688)));
+  height: max(100vh, calc(100vw * (688 / 1536)));
+  pointer-events: none;
+  z-index: 10;
+}
+
+.door-interior,
+.door-leaf {
+  position: absolute;
+  left: 46.03%;
+  top: 43.75%;
+  width: 5.73%;
+  height: 35.47%;
+  border-radius: 50% 50% 0 0 / 25% 25% 0 0;
+}
+
+/* Interior Golden Glow */
+.door-interior {
+  background: radial-gradient(ellipse at 50% 50%, #fff2b2 0%, #ffc44d 40%, #c47d1a 80%, #4a2905 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  overflow: hidden;
+}
+
+.door-interior.active {
+  opacity: 1;
+}
+
+.interior-warmth {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle, rgba(255, 230, 140, 0.95) 0%, rgba(255, 170, 40, 0.8) 50%, transparent 80%);
+  animation: warmthPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes warmthPulse {
+  0% { transform: scale(0.96); opacity: 0.85; }
+  100% { transform: scale(1.04); opacity: 1; }
+}
+
+.interior-rays {
+  position: absolute;
+  inset: 0;
+  background: repeating-conic-gradient(from 0deg, rgba(255, 255, 255, 0.3) 0deg 15deg, transparent 15deg 30deg);
+  opacity: 0.5;
+  mix-blend-mode: screen;
+}
+
+/* 3D Door Leaf */
+.door-leaf {
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 0.95s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.95s ease;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.leaf-front {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image: url('../images/door_panel_wisteria.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backface-visibility: hidden;
+}
+
+/* Door Swing Open State */
+.door-leaf.is-open {
+  transform: perspective(1200px) rotateY(-82deg);
+  box-shadow: 15px 0 35px rgba(0, 0, 0, 0.8);
+}
+
+/* ── Interactive Enter Button ── */
+.door-enter-trigger {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* Match door bounds precisely inside the scaled panorama */
+  width: max(100vw, calc(100vh * (1536 / 688)));
+  height: max(100vh, calc(100vw * (688 / 1536)));
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  background: transparent;
+  border: none;
+  z-index: 20;
+}
+
+.rune-pulse,
+.enter-prompt {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.rune-pulse {
+  position: absolute;
+  left: 46.03%;
+  top: 43.75%;
+  width: 5.73%;
+  height: 35.47%;
+  border-radius: 50% 50% 0 0 / 25% 25% 0 0;
+  border: 2px solid rgba(240, 203, 117, 0.4);
+  box-shadow: 0 0 18px rgba(240, 203, 117, 0.3), inset 0 0 18px rgba(240, 203, 117, 0.2);
+  opacity: 0.6;
+  transition: all 0.35s ease;
+  animation: runeBreathing 3s ease-in-out infinite alternate;
+}
+
+@keyframes runeBreathing {
+  0% { opacity: 0.35; box-shadow: 0 0 10px rgba(240, 203, 117, 0.2); }
+  100% { opacity: 0.85; box-shadow: 0 0 24px rgba(240, 203, 117, 0.5), inset 0 0 14px rgba(240, 203, 117, 0.3); }
+}
+
+.door-enter-trigger:hover .rune-pulse,
+.door-enter-trigger:focus-visible .rune-pulse {
+  opacity: 1;
+  border-color: var(--gold);
+  box-shadow: 0 0 35px var(--gold-glow), inset 0 0 25px var(--gold-glow);
+}
+
+/* Prompt Banner */
+.enter-prompt {
+  position: absolute;
+  left: 48.90%;
+  top: 73%;
+  transform: translate(-50%, 0);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.86rem;
+  letter-spacing: 0.12em;
+  color: #fff8e0;
+  background: rgba(10, 20, 14, 0.88);
+  padding: 0.48rem 1.15rem;
+  border-radius: 20px;
+  border: 1px solid rgba(240, 203, 117, 0.55);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.7), 0 0 14px rgba(240, 203, 117, 0.35);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.door-enter-trigger:hover .enter-prompt,
+.door-enter-trigger:focus-visible .enter-prompt {
+  transform: translate(-50%, -4px) scale(1.05);
+  background: rgba(25, 42, 30, 0.94);
+  border-color: var(--gold);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.8), 0 0 22px var(--gold-glow);
+  color: #fff;
+}
+
+.prompt-icon {
+  color: var(--gold);
+  font-size: 0.8rem;
+}
+
+/* ── Floating Fireflies & Petals ── */
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 15;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50% 50% 35% 65% / 60% 40% 60% 40%;
+  opacity: 0;
+  animation: particleFloat var(--dur, 8s) ease-in-out var(--delay, 0s) infinite;
+}
+
+@keyframes particleFloat {
+  0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  15%  { opacity: var(--max-op, 0.7); }
+  85%  { opacity: var(--max-op, 0.7); }
+  100% { transform: translate(var(--tx, 40px), var(--ty, -180px)) rotate(360deg); opacity: 0; }
+}
+
+/* ── Screen Light Flood ── */
+.light-flood {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 90% at 50% 50%, #fff7d6 0%, #ffca5c 40%, #ff9800 75%, rgba(10, 20, 15, 0.95) 100%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 900;
+  transition: opacity 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.light-flood.active {
+  opacity: 0.96;
+}
+
+/* Responsive Scaling */
+@media (max-width: 768px) {
+  .brand-title {
+    display: none;
+  }
+}

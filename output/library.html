@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arwa Ahmed — Fantasy Library</title>
+  <meta name="description" content="Explore the fantasy library portfolio of Arwa Ahmed, Software Engineer." />
+  <link rel="stylesheet" href="static/css/library.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+</head>
+<body class="library-page">
+
+  <!-- Skip link for keyboard users -->
+  <a href="#mainLibrary" class="skip-link">Skip to main library content</a>
+
+  <!-- Top Navigation & Quick Access Toolbar -->
+  <header class="lib-header" aria-label="Library Navigation">
+    <div class="lib-header-left">
+      <a href="index.html" class="nav-btn back-btn" aria-label="Return to entrance door">
+        <span class="back-arrow">&#8592;</span> Forest Entrance
+      </a>
+      <span class="lib-owner-title">Arwa Ahmed’s Library</span>
+    </div>
+
+    <!-- Quick Access Menu for instant 1-click access -->
+    <nav class="quick-nav" aria-label="Category shortcuts">
+      
+      <button class="quick-btn" data-target="languages" data-accent="#c0843a">
+        Languages
+      </button>
+      
+      <button class="quick-btn" data-target="web" data-accent="#7b5ea7">
+        Web &amp; Frameworks
+      </button>
+      
+      <button class="quick-btn" data-target="data" data-accent="#3a8c6e">
+        Data &amp; ML
+      </button>
+      
+      <button class="quick-btn" data-target="tools" data-accent="#b04a4a">
+        Tools &amp; Ops
+      </button>
+      
+      <button class="quick-btn" data-target="cs50p" data-accent="#c0843a">
+        Projects
+      </button>
+      <button class="quick-btn" data-target="about" data-accent="#d4a853">
+        About
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Scene Wrapper (100vw x 100vh) -->
+  <main class="lib-scene" id="mainLibrary" aria-label="Interactive library painting">
+
+    <!-- High-Resolution Library Panorama Stage (2133 x 1200) -->
+    <div class="lib-stage" id="libStage">
+
+      <!-- High-resolution artwork painting background -->
+      <div class="lib-artwork" aria-hidden="true"></div>
+
+      <!-- Atmospheric sunbeam and shadow layer -->
+      <div class="lib-lighting" aria-hidden="true"></div>
+
+      <!-- ── INTERACTIVE HOTSPOTS OVER THE PANORAMA ── -->
+
+      <!-- Bookshelf Hotspots (Shelves 1 to 4) -->
+      
+      <button
+        class="hotspot-btn shelf-hotspot"
+        data-target="languages"
+        aria-label="Open Languages skills panel"
+        data-top="21"
+        data-left="40.0"
+        data-width="20.0"
+        data-height="13"
+        data-color="#c0843a"
+      >
+        <span class="hotspot-shimmer" aria-hidden="true"></span>
+        <span class="hotspot-badge" aria-hidden="true">
+          <span class="badge-icon">✨</span>
+          <span class="badge-title">Languages</span>
+        </span>
+      </button>
+      
+      <button
+        class="hotspot-btn shelf-hotspot"
+        data-target="web"
+        aria-label="Open Web &amp; Frameworks skills panel"
+        data-top="35"
+        data-left="40.0"
+        data-width="20.0"
+        data-height="13"
+        data-color="#7b5ea7"
+      >
+        <span class="hotspot-shimmer" aria-hidden="true"></span>
+        <span class="hotspot-badge" aria-hidden="true">
+          <span class="badge-icon">✨</span>
+          <span class="badge-title">Web &amp; Frameworks</span>
+        </span>
+      </button>
+      
+      <button
+        class="hotspot-btn shelf-hotspot"
+        data-target="data"
+        aria-label="Open Data &amp; ML skills panel"
+        data-top="49"
+        data-left="40.0"
+        data-width="20.0"
+        data-height="13"
+        data-color="#3a8c6e"
+      >
+        <span class="hotspot-shimmer" aria-hidden="true"></span>
+        <span class="hotspot-badge" aria-hidden="true">
+          <span class="badge-icon">✨</span>
+          <span class="badge-title">Data &amp; ML</span>
+        </span>
+      </button>
+      
+      <button
+        class="hotspot-btn shelf-hotspot"
+        data-target="tools"
+        aria-label="Open Tools &amp; Ops skills panel"
+        data-top="63"
+        data-left="40.0"
+        data-width="20.0"
+        data-height="13"
+        data-color="#b04a4a"
+      >
+        <span class="hotspot-shimmer" aria-hidden="true"></span>
+        <span class="hotspot-badge" aria-hidden="true">
+          <span class="badge-icon">✨</span>
+          <span class="badge-title">Tools &amp; Ops</span>
+        </span>
+      </button>
+      
+
+      <!-- Foreground Table Book Stack (Featured Projects) -->
+      
+      <button
+        class="hotspot-btn project-hotspot"
+        data-target="cs50p"
+        aria-label="Open CS50P Portfolio project panel"
+        data-top="69"
+        data-left="44.1"
+        data-width="11.8"
+        data-height="18"
+        data-color="#c0843a"
+      >
+        <span class="hotspot-shimmer" aria-hidden="true"></span>
+        <span class="hotspot-badge" aria-hidden="true">
+          <span class="badge-icon">📦</span>
+          <span class="badge-title">CS50P Portfolio</span>
+        </span>
+      </button>
+      
+      <button
+        class="hotspot-btn project-hotspot"
+        data-target="project2"
+        aria-label="Open Hearth &amp; Lore project panel"
+        data-top="56"
+        data-left="8.5"
+        data-width="17.5"
+        data-height="25"
+        data-color="#e07a3b"
+      >
+        <span class="hotspot-shimmer" aria-hidden="true"></span>
+        <span class="hotspot-badge" aria-hidden="true">
+          <span class="badge-icon">📦</span>
+          <span class="badge-title">Hearth &amp; Lore</span>
+        </span>
+      </button>
+      
+      <button
+        class="hotspot-btn project-hotspot"
+        data-target="project3"
+        aria-label="Open Swan Lake Lakehouse project panel"
+        data-top="60"
+        data-left="77.0"
+        data-width="16.0"
+        data-height="20"
+        data-color="#4da1a9"
+      >
+        <span class="hotspot-shimmer" aria-hidden="true"></span>
+        <span class="hotspot-badge" aria-hidden="true">
+          <span class="badge-icon">📦</span>
+          <span class="badge-title">Swan Lake Lakehouse</span>
+        </span>
+      </button>
+      
+
+      <!-- Table Roses & Candle (About Me Chronicle) -->
+      <button
+        class="hotspot-btn about-hotspot"
+        data-target="about"
+        aria-label="Open About Me chronicle"
+        data-top="68.5"
+        data-left="47.3"
+        data-width="7.0"
+        data-height="19.0"
+        data-color="#d4a853"
+      >
+        <span class="hotspot-shimmer" aria-hidden="true"></span>
+        <span class="hotspot-badge" aria-hidden="true">
+          <span class="badge-icon">🌸</span>
+          <span class="badge-title">About Arwa</span>
+        </span>
+      </button>
+
+      <!-- Ambient Floating Fireflies -->
+      <div class="fireflies" aria-hidden="true" id="fireflies"></div>
+
+    </div><!-- /.lib-stage -->
+
+  </main><!-- /.lib-scene -->
+
+  <!-- ═══════════════════════════════════════════
+       PARCHMENT SCROLL PANELS (MODALS)
+       ═══════════════════════════════════════════ -->
+
+  <!-- Modal Backdrop -->
+  <div class="panel-backdrop" id="panelBackdrop" aria-hidden="true"></div>
+
+  <!-- Shelf Panels (Skills) -->
+  
+  <aside
+    class="panel shelf-panel"
+    id="panel-languages"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Languages skills"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="panel-inner">
+      <button class="panel-close" aria-label="Close Languages panel">&times;</button>
+      <div class="panel-scroll-top" aria-hidden="true"></div>
+
+      <div class="panel-header">
+        <span class="panel-eyebrow">Shelf 1</span>
+        <h2 class="panel-title" data-title-color="#c0843a">Languages</h2>
+      </div>
+
+      <ul class="skill-list" aria-label="Languages skill proficiency levels">
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">🐍</span>
+          <span class="skill-name">Python</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="90"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="Python proficiency 90%"
+          >
+            <div class="skill-bar" data-bar-w="90" data-bar-color="#c0843a"></div>
+          </div>
+          <span class="skill-pct">90%</span>
+        </li>
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">🌐</span>
+          <span class="skill-name">JavaScript</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="80"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="JavaScript proficiency 80%"
+          >
+            <div class="skill-bar" data-bar-w="80" data-bar-color="#c0843a"></div>
+          </div>
+          <span class="skill-pct">80%</span>
+        </li>
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">📘</span>
+          <span class="skill-name">TypeScript</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="72"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="TypeScript proficiency 72%"
+          >
+            <div class="skill-bar" data-bar-w="72" data-bar-color="#c0843a"></div>
+          </div>
+          <span class="skill-pct">72%</span>
+        </li>
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">🗄️</span>
+          <span class="skill-name">SQL</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="75"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="SQL proficiency 75%"
+          >
+            <div class="skill-bar" data-bar-w="75" data-bar-color="#c0843a"></div>
+          </div>
+          <span class="skill-pct">75%</span>
+        </li>
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">🎨</span>
+          <span class="skill-name">HTML/CSS</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="85"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="HTML/CSS proficiency 85%"
+          >
+            <div class="skill-bar" data-bar-w="85" data-bar-color="#c0843a"></div>
+          </div>
+          <span class="skill-pct">85%</span>
+        </li>
+        
+      </ul>
+
+      <div class="panel-scroll-bot" aria-hidden="true"></div>
+    </div>
+  </aside>
+  
+  <aside
+    class="panel shelf-panel"
+    id="panel-web"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Web &amp; Frameworks skills"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="panel-inner">
+      <button class="panel-close" aria-label="Close Web &amp; Frameworks panel">&times;</button>
+      <div class="panel-scroll-top" aria-hidden="true"></div>
+
+      <div class="panel-header">
+        <span class="panel-eyebrow">Shelf 2</span>
+        <h2 class="panel-title" data-title-color="#7b5ea7">Web &amp; Frameworks</h2>
+      </div>
+
+      <ul class="skill-list" aria-label="Web &amp; Frameworks skill proficiency levels">
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">🧪</span>
+          <span class="skill-name">Flask</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="82"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="Flask proficiency 82%"
+          >
+            <div class="skill-bar" data-bar-w="82" data-bar-color="#7b5ea7"></div>
+          </div>
+          <span class="skill-pct">82%</span>
+        </li>
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">⚡</span>
+          <span class="skill-name">FastAPI</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="75"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="FastAPI proficiency 75%"
+          >
+            <div class="skill-bar" data-bar-w="75" data-bar-color="#7b5ea7"></div>
+          </div>
+          <span class="skill-pct">75%</span>
+        </li>
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">⚛️</span>
+          <span class="skill-name">React</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="70"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="React proficiency 70%"
+          >
+            <div class="skill-bar" data-bar-w="70" data-bar-color="#7b5ea7"></div>
+          </div>
+          <span class="skill-pct">70%</span>
+        </li>
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">📄</span>
+          <span class="skill-name">Jinja2</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="85"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="Jinja2 proficiency 85%"
+          >
+            <div class="skill-bar" data-bar-w="85" data-bar-color="#7b5ea7"></div>
+          </div>
+          <span class="skill-pct">85%</span>
+        </li>
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">🔗</span>
+          <span class="skill-name">REST APIs</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="80"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="REST APIs proficiency 80%"
+          >
+            <div class="skill-bar" data-bar-w="80" data-bar-color="#7b5ea7"></div>
+          </div>
+          <span class="skill-pct">80%</span>
+        </li>
+        
+      </ul>
+
+      <div class="panel-scroll-bot" aria-hidden="true"></div>
+    </div>
+  </aside>
+  
+  <aside
+    class="panel shelf-panel"
+    id="panel-data"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Data &amp; ML skills"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="panel-inner">
+      <button class="panel-close" aria-label="Close Data &amp; ML panel">&times;</button>
+      <div class="panel-scroll-top" aria-hidden="true"></div>
+
+      <div class="panel-header">
+        <span class="panel-eyebrow">Shelf 3</span>
+        <h2 class="panel-title" data-title-color="#3a8c6e">Data &amp; ML</h2>
+      </div>
+
+      <ul class="skill-list" aria-label="Data &amp; ML skill proficiency levels">
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">🐼</span>
+          <span class="skill-name">Pandas</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="78"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="Pandas proficiency 78%"
+          >
+            <div class="skill-bar" data-bar-w="78" data-bar-color="#3a8c6e"></div>
+          </div>
+          <span class="skill-pct">78%</span>
+        </li>
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">🔢</span>
+          <span class="skill-name">NumPy</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="72"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="NumPy proficiency 72%"
+          >
+            <div class="skill-bar" data-bar-w="72" data-bar-color="#3a8c6e"></div>
+          </div>
+          <span class="skill-pct">72%</span>
+        </li>
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">📊</span>
+          <span class="skill-name">Matplotlib</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="68"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="Matplotlib proficiency 68%"
+          >
+            <div class="skill-bar" data-bar-w="68" data-bar-color="#3a8c6e"></div>
+          </div>
+          <span class="skill-pct">68%</span>
+        </li>
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">🤖</span>
+          <span class="skill-name">Scikit-learn</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="65"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="Scikit-learn proficiency 65%"
+          >
+            <div class="skill-bar" data-bar-w="65" data-bar-color="#3a8c6e"></div>
+          </div>
+          <span class="skill-pct">65%</span>
+        </li>
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">💾</span>
+          <span class="skill-name">SQLite</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="75"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="SQLite proficiency 75%"
+          >
+            <div class="skill-bar" data-bar-w="75" data-bar-color="#3a8c6e"></div>
+          </div>
+          <span class="skill-pct">75%</span>
+        </li>
+        
+      </ul>
+
+      <div class="panel-scroll-bot" aria-hidden="true"></div>
+    </div>
+  </aside>
+  
+  <aside
+    class="panel shelf-panel"
+    id="panel-tools"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Tools &amp; Ops skills"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="panel-inner">
+      <button class="panel-close" aria-label="Close Tools &amp; Ops panel">&times;</button>
+      <div class="panel-scroll-top" aria-hidden="true"></div>
+
+      <div class="panel-header">
+        <span class="panel-eyebrow">Shelf 4</span>
+        <h2 class="panel-title" data-title-color="#b04a4a">Tools &amp; Ops</h2>
+      </div>
+
+      <ul class="skill-list" aria-label="Tools &amp; Ops skill proficiency levels">
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">🐙</span>
+          <span class="skill-name">Git/GitHub</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="85"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="Git/GitHub proficiency 85%"
+          >
+            <div class="skill-bar" data-bar-w="85" data-bar-color="#b04a4a"></div>
+          </div>
+          <span class="skill-pct">85%</span>
+        </li>
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">🐳</span>
+          <span class="skill-name">Docker</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="65"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="Docker proficiency 65%"
+          >
+            <div class="skill-bar" data-bar-w="65" data-bar-color="#b04a4a"></div>
+          </div>
+          <span class="skill-pct">65%</span>
+        </li>
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">🐧</span>
+          <span class="skill-name">Linux/Bash</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="75"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="Linux/Bash proficiency 75%"
+          >
+            <div class="skill-bar" data-bar-w="75" data-bar-color="#b04a4a"></div>
+          </div>
+          <span class="skill-pct">75%</span>
+        </li>
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">💻</span>
+          <span class="skill-name">VS Code</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="90"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="VS Code proficiency 90%"
+          >
+            <div class="skill-bar" data-bar-w="90" data-bar-color="#b04a4a"></div>
+          </div>
+          <span class="skill-pct">90%</span>
+        </li>
+        
+        <li class="skill-item">
+          <span class="skill-icon" aria-hidden="true">✅</span>
+          <span class="skill-name">pytest</span>
+          <div
+            class="skill-bar-wrap"
+            role="progressbar"
+            aria-valuenow="80"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="pytest proficiency 80%"
+          >
+            <div class="skill-bar" data-bar-w="80" data-bar-color="#b04a4a"></div>
+          </div>
+          <span class="skill-pct">80%</span>
+        </li>
+        
+      </ul>
+
+      <div class="panel-scroll-bot" aria-hidden="true"></div>
+    </div>
+  </aside>
+  
+
+  <!-- Project Panels -->
+  
+  <aside
+    class="panel project-panel"
+    id="panel-cs50p"
+    role="dialog"
+    aria-modal="true"
+    aria-label="CS50P Portfolio project details"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="panel-inner">
+      <button class="panel-close" aria-label="Close CS50P Portfolio panel">&times;</button>
+      <div class="panel-scroll-top" aria-hidden="true"></div>
+
+      <div class="panel-header">
+        <span class="panel-eyebrow">Featured Tome</span>
+        <h2 class="panel-title" data-title-color="#c0843a">CS50P Portfolio</h2>
+        
+        <p class="panel-subtitle">Fantasy Forest Portfolio Generator</p>
+        
+      </div>
+
+      <!-- Project switcher if multiple projects -->
+      
+      <div class="project-tabs" aria-label="Switch project">
+        
+        <button
+          class="project-tab-btn active"
+          data-switch-to="cs50p"
+        >
+          CS50P Portfolio
+        </button>
+        
+        <button
+          class="project-tab-btn "
+          data-switch-to="project2"
+        >
+          Hearth &amp; Lore
+        </button>
+        
+        <button
+          class="project-tab-btn "
+          data-switch-to="project3"
+        >
+          Swan Lake Lakehouse
+        </button>
+        
+      </div>
+      
+
+      <div class="tech-tags" aria-label="Technologies used">
+        
+        <span class="tech-tag">Python</span>
+        
+        <span class="tech-tag">Jinja2</span>
+        
+        <span class="tech-tag">CSS</span>
+        
+        <span class="tech-tag">JS</span>
+        
+      </div>
+
+      <p class="panel-desc">A fantasy forest portfolio generated entirely from Python data. Clicking the ancient wooden door leads to a cozy library in the woods where each bookshelf reveals a skill category and the books on the desk open projects.</p>
+
+      <div class="panel-links">
+        
+        
+      </div>
+
+      <div class="panel-scroll-bot" aria-hidden="true"></div>
+    </div>
+  </aside>
+  
+  <aside
+    class="panel project-panel"
+    id="panel-project2"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Hearth &amp; Lore project details"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="panel-inner">
+      <button class="panel-close" aria-label="Close Hearth &amp; Lore panel">&times;</button>
+      <div class="panel-scroll-top" aria-hidden="true"></div>
+
+      <div class="panel-header">
+        <span class="panel-eyebrow">Featured Tome</span>
+        <h2 class="panel-title" data-title-color="#e07a3b">Hearth &amp; Lore</h2>
+        
+        <p class="panel-subtitle">Fireplace Study Project</p>
+        
+      </div>
+
+      <!-- Project switcher if multiple projects -->
+      
+      <div class="project-tabs" aria-label="Switch project">
+        
+        <button
+          class="project-tab-btn "
+          data-switch-to="cs50p"
+        >
+          CS50P Portfolio
+        </button>
+        
+        <button
+          class="project-tab-btn active"
+          data-switch-to="project2"
+        >
+          Hearth &amp; Lore
+        </button>
+        
+        <button
+          class="project-tab-btn "
+          data-switch-to="project3"
+        >
+          Swan Lake Lakehouse
+        </button>
+        
+      </div>
+      
+
+      <div class="tech-tags" aria-label="Technologies used">
+        
+        <span class="tech-tag">Python</span>
+        
+        <span class="tech-tag">Flask</span>
+        
+        <span class="tech-tag">SQLite</span>
+        
+      </div>
+
+      <p class="panel-desc">An interactive cozy fireplace archive for storing stories, notes, and research. Built with clean Python backend logic and SQLite persistence.</p>
+
+      <div class="panel-links">
+        
+        
+      </div>
+
+      <div class="panel-scroll-bot" aria-hidden="true"></div>
+    </div>
+  </aside>
+  
+  <aside
+    class="panel project-panel"
+    id="panel-project3"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Swan Lake Lakehouse project details"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="panel-inner">
+      <button class="panel-close" aria-label="Close Swan Lake Lakehouse panel">&times;</button>
+      <div class="panel-scroll-top" aria-hidden="true"></div>
+
+      <div class="panel-header">
+        <span class="panel-eyebrow">Featured Tome</span>
+        <h2 class="panel-title" data-title-color="#4da1a9">Swan Lake Lakehouse</h2>
+        
+        <p class="panel-subtitle">Data Pipeline &amp; Analytics</p>
+        
+      </div>
+
+      <!-- Project switcher if multiple projects -->
+      
+      <div class="project-tabs" aria-label="Switch project">
+        
+        <button
+          class="project-tab-btn "
+          data-switch-to="cs50p"
+        >
+          CS50P Portfolio
+        </button>
+        
+        <button
+          class="project-tab-btn "
+          data-switch-to="project2"
+        >
+          Hearth &amp; Lore
+        </button>
+        
+        <button
+          class="project-tab-btn active"
+          data-switch-to="project3"
+        >
+          Swan Lake Lakehouse
+        </button>
+        
+      </div>
+      
+
+      <div class="tech-tags" aria-label="Technologies used">
+        
+        <span class="tech-tag">Python</span>
+        
+        <span class="tech-tag">Pandas</span>
+        
+        <span class="tech-tag">SQL</span>
+        
+      </div>
+
+      <p class="panel-desc">A tranquil data lakehouse pipeline processing environmental sensor metrics and water quality telemetry, visualized with clean interactive dashboards.</p>
+
+      <div class="panel-links">
+        
+        
+      </div>
+
+      <div class="panel-scroll-bot" aria-hidden="true"></div>
+    </div>
+  </aside>
+  
+
+  <!-- About Me Panel -->
+  <aside
+    class="panel about-panel"
+    id="panel-about"
+    role="dialog"
+    aria-modal="true"
+    aria-label="About Arwa Ahmed"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="panel-inner">
+      <button class="panel-close" aria-label="Close About panel">&times;</button>
+      <div class="panel-scroll-top" aria-hidden="true"></div>
+
+      <div class="panel-header">
+        <span class="panel-eyebrow">The Engineer’s Chronicle</span>
+        <h2 class="panel-title" data-title-color="#d4a853">About Arwa Ahmed</h2>
+        <p class="panel-subtitle">Software Engineer — Cairo, Egypt</p>
+      </div>
+
+      
+      <p class="panel-desc">I am Arwa Ahmed, a passionate software engineer who discovered programming through curious exploration and refined it through CS50.</p>
+      
+      <p class="panel-desc">I specialize in Python, backend development, and crafting intuitive, visually captivating web applications.</p>
+      
+      <p class="panel-desc">When I am not designing clean software architectures, I am exploring nature, reading classical literature, and brewing great coffee.</p>
+      
+
+      <div class="panel-links">
+        <a href="mailto:arwa@example.com" class="panel-link">Email Me</a>
+        
+        <a href="https://github.com/ArwaAhmed-IJA" class="panel-link" target="_blank" rel="noopener noreferrer">
+          GitHub ↗
+        </a>
+      </div>
+
+      <div class="panel-scroll-bot" aria-hidden="true"></div>
+    </div>
+  </aside>
+
+  <script src="static/js/library.js"></script>
+</body>
+</html>

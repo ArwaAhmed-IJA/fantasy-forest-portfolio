@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arwa Ahmed — Fantasy Forest Portfolio</title>
+  <meta name="description" content="Interactive Fantasy Forest Portfolio of Arwa Ahmed, Software Engineer." />
+  <link rel="stylesheet" href="static/css/door.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Skip link for keyboard / screen-reader accessibility -->
+  <a href="library.html" class="skip-link">Skip intro — enter the library</a>
+
+  <!-- Top bar: Elegant Brand Header -->
+  <header class="top-nav" aria-label="Scene navigation">
+    <div class="brand">
+      <span class="brand-name">Arwa Ahmed</span>
+      <span class="brand-dot">•</span>
+      <span class="brand-title">Software Engineer</span>
+    </div>
+    <div class="top-nav-right">
+      <a href="library.html" class="nav-explore-btn">Enter Library &#8594;</a>
+    </div>
+  </header>
+
+  <!-- Main Scene Panorama (Fills 100vw x 100vh with no dark bars) -->
+  <div class="scene" id="scene" aria-label="Fantasy forest entrance door">
+
+    <!-- High-Resolution Enchanted Forest Panorama (Swan lake, Wisteria door, Sunlit staircase) -->
+    <div class="scene-artwork" id="sceneArtwork" aria-hidden="true"></div>
+
+    <!-- Atmospheric god-rays & magical twilight haze -->
+    <div class="sunbeam-overlay" aria-hidden="true"></div>
+
+    <!-- 3D Interactive Door Unit (Positioned right over the arched door) -->
+    <div class="door-unit" id="doorUnit" aria-hidden="true">
+      <!-- Golden Interior Light (Illuminates when door swings open) -->
+      <div class="door-interior" id="doorInterior">
+        <div class="interior-warmth"></div>
+        <div class="interior-rays"></div>
+      </div>
+
+      <!-- 3D Door Leaf (Swings open inward) -->
+      <div class="door-leaf" id="doorLeaf">
+        <div class="leaf-front" id="leafFront"></div>
+        <div class="leaf-edge"></div>
+      </div>
+    </div>
+
+    <!-- Interactive Click/Focus Enter Button overlaying the door -->
+    <button
+      class="door-enter-trigger"
+      id="enterBtn"
+      aria-label="Open portfolio door — enter the fantasy library"
+      tabindex="0"
+    >
+      <span class="rune-pulse" aria-hidden="true"></span>
+      <span class="enter-prompt" aria-hidden="true">
+        <span class="prompt-icon">✧</span>
+        <span class="prompt-text">Click to Enter</span>
+        <span class="prompt-icon">✧</span>
+      </span>
+    </button>
+
+    <!-- Ambient Floating Fireflies & Wisteria Petals -->
+    <div class="particles" aria-hidden="true" id="particles"></div>
+
+    <!-- Full-screen warm light flood on door open -->
+    <div class="light-flood" id="lightFlood" aria-hidden="true"></div>
+
+  </div><!-- /.scene -->
+
+  <script src="static/js/door.js"></script>
+</body>
+</html>

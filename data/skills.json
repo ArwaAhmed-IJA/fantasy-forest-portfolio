@@ -1,0 +1,247 @@
+{
+  "owner": {
+    "name": "Arwa Ahmed",
+    "title": "Software Engineer",
+    "github": "ArwaAhmed-IJA",
+    "edx": "ArwaAhmed-IJA",
+    "city": "Cairo",
+    "country": "Egypt",
+    "email": "arwa@example.com",
+    "bio": "I'm a passionate software engineer who loves building elegant solutions. CS50P taught me to think like a programmer \u2014 this fantasy forest portfolio is proof of that journey.",
+    "resume_url": "#"
+  },
+  "shelves": [
+    {
+      "id": "languages",
+      "label": "Languages",
+      "shelf_number": 1,
+      "color": "#c0843a",
+      "hotspot": {
+        "top": 21,
+        "left": 40.0,
+        "width": 20.0,
+        "height": 13
+      },
+      "skills": [
+        {
+          "name": "Python",
+          "level": 90,
+          "icon": "\ud83d\udc0d"
+        },
+        {
+          "name": "JavaScript",
+          "level": 80,
+          "icon": "\ud83c\udf10"
+        },
+        {
+          "name": "TypeScript",
+          "level": 72,
+          "icon": "\ud83d\udcd8"
+        },
+        {
+          "name": "SQL",
+          "level": 75,
+          "icon": "\ud83d\uddc4\ufe0f"
+        },
+        {
+          "name": "HTML/CSS",
+          "level": 85,
+          "icon": "\ud83c\udfa8"
+        }
+      ]
+    },
+    {
+      "id": "web",
+      "label": "Web & Frameworks",
+      "shelf_number": 2,
+      "color": "#7b5ea7",
+      "hotspot": {
+        "top": 35,
+        "left": 40.0,
+        "width": 20.0,
+        "height": 13
+      },
+      "skills": [
+        {
+          "name": "Flask",
+          "level": 82,
+          "icon": "\ud83e\uddea"
+        },
+        {
+          "name": "FastAPI",
+          "level": 75,
+          "icon": "\u26a1"
+        },
+        {
+          "name": "React",
+          "level": 70,
+          "icon": "\u269b\ufe0f"
+        },
+        {
+          "name": "Jinja2",
+          "level": 85,
+          "icon": "\ud83d\udcc4"
+        },
+        {
+          "name": "REST APIs",
+          "level": 80,
+          "icon": "\ud83d\udd17"
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "label": "Data & ML",
+      "shelf_number": 3,
+      "color": "#3a8c6e",
+      "hotspot": {
+        "top": 49,
+        "left": 40.0,
+        "width": 20.0,
+        "height": 13
+      },
+      "skills": [
+        {
+          "name": "Pandas",
+          "level": 78,
+          "icon": "\ud83d\udc3c"
+        },
+        {
+          "name": "NumPy",
+          "level": 72,
+          "icon": "\ud83d\udd22"
+        },
+        {
+          "name": "Matplotlib",
+          "level": 68,
+          "icon": "\ud83d\udcca"
+        },
+        {
+          "name": "Scikit-learn",
+          "level": 65,
+          "icon": "\ud83e\udd16"
+        },
+        {
+          "name": "SQLite",
+          "level": 75,
+          "icon": "\ud83d\udcbe"
+        }
+      ]
+    },
+    {
+      "id": "tools",
+      "label": "Tools & Ops",
+      "shelf_number": 4,
+      "color": "#b04a4a",
+      "hotspot": {
+        "top": 63,
+        "left": 40.0,
+        "width": 20.0,
+        "height": 13
+      },
+      "skills": [
+        {
+          "name": "Git/GitHub",
+          "level": 85,
+          "icon": "\ud83d\udc19"
+        },
+        {
+          "name": "Docker",
+          "level": 65,
+          "icon": "\ud83d\udc33"
+        },
+        {
+          "name": "Linux/Bash",
+          "level": 75,
+          "icon": "\ud83d\udc27"
+        },
+        {
+          "name": "VS Code",
+          "level": 90,
+          "icon": "\ud83d\udcbb"
+        },
+        {
+          "name": "pytest",
+          "level": 80,
+          "icon": "\u2705"
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "cs50p",
+      "title": "CS50P Portfolio",
+      "subtitle": "Fantasy Forest Portfolio Generator",
+      "tech": [
+        "Python",
+        "Jinja2",
+        "CSS",
+        "JS"
+      ],
+      "description": "A fantasy forest portfolio generated entirely from Python data. Clicking the ancient wooden door leads to a cozy library in the woods where each bookshelf reveals a skill category and the books on the desk open projects.",
+      "github_url": "#",
+      "demo_url": "#",
+      "color": "#c0843a",
+      "hotspot": {
+        "top": 69,
+        "left": 44.1,
+        "width": 11.8,
+        "height": 18
+      }
+    },
+    {
+      "id": "project2",
+      "title": "Hearth & Lore",
+      "subtitle": "Fireplace Study Project",
+      "tech": [
+        "Python",
+        "Flask",
+        "SQLite"
+      ],
+      "description": "An interactive cozy fireplace archive for storing stories, notes, and research. Built with clean Python backend logic and SQLite persistence.",
+      "github_url": "#",
+      "demo_url": "#",
+      "color": "#e07a3b",
+      "hotspot": {
+        "top": 56,
+        "left": 8.5,
+        "width": 17.5,
+        "height": 25
+      }
+    },
+    {
+      "id": "project3",
+      "title": "Swan Lake Lakehouse",
+      "subtitle": "Data Pipeline & Analytics",
+      "tech": [
+        "Python",
+        "Pandas",
+        "SQL"
+      ],
+      "description": "A tranquil data lakehouse pipeline processing environmental sensor metrics and water quality telemetry, visualized with clean interactive dashboards.",
+      "github_url": "#",
+      "demo_url": "#",
+      "color": "#4da1a9",
+      "hotspot": {
+        "top": 60,
+        "left": 77.0,
+        "width": 16.0,
+        "height": 20
+      }
+    }
+  ],
+  "about": {
+    "hotspot": {
+      "top": 68.5,
+      "left": 47.3,
+      "width": 7.0,
+      "height": 19.0
+    },
+    "paragraphs": [
+      "I am Arwa Ahmed, a passionate software engineer who discovered programming through curious exploration and refined it through CS50.",
+      "I specialize in Python, backend development, and crafting intuitive, visually captivating web applications.",
+      "When I am not designing clean software architectures, I am exploring nature, reading classical literature, and brewing great coffee."
+    ]
+  }
+}

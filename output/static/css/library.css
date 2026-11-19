@@ -1,0 +1,536 @@
+/* ============================================================
+   library.css  —  Fantasy Library Panorama (Full-Screen)
+   CS50P Final Project — Arwa Ahmed
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --gold:         #d4a853;
+  --gold-warm:    #e8b347;
+  --gold-glow:    rgba(255, 215, 100, 0.7);
+  --wood-dark:    #261508;
+  --parchment:    #f7ebd2;
+  --parchment-dk: #e7d3a2;
+  --ink:          #2c1f10;
+  --forest-dark:  #07120a;
+  --wisteria:     #8f6ab8;
+  --wisteria-lt:  #d2b9ec;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--forest-dark);
+  font-family: 'Lato', sans-serif;
+  color: var(--ink);
+}
+
+/* ── Accessibility Skip Link ── */
+.skip-link {
+  position: absolute;
+  top: -4rem;
+  left: 1.5rem;
+  background: #fdfaf0;
+  color: #1a2215;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  z-index: 10000;
+  transition: top 0.25s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+.skip-link:focus {
+  top: 1.2rem;
+  outline: 2px solid var(--gold);
+}
+
+/* ── Top Navigation Bar & Quick Toolbar ── */
+.lib-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(5, 10, 7, 0.92) 0%, rgba(5, 10, 7, 0.5) 75%, transparent 100%);
+  backdrop-filter: blur(8px);
+  z-index: 500;
+}
+
+.lib-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.nav-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-decoration: none;
+  background: rgba(18, 30, 22, 0.8);
+  border: 1px solid rgba(212, 168, 83, 0.45);
+  border-radius: 20px;
+  padding: 0.42rem 1.05rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: all 0.25s ease;
+}
+
+.nav-btn:hover, .nav-btn:focus-visible {
+  background: rgba(38, 60, 45, 0.95);
+  border-color: var(--gold);
+  box-shadow: 0 0 16px rgba(212, 168, 83, 0.45);
+  color: #fff;
+  outline: none;
+}
+
+.lib-owner-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #f0f5f1;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 10px rgba(212, 168, 83, 0.35);
+}
+
+.quick-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.quick-btn {
+  background: rgba(16, 26, 20, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #e0e9e2;
+  font-family: 'Cinzel', serif;
+  font-size: 0.76rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.quick-btn:hover, .quick-btn:focus-visible {
+  background: rgba(35, 55, 42, 0.95);
+  color: #fff;
+  border-color: var(--btn-accent, var(--gold));
+  box-shadow: 0 0 14px var(--btn-accent, var(--gold));
+  outline: none;
+}
+
+/* ── Main Scene Viewport ── */
+.lib-scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── High-Resolution Library Panorama Stage (2560 x 1200) ── */
+.lib-stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: max(100vw, calc(100vh * (2560 / 1200)));
+  height: max(100vh, calc(100vw * (1200 / 2560)));
+  overflow: hidden;
+  z-index: 1;
+}
+
+.lib-artwork {
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/library.jpg?v=3d_room');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.lib-lighting {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 80% at 50% 40%, transparent 45%, rgba(5, 10, 7, 0.35) 100%),
+    linear-gradient(135deg, rgba(255, 240, 190, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ── Hotspots Over the Painting ── */
+.hotspot-btn {
+  position: absolute;
+  z-index: 20;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.hotspot-shimmer {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1.5px solid transparent;
+  transition: all 0.35s ease;
+  pointer-events: none;
+}
+
+.hotspot-btn:hover .hotspot-shimmer,
+.hotspot-btn:focus-visible .hotspot-shimmer {
+  border-color: var(--hs-color, var(--gold));
+  background: radial-gradient(ellipse at center, rgba(255, 230, 140, 0.18) 0%, transparent 75%);
+  box-shadow: 0 0 25px var(--hs-color, var(--gold)), inset 0 0 15px rgba(255, 230, 140, 0.15);
+}
+
+/* Floating Ribbon Badge */
+.hotspot-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  color: #fff9ea;
+  background: rgba(12, 22, 16, 0.92);
+  padding: 0.4rem 1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(240, 203, 117, 0.65);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.7), 0 0 14px var(--hs-color, var(--gold));
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transform: translateY(6px) scale(0.95);
+  transition: all 0.28s cubic-bezier(0.2, 0.8, 0.4, 1);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.hotspot-btn:hover .hotspot-badge,
+.hotspot-btn:focus-visible .hotspot-badge {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.badge-icon {
+  color: var(--hs-color, var(--gold));
+}
+
+/* ── Ambient Fireflies ── */
+.fireflies {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 15;
+}
+
+.firefly {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffe57a;
+  box-shadow: 0 0 8px 3px rgba(255, 230, 120, 0.7);
+  opacity: 0;
+  animation: fireflyGlow var(--dur, 6s) ease-in-out var(--delay, 0s) infinite;
+}
+
+@keyframes fireflyGlow {
+  0%   { transform: translate(0, 0); opacity: 0; }
+  20%  { opacity: 0.95; }
+  50%  { transform: translate(var(--tx, 30px), var(--ty, -50px)); opacity: 0.75; }
+  80%  { opacity: 0.95; }
+  100% { transform: translate(var(--tx2, 10px), var(--ty2, -90px)); opacity: 0; }
+}
+
+/* ══════════════════════════════════════════════
+   PARCHMENT SCROLL PANELS (MODALS)
+   ══════════════════════════════════════════════ */
+.panel-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 12, 8, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.panel-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.92);
+  width: min(540px, 92vw);
+  max-height: 84vh;
+  z-index: 1100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.2, 0.8, 0.4, 1);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 45px rgba(0, 0, 0, 0.85), 0 0 25px rgba(212, 168, 83, 0.25);
+}
+
+.panel.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.panel-inner {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"),
+    linear-gradient(160deg, #fbf2dc 0%, #f4e3be 45%, #eccea0 100%);
+  padding: 2.2rem 2.4rem;
+  overflow-y: auto;
+  max-height: 84vh;
+  border: 2px solid rgba(160, 120, 48, 0.5);
+  box-shadow: inset 0 0 40px rgba(120, 80, 20, 0.12);
+  position: relative;
+}
+
+/* Close Button */
+.panel-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: rgba(60, 40, 15, 0.1);
+  border: 1px solid rgba(120, 80, 20, 0.3);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.panel-close:hover, .panel-close:focus-visible {
+  background: rgba(60, 40, 15, 0.25);
+  border-color: var(--ink);
+  transform: rotate(90deg);
+  outline: none;
+}
+
+/* Panel Header */
+.panel-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(160, 120, 48, 0.3);
+  padding-bottom: 0.8rem;
+}
+
+.panel-eyebrow {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #8c6830;
+  margin-bottom: 0.25rem;
+}
+
+.panel-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.panel-subtitle {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: #654a26;
+  margin-top: 0.2rem;
+}
+
+/* Skill List */
+.skill-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.skill-item {
+  display: grid;
+  grid-template-columns: 28px 130px 1fr 42px;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+}
+
+.skill-icon {
+  font-size: 1.15rem;
+}
+
+.skill-name {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.skill-bar-wrap {
+  height: 8px;
+  background: rgba(80, 50, 20, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.skill-bar {
+  height: 100%;
+  width: 0;
+  background: var(--bar-color, var(--gold));
+  border-radius: 4px;
+  transition: width 0.85s cubic-bezier(0.2, 0.8, 0.4, 1);
+  box-shadow: 0 0 6px var(--bar-color, var(--gold));
+}
+
+.panel.active .skill-bar {
+  width: var(--bar-w, 0%);
+}
+
+.skill-pct {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  color: #725227;
+  text-align: right;
+  font-weight: 600;
+}
+
+/* Project Details */
+.project-tabs {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.project-tab-btn {
+  background: rgba(120, 80, 30, 0.12);
+  border: 1px solid rgba(120, 80, 30, 0.3);
+  color: var(--ink);
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.project-tab-btn.active {
+  background: #c0843a;
+  color: #fff;
+  border-color: #9c631e;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.tech-tag {
+  font-size: 0.75rem;
+  background: rgba(80, 50, 20, 0.12);
+  color: var(--ink);
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  border: 1px solid rgba(120, 80, 20, 0.25);
+  font-weight: 600;
+}
+
+.panel-desc {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #2b1f11;
+  margin-bottom: 1.2rem;
+}
+
+.panel-links {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.panel-link {
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  text-decoration: none;
+  background: rgba(120, 80, 30, 0.12);
+  border: 1px solid rgba(120, 80, 30, 0.4);
+  padding: 0.5rem 1.1rem;
+  border-radius: 18px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.panel-link:hover, .panel-link:focus-visible {
+  background: #a06b25;
+  border-color: #82541a;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.panel-link-demo {
+  background: #d4a853;
+  border-color: #b08530;
+  color: #1a1205;
+}
+
+.panel-link-demo:hover {
+  background: #bc8e37;
+  color: #fff;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+  .quick-nav {
+    display: none;
+  }
+  .skill-item {
+    grid-template-columns: 24px 100px 1fr 38px;
+    font-size: 0.85rem;
+  }
+  .panel-inner {
+    padding: 1.5rem 1.4rem;
+  }
+}
