@@ -798,166 +798,117 @@ html, body {
 }
 
 /* ══════════════════════════════════════════════
-   OPEN BOOK ABOUT PANEL (Authentic Grimoire Spread)
+   OPEN BOOK ABOUT PANEL (Authentic Grimoire Spread with Book.png)
    ══════════════════════════════════════════════ */
 
 .open-book-panel {
-  width: min(940px, 94vw);
-  max-height: min(650px, 92vh);
-  background: #1c0e04; /* Deep antique leather tome cover */
-  border: 3px solid #7d4d14;
-  border-radius: 14px 18px 18px 14px;
-  /* Multi-layered deckle page edges + ambient reading-table shadow */
-  box-shadow:
-    -6px 6px 0px -2px #eadcc2,
-    -12px 12px 0px -4px #d8c49e,
-    -18px 18px 0px -6px #c4ad82,
-    6px 6px 0px -2px #eadcc2,
-    12px 12px 0px -4px #d8c49e,
-    18px 18px 0px -6px #c4ad82,
-    0 25px 65px rgba(0, 0, 0, 0.9),
-    0 0 40px rgba(212, 168, 83, 0.25),
-    inset 0 0 16px rgba(0, 0, 0, 0.75);
+  width: min(1080px, 95vw, calc(88vh * (1366 / 768)));
+  height: min(calc(1080px * (768 / 1366)), calc(95vw * (768 / 1366)), 88vh);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
   padding: 0;
   overflow: visible;
   /* Authentic 3D Book Tilt (reading desk perspective) */
-  transform: translate(-50%, -50%) perspective(1800px) rotateX(4.8deg) rotateY(-1.4deg) rotateZ(-0.9deg) scale(0.94);
+  transform: translate(-50%, -50%) perspective(1800px) rotateX(3.5deg) scale(0.95);
   transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.18, 0.89, 0.32, 1.15);
 }
 
 .open-book-panel.active {
   opacity: 1;
   pointer-events: auto;
-  transform: translate(-50%, -50%) perspective(1800px) rotateX(4.8deg) rotateY(-1.4deg) rotateZ(-0.9deg) scale(1);
+  transform: translate(-50%, -50%) perspective(1800px) rotateX(3.5deg) scale(1);
 }
 
 .open-book-wrap {
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 12px;
+  padding: 0;
   box-sizing: border-box;
+  background-image: url('../images/Book.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 35px rgba(212, 168, 83, 0.22));
 }
 
 .book-close-btn {
   position: absolute;
-  top: 18px;
-  right: 22px;
-  width: 32px;
-  height: 32px;
-  background: rgba(40, 25, 12, 0.85);
-  border: 1px solid rgba(212, 168, 83, 0.5);
-  color: #f7ebd2;
-  font-size: 1.4rem;
+  top: 2.2%;
+  right: 3.5%;
+  width: 34px;
+  height: 34px;
+  background: rgba(38, 22, 10, 0.88);
+  border: 1.5px solid rgba(212, 168, 83, 0.65);
+  color: #fff4d9;
+  font-size: 1.5rem;
   line-height: 1;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 50;
-  transition: all 0.2s ease;
+  z-index: 60;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.65), 0 0 10px rgba(212, 168, 83, 0.35);
+  transition: all 0.22s ease;
 }
 
 .book-close-btn:hover {
   background: #a06b25;
   color: #fff;
   border-color: #ffd984;
-  transform: rotate(90deg);
+  transform: rotate(90deg) scale(1.08);
 }
 
-/* Silk Ribbon Bookmark at the top spine */
+/* Silk Ribbon Bookmark - Book.png has its own realistic spine & ribbon */
 .book-spine-ribbon {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 14px;
-  height: 36px;
-  background: linear-gradient(180deg, #d4a853 0%, #b88628 70%, #8c5b16 100%);
-  border-radius: 0 0 4px 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  z-index: 25;
-}
-
-.book-spine-ribbon::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 7px solid #231407;
+  display: none;
 }
 
 /* Two-Page Open Spread with 3D depth */
 .open-book-spread {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  position: relative;
-  background: #f8eee0;
-  border-radius: 6px;
-  box-shadow:
-    inset 0 0 38px rgba(130, 90, 35, 0.22),
-    inset 12px 0 22px rgba(0, 0, 0, 0.07),
-    inset -12px 0 22px rgba(0, 0, 0, 0.07);
-  height: 100%;
-  max-height: min(620px, calc(92vh - 24px));
-  overflow: hidden;
-  perspective: 1200px;
-}
-
-/* Center Crease / Spine Shadow */
-.book-spine-crease {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 42px;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.15) 0%,
-    rgba(40, 20, 5, 0.03) 32%,
-    rgba(32, 16, 5, 0.36) 50%,
-    rgba(40, 20, 5, 0.03) 68%,
-    rgba(0, 0, 0, 0.15) 100%
-  );
-  pointer-events: none;
-  z-index: 10;
+  inset: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
 }
 
-/* Individual Pages with soft authentic curvature */
+/* Center Crease / Spine Shadow - Handled directly in Book.png */
+.book-spine-crease {
+  display: none;
+}
+
+/* Individual Pages positioned over Book.png parchment pages */
 .open-book-page {
-  padding: 2.2rem 2.2rem 1.8rem 2.2rem;
+  position: absolute;
+  top: 9.2%;
+  bottom: 9.2%;
   display: flex;
   flex-direction: column;
-  position: relative;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(140, 100, 45, 0.3) transparent;
+  scrollbar-color: rgba(140, 100, 45, 0.35) transparent;
+  box-sizing: border-box;
 }
 
 .open-book-left {
-  padding-right: 2.5rem;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.45) 0%,
-    rgba(251, 243, 227, 0.9) 85%,
-    rgba(230, 212, 180, 0.65) 100%
-  );
-  border-radius: 6px 0 0 6px;
+  left: 11.5%;
+  width: 34.5%;
+  padding: 1rem 1.4rem 0.8rem 1.4rem;
+  background: transparent;
+  border-radius: 0;
 }
 
 .open-book-right {
-  padding-left: 2.5rem;
-  background: linear-gradient(
-    270deg,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(251, 243, 227, 0.88) 85%,
-    rgba(226, 206, 172, 0.65) 100%
-  );
-  border-radius: 0 6px 6px 0;
+  left: 53.8%;
+  width: 34.5%;
+  padding: 1rem 1.4rem 0.8rem 1.4rem;
+  background: transparent;
+  border-radius: 0;
 }
 
 .page-corner-ornament {
@@ -1301,23 +1252,54 @@ html, body {
 
 /* ── Responsive Mobile Open Book ── */
 @media (max-width: 820px) {
-  .open-book-spread {
-    grid-template-columns: 1fr;
+  .open-book-panel {
+    width: min(520px, 94vw);
+    height: auto;
+    max-height: 88vh;
+    aspect-ratio: auto;
+    background: #f7ebd7;
+    border: 3px solid #8c5b16;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 168, 83, 0.25);
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+  .open-book-panel.active {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .open-book-wrap {
+    background-image: none;
+    filter: none;
+    padding: 1.2rem;
+    height: auto;
+    max-height: 88vh;
     overflow-y: auto;
   }
+  .open-book-spread {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: visible;
+  }
+  .open-book-page {
+    position: static;
+    width: 100% !important;
+    padding: 0 !important;
+    overflow: visible;
+  }
   .open-book-left {
-    padding-right: 1.8rem;
     border-bottom: 2px dashed rgba(140, 100, 45, 0.3);
+    padding-bottom: 1.2rem !important;
   }
   .open-book-right {
-    padding-left: 1.8rem;
+    padding-top: 0.5rem !important;
   }
-  .book-spine-crease,
-  .book-spine-ribbon {
-    display: none;
+  .book-close-btn {
+    top: 10px;
+    right: 12px;
   }
   .book-hero-name {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
 }
 
