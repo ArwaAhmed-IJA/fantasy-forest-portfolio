@@ -346,5 +346,53 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // ── Fairy Dust Sparkling Motes (Dancing Left & Right Across Books) ──
+  function createFairyDust() {
+    const bookHotspots = document.querySelectorAll('.hotspot-btn');
+    bookHotspots.forEach(btn => {
+      // Create container for the fairy dust
+      const dustWrap = document.createElement('div');
+      dustWrap.className = 'fairy-dust-container';
+      dustWrap.setAttribute('aria-hidden', 'true');
+
+      // 7 dancing stardust motes per book
+      const moteCount = 7;
+      for (let i = 0; i < moteCount; i++) {
+        const mote = document.createElement('span');
+        mote.className = 'fairy-mote';
+
+        // Stagger positions across the book body
+        const startX = 10 + (i * 12) + (Math.random() * 8); // 10% to 90%
+        const startY = 15 + Math.random() * 70; // 15% to 85%
+
+        // Drift distance: graceful left-to-right swaying movement (15px to 32px)
+        const driftDistance = 15 + Math.random() * 18;
+        const driftY = (Math.random() - 0.5) * 8; // gentle vertical float
+        const dur = 2.4 + Math.random() * 2.2; // 2.4s to 4.6s cycle
+        const delay = -(Math.random() * 4); // negative delay so all motes are active immediately
+
+        // Alternate drift directions: odd motes drift right, even motes drift left
+        const dir = i % 2 === 0 ? 1 : -1;
+
+        mote.style.left = `${Math.min(92, Math.max(8, startX))}%`;
+        mote.style.top = `${Math.min(88, Math.max(12, startY))}%`;
+        mote.style.setProperty('--drift-x', `${driftDistance * dir}px`);
+        mote.style.setProperty('--drift-y', `${driftY}px`);
+        mote.style.setProperty('--dur', `${dur}s`);
+        mote.style.setProperty('--delay', `${delay}s`);
+
+        // Natural size variation (2px to 3.5px)
+        const size = (2.2 + Math.random() * 1.4).toFixed(1);
+        mote.style.width = `${size}px`;
+        mote.style.height = `${size}px`;
+
+        dustWrap.appendChild(mote);
+      }
+
+      btn.appendChild(dustWrap);
+    });
+  }
+
   createFireflies();
+  createFairyDust();
 });
