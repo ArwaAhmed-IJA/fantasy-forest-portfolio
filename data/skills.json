@@ -184,10 +184,10 @@
       "demo_url": "#",
       "color": "#c0843a",
       "hotspot": {
-        "top": 64.5,
-        "left": 45.0,
-        "width": 10.5,
-        "height": 18.0
+        "top": 64.4,
+        "left": 45.4,
+        "width": 7.6,
+        "height": 4.4
       }
     },
     {
@@ -204,10 +204,10 @@
       "demo_url": "#",
       "color": "#e07a3b",
       "hotspot": {
-        "top": 56.5,
-        "left": 14.5,
-        "width": 5.5,
-        "height": 15.0
+        "top": 57.0,
+        "left": 17.5,
+        "width": 3.5,
+        "height": 13.8
       }
     },
     {
@@ -224,10 +224,10 @@
       "demo_url": "#",
       "color": "#4da1a9",
       "hotspot": {
-        "top": 62.0,
-        "left": 75.0,
-        "width": 9.0,
-        "height": 10.0
+        "top": 64.0,
+        "left": 75.8,
+        "width": 7.4,
+        "height": 4.8
       }
     }
   ],

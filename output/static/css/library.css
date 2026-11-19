@@ -227,100 +227,96 @@ html, body {
   box-shadow: 0 0 25px var(--hs-color, var(--gold)), inset 0 0 15px rgba(255, 230, 140, 0.15);
 }
 
-/* ── Magical Glowing Project Books (Middle desk, Left shelf, Right shelf) ── */
+/* ── Interactive Project Books (Glowing like the entrance door) ── */
 .project-hotspot {
   z-index: 28;
+  border-radius: 3px;
 }
 
-.tome-magic-aura {
+/* Golden Breathing Glow Outline (exact door-style aura) */
+.book-rune-pulse {
   position: absolute;
-  inset: -4px;
-  border-radius: 6px;
-  border: 2px solid rgba(255, 230, 130, 0.8);
-  box-shadow:
-    0 0 16px rgba(255, 215, 0, 0.7),
-    0 0 32px rgba(240, 203, 117, 0.5),
-    inset 0 0 12px rgba(255, 240, 160, 0.4);
-  background: radial-gradient(ellipse at center, rgba(255, 220, 100, 0.25) 0%, transparent 72%);
-  animation: tomeBreathingGlow 2.6s ease-in-out infinite alternate;
-  pointer-events: none;
+  inset: 0;
+  border-radius: 3px;
+  border: 2px solid rgba(240, 203, 117, 0.65);
+  box-shadow: 0 0 18px rgba(240, 203, 117, 0.5), inset 0 0 12px rgba(240, 203, 117, 0.35);
+  opacity: 0.85;
   transition: all 0.35s ease;
+  animation: bookRuneBreathing 2.6s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
-@keyframes tomeBreathingGlow {
+@keyframes bookRuneBreathing {
   0% {
-    opacity: 0.65;
-    border-color: rgba(240, 203, 117, 0.65);
-    box-shadow: 0 0 14px rgba(240, 203, 117, 0.55), inset 0 0 8px rgba(240, 203, 117, 0.3);
-    filter: drop-shadow(0 0 6px rgba(240, 203, 117, 0.6));
+    opacity: 0.55;
+    box-shadow: 0 0 10px rgba(240, 203, 117, 0.35), inset 0 0 6px rgba(240, 203, 117, 0.2);
+    border-color: rgba(240, 203, 117, 0.6);
   }
   100% {
     opacity: 1;
+    box-shadow: 0 0 26px rgba(240, 203, 117, 0.8), inset 0 0 16px rgba(240, 203, 117, 0.5);
     border-color: #fff9ea;
-    box-shadow:
-      0 0 28px rgba(255, 225, 110, 1),
-      0 0 48px rgba(240, 203, 117, 0.8),
-      inset 0 0 18px rgba(255, 240, 180, 0.6);
-    filter: drop-shadow(0 0 14px rgba(255, 225, 110, 1));
   }
 }
 
-.project-hotspot:hover .tome-magic-aura,
-.project-hotspot:focus-visible .tome-magic-aura {
-  inset: -8px;
+.project-hotspot:hover .book-rune-pulse,
+.project-hotspot:focus-visible .book-rune-pulse {
+  opacity: 1;
   border-color: #ffffff;
-  box-shadow:
-    0 0 35px rgba(255, 240, 150, 1),
-    0 0 65px rgba(255, 205, 60, 0.95),
-    inset 0 0 25px rgba(255, 255, 220, 0.85);
-  animation-duration: 1.2s;
+  box-shadow: 0 0 35px var(--gold-glow), inset 0 0 22px var(--gold-glow);
 }
 
-/* Rising Golden Starlight Sparkles */
-.tome-magic-sparkles {
+/* Floating Golden Guide Arrow pointing down at the book */
+.book-pointer-guide {
   position: absolute;
-  inset: -12px;
+  left: 50%;
+  bottom: 100%;
+  transform: translate(-50%, -4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   pointer-events: none;
-  overflow: visible;
+  z-index: 30;
+  animation: bookArrowBounce 1.6s ease-in-out infinite alternate;
 }
 
-.tome-magic-sparkles i {
-  position: absolute;
-  font-style: normal;
-  font-size: 0.85rem;
-  color: #fff6d8;
-  text-shadow: 0 0 8px rgba(255, 215, 0, 1), 0 0 16px rgba(255, 240, 150, 0.85);
-  animation: sparkleRise 3s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.tome-magic-sparkles i:nth-child(1) { left: 15%; top: 25%; animation-delay: 0s; font-size: 0.9rem; }
-.tome-magic-sparkles i:nth-child(2) { right: 18%; top: 35%; animation-delay: 0.75s; font-size: 0.75rem; }
-.tome-magic-sparkles i:nth-child(3) { left: 45%; bottom: 15%; animation-delay: 1.5s; font-size: 0.95rem; }
-.tome-magic-sparkles i:nth-child(4) { right: 28%; bottom: 35%; animation-delay: 2.25s; font-size: 0.7rem; }
-
-@keyframes sparkleRise {
+@keyframes bookArrowBounce {
   0% {
-    opacity: 0;
-    transform: translateY(6px) scale(0.6);
-  }
-  35% {
-    opacity: 1;
-    transform: translateY(-4px) scale(1.15);
-  }
-  75% {
-    opacity: 0.85;
-    transform: translateY(-16px) scale(0.95);
+    transform: translate(-50%, -2px);
+    filter: drop-shadow(0 0 5px rgba(240, 203, 117, 0.7)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
   }
   100% {
-    opacity: 0;
-    transform: translateY(-26px) scale(0.4);
+    transform: translate(-50%, 4px);
+    filter: drop-shadow(0 0 14px rgba(255, 230, 140, 1)) drop-shadow(0 0 22px rgba(240, 203, 117, 0.85)) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.9));
   }
 }
 
-.tome-badge {
-  border-color: rgba(255, 220, 100, 0.85);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 18px rgba(255, 215, 0, 0.75);
+.book-arrow-svg {
+  display: block;
+  width: 18px;
+  height: 24px;
+  transition: transform 0.25s ease;
+}
+
+.project-hotspot:hover .book-arrow-svg,
+.project-hotspot:focus-visible .book-arrow-svg {
+  transform: scale(1.22);
+  filter: drop-shadow(0 0 12px #fff);
+}
+
+/* Title Prompt Badge */
+.book-prompt-badge {
+  position: absolute;
+  left: 50%;
+  top: 115%;
+  transform: translate(-50%, 4px);
+  white-space: nowrap;
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  border-color: rgba(240, 203, 117, 0.75);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.8), 0 0 15px rgba(240, 203, 117, 0.5);
+  pointer-events: none;
 }
 
 /* Floating Ribbon Badge */
