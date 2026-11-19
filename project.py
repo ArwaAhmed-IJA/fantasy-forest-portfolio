@@ -331,6 +331,7 @@ def main() -> None:
             "certificates": data.get("certificates", []),
             "experience": data.get("experience", []),
             "contact": data.get("contact", {}),
+            "section_books": data.get("section_books", []),
             "hotspots": hotspots,
             "page": "library",
         },

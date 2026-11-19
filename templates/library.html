@@ -101,91 +101,112 @@
 
       <!-- ── INTERACTIVE HOTSPOTS OVER THE PANORAMA ── -->
 
-      <!-- Middle Rack Skill Books (Shelves 1 to 4 - Glowing like the entrance door) -->
-      {% for shelf in shelves %}
-      <button
-        class="hotspot-btn shelf-hotspot"
-        data-target="{{ shelf.id }}"
-        aria-label="Open {{ shelf.label }} skills panel"
-        data-top="{{ shelf.hotspot.top }}"
-        data-left="{{ shelf.hotspot.left }}"
-        data-width="{{ shelf.hotspot.width }}"
-        data-height="{{ shelf.hotspot.height }}"
-        data-color="{{ shelf.color }}"
-      >
-        <!-- Golden Breathing Glow Outline (identical to the entrance door) -->
-        <span class="book-rune-pulse" aria-hidden="true"></span>
+      <!-- ── 6 INTERACTIVE BOOKS MATCHING TOP NAVIGATION SECTIONS ── -->
+      {% if section_books %}
+        {% for book in section_books %}
+        <button
+          class="hotspot-btn section-book-hotspot"
+          data-target="{{ book.target }}"
+          aria-label="Open {{ book.label }} section panel"
+          data-top="{{ book.hotspot.top }}"
+          data-left="{{ book.hotspot.left }}"
+          data-width="{{ book.hotspot.width }}"
+          data-height="{{ book.hotspot.height }}"
+          data-color="{{ book.color }}"
+        >
+          <!-- Soft Golden Starlight Body Wash Aura (No square borders) -->
+          <span class="book-rune-pulse" aria-hidden="true"></span>
 
-        <!-- Floating Golden Guide Arrow pointing directly at the books -->
-        <span class="book-pointer-guide" aria-hidden="true">
-          <svg class="book-arrow-svg" width="16" height="22" viewBox="0 0 34 46" fill="none">
-            <path d="M17 6 V28" stroke="#f5d378" stroke-width="3.5" stroke-linecap="round" />
-            <path d="M7 19 L17 32 L27 19" stroke="#f5d378" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </span>
+          <!-- Floating Golden Guide Arrow -->
+          <span class="book-pointer-guide" aria-hidden="true">
+            <svg class="book-arrow-svg" width="16" height="22" viewBox="0 0 34 46" fill="none">
+              <path d="M17 6 V28" stroke="#f5d378" stroke-width="3.5" stroke-linecap="round" />
+              <path d="M7 19 L17 32 L27 19" stroke="#f5d378" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
 
-        <!-- Prompt Badge -->
-        <span class="hotspot-badge book-prompt-badge" aria-hidden="true">
-          <span class="badge-icon">✨</span>
-          <span class="badge-title">{{ shelf.label }}</span>
-        </span>
-      </button>
-      {% endfor %}
+          <!-- Prompt Badge Showing Exact Nav Tag -->
+          <span class="hotspot-badge book-prompt-badge" aria-hidden="true">
+            <span class="badge-icon">{{ book.icon }}</span>
+            <span class="badge-title">{{ book.label }}</span>
+          </span>
+        </button>
+        {% endfor %}
+      {% else %}
+        <!-- Fallback for legacy shelf loops -->
+        {% for shelf in shelves %}
+        <button
+          class="hotspot-btn shelf-hotspot"
+          data-target="{{ shelf.id }}"
+          aria-label="Open {{ shelf.label }} skills panel"
+          data-top="{{ shelf.hotspot.top }}"
+          data-left="{{ shelf.hotspot.left }}"
+          data-width="{{ shelf.hotspot.width }}"
+          data-height="{{ shelf.hotspot.height }}"
+          data-color="{{ shelf.color }}"
+        >
+          <span class="book-rune-pulse" aria-hidden="true"></span>
+          <span class="book-pointer-guide" aria-hidden="true">
+            <svg class="book-arrow-svg" width="16" height="22" viewBox="0 0 34 46" fill="none">
+              <path d="M17 6 V28" stroke="#f5d378" stroke-width="3.5" stroke-linecap="round" />
+              <path d="M7 19 L17 32 L27 19" stroke="#f5d378" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="hotspot-badge book-prompt-badge" aria-hidden="true">
+            <span class="badge-icon">✨</span>
+            <span class="badge-title">{{ shelf.label }}</span>
+          </span>
+        </button>
+        {% endfor %}
 
-      <!-- Interactive Project Books (Glowing like the entrance door) -->
-      {% for project in projects %}
-      <button
-        class="hotspot-btn project-hotspot"
-        data-target="{{ project.id }}"
-        aria-label="Open {{ project.title }} project panel"
-        data-top="{{ project.hotspot.top }}"
-        data-left="{{ project.hotspot.left }}"
-        data-width="{{ project.hotspot.width }}"
-        data-height="{{ project.hotspot.height }}"
-        data-color="{{ project.color }}"
-      >
-        <!-- Golden Breathing Glow Outline (identical to the entrance door) -->
-        <span class="book-rune-pulse" aria-hidden="true"></span>
+        {% for project in projects %}
+        <button
+          class="hotspot-btn project-hotspot"
+          data-target="{{ project.id }}"
+          aria-label="Open {{ project.title }} project panel"
+          data-top="{{ project.hotspot.top }}"
+          data-left="{{ project.hotspot.left }}"
+          data-width="{{ project.hotspot.width }}"
+          data-height="{{ project.hotspot.height }}"
+          data-color="{{ project.color }}"
+        >
+          <span class="book-rune-pulse" aria-hidden="true"></span>
+          <span class="book-pointer-guide" aria-hidden="true">
+            <svg class="book-arrow-svg" width="18" height="24" viewBox="0 0 34 46" fill="none">
+              <path d="M17 6 V28" stroke="#f5d378" stroke-width="3.5" stroke-linecap="round" />
+              <path d="M7 19 L17 32 L27 19" stroke="#f5d378" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="hotspot-badge book-prompt-badge" aria-hidden="true">
+            <span class="badge-icon">📖</span>
+            <span class="badge-title">{{ project.title }}</span>
+          </span>
+        </button>
+        {% endfor %}
 
-        <!-- Floating Golden Guide Arrow pointing directly at the book -->
-        <span class="book-pointer-guide" aria-hidden="true">
-          <svg class="book-arrow-svg" width="18" height="24" viewBox="0 0 34 46" fill="none">
-            <path d="M17 6 V28" stroke="#f5d378" stroke-width="3.5" stroke-linecap="round" />
-            <path d="M7 19 L17 32 L27 19" stroke="#f5d378" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </span>
-
-        <!-- Prompt Badge -->
-        <span class="hotspot-badge book-prompt-badge" aria-hidden="true">
-          <span class="badge-icon">📖</span>
-          <span class="badge-title">{{ project.title }}</span>
-        </span>
-      </button>
-      {% endfor %}
-
-      <!-- Vintage Chronicle Book on Shelf (About Me) -->
-      <button
-        class="hotspot-btn about-hotspot"
-        data-target="about"
-        aria-label="Open About Me chronicle"
-        data-top="{{ about.hotspot.top }}"
-        data-left="{{ about.hotspot.left }}"
-        data-width="{{ about.hotspot.width }}"
-        data-height="{{ about.hotspot.height }}"
-        data-color="#d4a853"
-      >
-        <span class="book-rune-pulse" aria-hidden="true"></span>
-        <span class="book-pointer-guide" aria-hidden="true">
-          <svg class="book-arrow-svg" width="16" height="22" viewBox="0 0 34 46" fill="none">
-            <path d="M17 6 V28" stroke="#f5d378" stroke-width="3.5" stroke-linecap="round" />
-            <path d="M7 19 L17 32 L27 19" stroke="#f5d378" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </span>
-        <span class="hotspot-badge book-prompt-badge" aria-hidden="true">
-          <span class="badge-icon">📜</span>
-          <span class="badge-title">About Arwa</span>
-        </span>
-      </button>
+        <button
+          class="hotspot-btn about-hotspot"
+          data-target="about"
+          aria-label="Open About Me chronicle"
+          data-top="{{ about.hotspot.top }}"
+          data-left="{{ about.hotspot.left }}"
+          data-width="{{ about.hotspot.width }}"
+          data-height="{{ about.hotspot.height }}"
+          data-color="#d4a853"
+        >
+          <span class="book-rune-pulse" aria-hidden="true"></span>
+          <span class="book-pointer-guide" aria-hidden="true">
+            <svg class="book-arrow-svg" width="16" height="22" viewBox="0 0 34 46" fill="none">
+              <path d="M17 6 V28" stroke="#f5d378" stroke-width="3.5" stroke-linecap="round" />
+              <path d="M7 19 L17 32 L27 19" stroke="#f5d378" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="hotspot-badge book-prompt-badge" aria-hidden="true">
+            <span class="badge-icon">📜</span>
+            <span class="badge-title">About Arwa</span>
+          </span>
+        </button>
+      {% endif %}
 
       <!-- Ambient Floating Fireflies -->
       <div class="fireflies" aria-hidden="true" id="fireflies"></div>

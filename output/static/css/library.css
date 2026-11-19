@@ -288,7 +288,8 @@ html, body {
 /* ── Interactive Books & Artifacts (Glittering Magic Volumes) ── */
 .project-hotspot,
 .shelf-hotspot,
-.about-hotspot {
+.about-hotspot,
+.section-book-hotspot {
   z-index: 28;
   border-radius: 6px;
   border: none !important;
